@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * Find the first occurence of a non-repeated
- * character in a string
+ * Finds the first non-repeated character in a
+ * user specified string.
  */
+
 public class FindFirstOccurenceString {
 
 
