@@ -11,7 +11,10 @@ import org.junit.runner.notification.Failure;
 public class VectorTestRunner {
 
 
-    public static void main(String[] args) {
+    public static void run(String[] args){
+
+        System.out.println("============================");
+        System.out.println("Start executing Vector tests");
 
         Result result = JUnitCore.runClasses(VectorTest.class);
 
@@ -21,10 +24,19 @@ public class VectorTestRunner {
             }
         }
         else{
-            System.out.println("All tests passed: "+ result.getRunCount());
+            System.out.println("\tAll tests passed: "+ result.getRunCount());
         }
 
-        System.out.println("Test run time: "+ result.getRunTime());
+        System.out.println("\tTest run time: "+ result.getRunTime());
+        System.out.println("Done....");
+        System.out.println("============================");
+
+    }
+
+
+    public static void main(String[] args) {
+
+        VectorTestRunner.run(args);
     }
 }
 

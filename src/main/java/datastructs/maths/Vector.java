@@ -11,18 +11,27 @@ import java.util.ArrayList;
 public class Vector {
 
 
+    /**
+     * Creates an empty vector
+     */
     public Vector(){
 
         this.data = new ArrayList<Double>(10);
     }
 
 
+    /**
+     * Creates a vector of given size with entries initialized to val
+     */
     public Vector(int size, double val){
 
         create(size, val);
     }
 
 
+    /**
+      * Resize the vector
+     */
     public final void resize(int size){
 
         if(data == null){
@@ -89,8 +98,19 @@ public class Vector {
         }
     }
 
+    /**
+     * Returns the i-th entry of the Vector
+     */
+    public final double get(int i){
+        return this.data.get(i);
+    }
+
 
     private final void create(int size, double val){
+
+        if(size == 0){
+            throw new IllegalArgumentException("Cannot create a vector with zero size");
+        }
 
         this.data = new ArrayList<Double>(size);
 
