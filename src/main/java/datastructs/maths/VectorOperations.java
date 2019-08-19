@@ -1,5 +1,7 @@
 package datastructs.maths;
 
+import datastructs.maths.Vector;
+
 /**
  * Common operations on Vector
  */

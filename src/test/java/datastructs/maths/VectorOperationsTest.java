@@ -1,5 +1,7 @@
 package datastructs.maths;
 
+import datastructs.maths.Vector;
+import datastructs.maths.VectorOperations;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
