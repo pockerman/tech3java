@@ -105,6 +105,18 @@ public class Vector {
         return this.data.get(i);
     }
 
+    /**
+     * Set the i-th entry to val
+     */
+    public final void set(int i, double val){
+
+        if(i <0 || i>= data.size()){
+            throw  new IllegalArgumentException("Invalid index. index given not in [0, "+data.size()+")");
+        }
+
+        this.data.set(i, val);
+    }
+
 
     private final void create(int size, double val){
 

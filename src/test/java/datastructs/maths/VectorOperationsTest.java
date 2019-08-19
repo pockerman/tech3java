@@ -19,4 +19,16 @@ public class VectorOperationsTest {
         Vector v2 = new Vector(10, 0.0);
         VectorOperations.dotProduct(v1, v2);
     }
+
+    /**
+     * Test Scenarion: The application adds two vectors of different size
+     * Expected Output: VectorOperations should throw IllegalStateException
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testUnequalVectorAdd(){
+
+        var v1 = new Vector(20, 0.0);
+        var v2 = new Vector(10, 0.0);
+        VectorOperations.add(v1, v2);
+    }
 }
