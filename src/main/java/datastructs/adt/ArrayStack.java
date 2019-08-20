@@ -13,8 +13,10 @@ public class ArrayStack<E> {
      * Create an empty stack
      */
     public ArrayStack(){
-        this.stack_ = new ArrayList<E>(ArrayStack.DEFAULT_CAPACITY);
+
+        create(ArrayStack.DEFAULT_CAPACITY);
         this.head_pos_ = -1;
+        this.size_ = ArrayStack.DEFAULT_CAPACITY;
     }
 
     /**
@@ -24,8 +26,9 @@ public class ArrayStack<E> {
      */
     public ArrayStack(int capacity){
 
-        this.stack_ = new ArrayList<E>(capacity);
+        create(capacity);
         this.head_pos_ = -1;
+        this.size_ = capacity;
     }
 
 
@@ -35,17 +38,26 @@ public class ArrayStack<E> {
     public final boolean empty(){return (this.head_pos_ == -1);}
 
     /**
+     * Returns the capacity of the stack i.e. how many elements it can accommodate
+     */
+    public final int capacity(){return this.size_;}
+
+    /**
+     * Returns the size of the stack which is its capacity
+     */
+    public final int size(){return this.capacity();}
+
+    /**
      * Push the new element in the stack
      */
     public final void push(E element){
 
-        head_pos_++;
-        boolean success = stack_.add(element);
-
-        //adding to the stack was not possible
-        if(!success){
-            head_pos_--;
+        if(this.head_pos_ >= this.capacity()){
+            throw new IllegalStateException("Stack is full");
         }
+
+        head_pos_++;
+        stack_.set(head_pos_, element);
     }
 
     public final E pop(){
@@ -55,9 +67,22 @@ public class ArrayStack<E> {
         }
 
         //return and decrement the head position
-        return stack_.get(head_pos_--);
+        E item = this.stack_.get(this.head_pos_);
+        this.stack_.set(head_pos_, null);
+        head_pos_--;
+        return item;
+    }
+
+    private final void create(int capacity){
+
+        this.stack_ = new ArrayList<E>(capacity);
+
+        for(int i=0; i<capacity; ++i){
+            this.stack_.add(null);
+        }
     }
 
     private ArrayList<E> stack_ =null;
     private int head_pos_ = -1;
+    private int size_ = 0;
 }

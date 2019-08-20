@@ -31,6 +31,7 @@ public class ArrayStackTest {
         assertEquals(stack.empty(), true);
     }
 
+
     /**
      * Test Scenario: Application creates an empty stack and tries to access the head element
      * Expected Output: An IllegalStateException should be thrown
@@ -40,5 +41,42 @@ public class ArrayStackTest {
 
         ArrayStack<Double> stack = new ArrayStack<Double>();
         stack.pop();
+    }
+
+    /**
+     * Test Scenario: Application creates an empty stack and adds one element.
+     * It then tries to access the head element
+     * Expected Output: The head element should be returned
+     */
+    @Test
+    public final void testStackPopOperation(){
+
+        ArrayStack<Integer> stack = new ArrayStack<Integer>();
+        stack.push(10);
+        Integer head = stack.pop();
+        assertEquals(head.intValue(), 10);
+
+        //stack should be empty
+        assertEquals(stack.empty(), true);
+    }
+
+    /**
+     * Test Scenario: Application creates an empty stack and multiple elements.
+     * It then tries to access the head element
+     * Expected Output: The head element should be returned
+     */
+    @Test
+    public final void testStackPopOperationMultiplePushes(){
+
+        ArrayStack<Integer> stack = new ArrayStack<Integer>();
+
+        for(int i=0; i<stack.size(); ++i) {
+            stack.push(i);
+        }
+        Integer head = stack.pop();
+        assertEquals(head.intValue(), 9);
+
+        //stack should be empty
+        assertEquals(stack.empty(), false);
     }
 }

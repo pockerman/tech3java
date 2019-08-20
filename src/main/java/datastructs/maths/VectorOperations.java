@@ -8,7 +8,7 @@ import static java.lang.StrictMath.sqrt;
 public class VectorOperations {
 
     /**
-     * Computes the dot product of the two vectors
+     * Adds the two vectors and returns a vector that contains the result
      */
     public static Vector add(final Vector v1, final Vector v2){
 
@@ -20,6 +20,24 @@ public class VectorOperations {
 
         for(int i=0; i<v1.size(); ++i){
             rslt.set(i, v1.get(i) + v2.get(i));
+        }
+
+        return rslt;
+    }
+
+    /**
+     * Subtracts the two vectors and returns a vector that contains the result
+     */
+    public static Vector subtract(final Vector v1, final Vector v2){
+
+        if(v1.size() != v2.size()){
+            throw new IllegalStateException("v1 size not equal to v2 size");
+        }
+
+        var rslt = new Vector(v1.size(),0.0);
+
+        for(int i=0; i<v1.size(); ++i){
+            rslt.set(i, v1.get(i) - v2.get(i));
         }
 
         return rslt;

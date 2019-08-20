@@ -117,6 +117,23 @@ public class Vector {
         this.data.set(i, val);
     }
 
+    /**
+     * Scale the components of the vector with the given scalar
+     */
+    public final void scale(double factor){
+
+        if(this.data.size() == 0){
+
+            throw new IllegalStateException("Vector has not been initialized properly");
+        }
+
+        for(int i=0; i<this.data.size(); ++i){
+
+            this.data.set(i, factor*this.data.get(i));
+        }
+
+    }
+
 
     private final void create(int size, double val){
 
