@@ -52,6 +52,5 @@ public class FindFirstOccurenceString {
 
         findChar(inputString);
 
-
     }
 }

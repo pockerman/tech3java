@@ -1,6 +1,7 @@
 package datastructs.maths;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements a Vector class in the mathematical sense
@@ -69,7 +70,6 @@ public class Vector {
         }
     }
 
-
     public final int size(){
 
         if(data == null){
@@ -101,7 +101,7 @@ public class Vector {
     /**
      * Returns the i-th entry of the Vector
      */
-    public final double get(int i){
+    public final Double get(int i){
         return this.data.get(i);
     }
 
@@ -133,6 +133,8 @@ public class Vector {
         }
 
     }
+
+    public final ArrayList<Double> getRawData(){return this.data;}
 
 
     private final void create(int size, double val){

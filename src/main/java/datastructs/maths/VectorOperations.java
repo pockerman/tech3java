@@ -1,5 +1,7 @@
 package datastructs.maths;
 
+import utils.ListUtils;
+
 import static java.lang.StrictMath.sqrt;
 
 /**
@@ -68,5 +70,12 @@ public class VectorOperations {
     public static double l2Norm(final Vector v1){
         var dotProduct = VectorOperations.dotProduct(v1 ,v1);
         return StrictMath.sqrt(dotProduct);
+    }
+
+    /**
+     * Computes the L1 norm of the vector
+     */
+    public static double l1Norm(final Vector v1){
+        return ListUtils.absSum(v1.getRawData());
     }
 }
