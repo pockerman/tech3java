@@ -32,9 +32,24 @@ public class ArrayQueue<E> {
     }
 
     /**
+     * Returns the front index. This is just to accommodate testing
+     */
+    public final int frontIdx(){return front_;}
+
+    /**
+     * Returns the back index. This is just to accommodate testing
+     */
+    public final int backIdx(){return back_;}
+
+    /**
      * Returns true if the queue is empty
      */
     public final boolean empty(){return (this.currentSize_ == 0);}
+
+    /**
+     * Returns truwe if the queue is full
+     */
+    public final boolean is_full(){return (this.currentSize_ == this.capacity());}
 
     /**
      * Returns the capacity of the queue
@@ -58,6 +73,12 @@ public class ArrayQueue<E> {
         this.back_++;
         this.data_.set(back_, element);
         this.currentSize_++;
+
+        //wrap around at the beginning because
+        // there is available space there
+        if(back_ >= this.capacity() && this.currentSize_ < this.capacity()){
+            this.back_ = -1;
+        }
     }
 
     /**
@@ -69,10 +90,15 @@ public class ArrayQueue<E> {
             throw new IllegalStateException("The queue is empty");
         }
 
+        this.front_++;
         E rslt = this.data_.get(this.front_);
         this.data_.set(this.front_, null);
         this.currentSize_--;
-        this.front_++;
+
+        if(front_ >= this.capacity()){
+            this.front_ = -1;
+        }
+
         return rslt;
     }
 

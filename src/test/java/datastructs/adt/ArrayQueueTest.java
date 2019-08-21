@@ -23,4 +23,10 @@ public class ArrayQueueTest {
         ArrayQueue<Double> queue = new ArrayQueue<Double>();
         queue.pop();
     }
+
+    /**
+     * Test Scenario: Application populates the queue. It then removes an item
+     * and then pushes back another item
+     * Expected Output: The queue should enqueue the given item at position 0
+     */
 }

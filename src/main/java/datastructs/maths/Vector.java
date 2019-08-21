@@ -1,12 +1,12 @@
 package datastructs.maths;
 
+import base.CommonConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Implements a Vector class in the mathematical sense
- *
- *
  */
 
 public class Vector {
@@ -134,6 +134,24 @@ public class Vector {
 
     }
 
+    /**
+     * Normalze the Vector
+     */
+    public final void normalize(){
+
+        double length = VectorOperations.l2Norm(this);
+
+        if(length - CommonConstants.TOL < 0.0){
+            throw new IllegalStateException("Zero length vector cannot be normalized");
+        }
+
+        this.scale(1.0/length);
+    }
+
+    /**
+     * Returns the raw data structure that holds the elements of the Vector
+     * @return
+     */
     public final ArrayList<Double> getRawData(){return this.data;}
 
 

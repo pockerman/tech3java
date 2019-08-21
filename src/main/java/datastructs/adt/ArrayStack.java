@@ -16,7 +16,7 @@ public class ArrayStack<E> {
 
         create(ArrayStack.DEFAULT_CAPACITY);
         this.head_pos_ = -1;
-        this.size_ = ArrayStack.DEFAULT_CAPACITY;
+        this.size_ = 0;
     }
 
     /**
@@ -28,24 +28,30 @@ public class ArrayStack<E> {
 
         create(capacity);
         this.head_pos_ = -1;
-        this.size_ = capacity;
+        this.size_ = 0;
     }
 
 
     /**
      * Returns true if the stack is empty
      */
-    public final boolean empty(){return (this.head_pos_ == -1);}
+    public final boolean empty(){return (this.size_ == 0);}
+
+
+    /**
+     * Returns true if the stack is full
+     */
+    public final boolean is_full(){return (this.size() == this.capacity());}
 
     /**
      * Returns the capacity of the stack i.e. how many elements it can accommodate
      */
-    public final int capacity(){return this.size_;}
+    public final int capacity(){return this.stack_.size();}
 
     /**
      * Returns the size of the stack which is its capacity
      */
-    public final int size(){return this.capacity();}
+    public final int size(){return this.size_;}
 
     /**
      * Push the new element in the stack
@@ -58,6 +64,7 @@ public class ArrayStack<E> {
 
         head_pos_++;
         stack_.set(head_pos_, element);
+        size_++;
     }
 
     public final E pop(){
@@ -70,6 +77,7 @@ public class ArrayStack<E> {
         E item = this.stack_.get(this.head_pos_);
         this.stack_.set(head_pos_, null);
         head_pos_--;
+        size_ --;
         return item;
     }
 

@@ -1,10 +1,14 @@
 package utils;
-
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utilities for all classes that implement the List interface
+ */
 public class ListUtils {
 
+    /**
+     * Compute the max of the List elements
+     */
     public static double max(final List data){
 
         double rslt = (double) data.get(0);
@@ -20,6 +24,9 @@ public class ListUtils {
 
     }
 
+    /**
+     * Compute the min of the List elements
+     */
     public static double min(final List data){
 
         double rslt = (double) data.get(0);
@@ -34,6 +41,9 @@ public class ListUtils {
         return rslt;
     }
 
+    /**
+     * Compute the sum of the  List elements
+     */
     public static double sum(final List data){
 
         double rslt = 0.0;
