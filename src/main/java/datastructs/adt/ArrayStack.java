@@ -4,19 +4,20 @@ import java.util.ArrayList;
 
 /**
  * Provides a simple array based implementation of a stack
+ * The stack is bounded
  */
 public class ArrayStack<E> {
 
+    /**
+     * The default capacity of the stack
+     */
     public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Create an empty stack
      */
     public ArrayStack(){
-
-        create(ArrayStack.DEFAULT_CAPACITY);
-        this.head_pos_ = -1;
-        this.size_ = 0;
+        this(ArrayStack.DEFAULT_CAPACITY);
     }
 
     /**

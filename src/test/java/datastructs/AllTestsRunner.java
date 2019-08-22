@@ -1,6 +1,7 @@
 package datastructs;
 
 import datastructs.adt.ArrayQueueTestRunner;
+import datastructs.adt.SingleLinkedListTestRunner;
 import datastructs.maths.DenseMatrixTestRunner;
 import datastructs.maths.VectorOperationsTestRunner;
 import datastructs.maths.VectorTestRunner;
@@ -15,5 +16,6 @@ public class AllTestsRunner {
         DenseMatrixTestRunner.run(args);
         ArrayStackTestRunner.run(args);
         ArrayQueueTestRunner.run(args);
+        SingleLinkedListTestRunner.run(args);
     }
 }

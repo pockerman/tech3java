@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Implementation of an array based queue data structure
+ * The queue is bounded
  */
 public class ArrayQueue<E> {
 
@@ -13,11 +14,7 @@ public class ArrayQueue<E> {
      * Creates an empty queue with DEFAULT_CAPACITY
      */
     public ArrayQueue(){
-
-        create(ArrayQueue.DEFAULT_CAPACITY);
-        front_ = -1;
-        back_ = -1;
-        currentSize_ = 0;
+        this(ArrayQueue.DEFAULT_CAPACITY);
     }
 
     /**
@@ -70,15 +67,16 @@ public class ArrayQueue<E> {
             throw new IllegalStateException("Queue is full");
         }
 
+        // check if we should wrap around at the beginning because
+        // there is available space there
+        if(back_ >= this.capacity()-1 && this.currentSize_ < this.capacity()){
+            this.back_ = -1;
+        }
+
         this.back_++;
         this.data_.set(back_, element);
         this.currentSize_++;
 
-        //wrap around at the beginning because
-        // there is available space there
-        if(back_ >= this.capacity() && this.currentSize_ < this.capacity()){
-            this.back_ = -1;
-        }
     }
 
     /**
@@ -95,7 +93,7 @@ public class ArrayQueue<E> {
         this.data_.set(this.front_, null);
         this.currentSize_--;
 
-        if(front_ >= this.capacity()){
+        if(front_ >= this.capacity()-1){
             this.front_ = -1;
         }
 

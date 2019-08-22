@@ -67,7 +67,7 @@ public class ArrayStackTest {
 
         ArrayStack<Integer> stack = new ArrayStack<Integer>();
 
-        for(int i=0; i<stack.size(); ++i) {
+        for(int i=0; i<stack.capacity(); ++i) {
             stack.push(i);
         }
         Integer head = stack.pop();
