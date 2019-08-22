@@ -118,6 +118,21 @@ public class Vector {
     }
 
     /**
+     * Set the  entries to val
+     */
+    public final void set(Vector values){
+
+        if(values.size() != this.size()){
+            throw  new IllegalArgumentException("Invalid Vector size: "+ values.size() + " != " + this.size());
+        }
+
+        for(int i=0; i<this.size(); ++i){
+            this.data.set(i, values.get(i));
+        }
+
+    }
+
+    /**
      * Scale the components of the vector with the given scalar
      */
     public final void scale(double factor){
@@ -141,7 +156,7 @@ public class Vector {
 
         double length = VectorOperations.l2Norm(this);
 
-        if(length - CommonConstants.TOL < 0.0){
+        if(length - CommonConstants.getTol() < 0.0){
             throw new IllegalStateException("Zero length vector cannot be normalized");
         }
 
