@@ -31,6 +31,14 @@ public class Vector {
 
 
     /**
+     * Creates a vector of given size with entries initialized to 0.0
+     */
+    public Vector(int size){
+        this(size, 0.0);
+    }
+
+
+    /**
       * Resize the vector
      */
     public final void resize(int size){

@@ -145,6 +145,52 @@ public class SingleLinkedList<T> {
         return newNode;
     }
 
+    /**
+     * Returns true if the given data is contained in the list
+     */
+    public final boolean contains(T data){
+
+        if(this.empty()){
+            return false;
+        }
+
+        boolean rslt = false;
+
+        Node current = head_.next;
+
+        while(current != null){
+
+            if(current.data.equals( data )){
+                rslt = true;
+                break;
+            }
+
+            current = current.next;
+        }
+
+        return rslt;
+    }
+
+    /**
+     * Returns the first Node that holds the given data
+     * Returns null if the data is not found
+     */
+    public final Node find(T data){
+
+        Node current = head_.next;
+
+        while(current != null){
+
+            if(current.data.equals( data )){
+                return current;
+            }
+
+            current = current.next;
+        }
+
+        return null;
+    }
+
     public class Node
     {
         T data = null;
@@ -156,7 +202,7 @@ public class SingleLinkedList<T> {
         }
     }
 
-    Node head_ = null;
-    Node tail_ = null;
+    private Node head_ = null;
+    private Node tail_ = null;
     private int currentSize_ = 0;
 }

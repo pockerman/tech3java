@@ -78,4 +78,24 @@ public class VectorOperations {
     public static double l1Norm(final Vector v1){
         return ListUtils.absSum(v1.getRawData());
     }
+
+    /**
+     * Compute x = f1*v1 + f2*v2
+     */
+    public static final Vector scaleAndAdd(Vector v1, double f1, Vector v2, double f2){
+
+        if(v1.size() != v2.size()){
+            throw new IllegalStateException("v1 size not equal to v2 size");
+        }
+
+        Vector rslt = new Vector(v1.size(), 0.0);
+
+        for(int i=0; i<rslt.size(); ++i){
+
+            rslt.set(i, f1*v1.get(i) + f2*v2.get(i));
+        }
+
+        return rslt;
+
+    }
 }

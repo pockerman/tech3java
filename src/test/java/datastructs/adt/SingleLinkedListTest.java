@@ -182,4 +182,40 @@ public class SingleLinkedListTest {
         assertEquals(newNode.data.intValue(), 20);
 
     }
+
+    /**
+     * Test Scenario: Application creates an empty list. It then pushes
+     * several elements into the list. Then queries the list whether an inserted
+     * element exists.
+     * Expected Ouput: The element should be found
+     */
+    @Test
+    public final void testContainsFullList(){
+
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+
+        for(int i=0; i<10; ++i){
+            linkedList.pushFront(new Integer(i));
+        }
+
+        assertEquals(linkedList.contains(0), true);
+    }
+
+    /**
+     * Test Scenario: Application creates an empty list. It then pushes
+     * several elements into the list. Then queries the list whether an inserted
+     * element exists.
+     * Expected Ouput: The element should be found
+     */
+    @Test
+    public final void testFindFullList(){
+
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+
+        for(int i=0; i<10; ++i){
+            linkedList.pushFront(new Integer(i));
+        }
+
+        assertEquals(linkedList.find(0).data.intValue(), 0);
+    }
 }

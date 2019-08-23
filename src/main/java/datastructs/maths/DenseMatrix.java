@@ -46,7 +46,6 @@ public class DenseMatrix {
         }
 
         this.data_.get(i).set(j, value);
-
     }
 
     public final void set(int i, Vector value){
@@ -55,6 +54,15 @@ public class DenseMatrix {
             throw new IllegalArgumentException("Invalid row index");
         }
         this.data_.get(i).set(value);
+    }
+
+    public final Vector row(int r){
+
+        if( r >= m() || r < 0 ){
+            throw new IllegalArgumentException("Invalid row index");
+        }
+
+        return this.data_.get(r);
     }
 
     private final void create(int m, int n, double val){
