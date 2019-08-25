@@ -32,7 +32,7 @@ public class SingleLinkedListTest {
 
 
     /**
-     * Test Scenarion: Application creates an empty list it pushes at the front
+     * Test Scenario: Application creates an empty list it pushes at the front
      * some items and attempts to retrieve the front
      * Expected Output: The front item should be returned
      */
@@ -51,7 +51,7 @@ public class SingleLinkedListTest {
     }
 
     /**
-     * Test Scenarion: Application creates an empty list it pushes at the front
+     * Test Scenario: Application creates an empty list it pushes at the front
      * some items and attempts to popFront
      * Expected Output: The front item should be returned and size should be decrement by 1
      */
@@ -187,7 +187,7 @@ public class SingleLinkedListTest {
      * Test Scenario: Application creates an empty list. It then pushes
      * several elements into the list. Then queries the list whether an inserted
      * element exists.
-     * Expected Ouput: The element should be found
+     * Expected Output: The element should be found
      */
     @Test
     public final void testContainsFullList(){
@@ -205,7 +205,7 @@ public class SingleLinkedListTest {
      * Test Scenario: Application creates an empty list. It then pushes
      * several elements into the list. Then queries the list whether an inserted
      * element exists.
-     * Expected Ouput: The element should be found
+     * Expected Output: The element should be found
      */
     @Test
     public final void testFindFullList(){
