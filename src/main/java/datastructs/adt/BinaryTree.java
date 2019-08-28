@@ -20,13 +20,13 @@ public class BinaryTree<E> extends Tree<E> {
 
         if(super.root_ == null){
 
-            super.root_ = new TreeNode<E>(element, null, 0, 2);
-            super.nNodes_++;
+            super.root_ = new TreeNode<E>(element, null, 0, 2);    
         }
         else{
-
             addRecursive(element);
         }
+        
+        super.nNodes_++;
     }
 
     /**
