@@ -38,6 +38,14 @@ public class TreeNode<E> {
     }
 
 
+    /**
+     * Returns the parent node
+     */
+    public final TreeNode<E> getParent(){
+        return this.parent_;
+    }
+
+
     protected E data_ = null;
     protected TreeNode<E> parent_ = null;
     protected ArrayList<TreeNode<E>> children_ = null;

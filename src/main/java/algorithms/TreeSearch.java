@@ -16,6 +16,9 @@ public class TreeSearch {
         if(predicate.satisfies(node)){
             rslt = node;
 
+            if(node != null){
+                parentNode = node.getParent();
+            }
         }
         else{
 
