@@ -9,6 +9,9 @@ import utils.IPredicate;
 public class TreeSearch {
 
 
+    /**
+     * Depth First Search starting at node node having parent parentNode that satisfies the given predicate
+     */
     public <E> TreeNode<E> dfs(TreeNode<E> node, TreeNode<E> parentNode, IPredicate<TreeNode<E>> predicate){
 
         TreeNode<E> rslt = null;
