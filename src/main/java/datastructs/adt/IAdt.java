@@ -23,4 +23,10 @@ public interface IAdt<E> {
      */
     void push(E element);
 
+
+    /**
+     * Returns true if the ADT contains the given element
+     */
+    default boolean contains(E data){return false;}
+
 }

@@ -6,6 +6,7 @@ import java.util.List;
  */
 public class ListUtils {
 
+
     /**
      * Compute the max of the List elements
      */
@@ -24,6 +25,7 @@ public class ListUtils {
 
     }
 
+
     /**
      * Compute the min of the List elements
      */
@@ -41,6 +43,7 @@ public class ListUtils {
         return rslt;
     }
 
+
     /**
      * Compute the sum of the  List elements
      */
@@ -54,6 +57,7 @@ public class ListUtils {
 
         return rslt;
     }
+
 
     /**
      * Compute the sum of the absolute values of the List elements
