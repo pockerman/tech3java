@@ -6,18 +6,14 @@ import java.util.ArrayList;
  * Provides a simple array based implementation of a stack
  * The stack is bounded
  */
-public class ArrayStack<E> {
+public class ArrayStack<E> implements IBoundedAdt<E> {
 
-    /**
-     * The default capacity of the stack
-     */
-    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Create an empty stack
      */
     public ArrayStack(){
-        this(ArrayStack.DEFAULT_CAPACITY);
+        this(IBoundedAdt.DEFAULT_CAPACITY);
     }
 
     /**
@@ -42,17 +38,20 @@ public class ArrayStack<E> {
     /**
      * Returns true if the stack is full
      */
-    public final boolean is_full(){return (this.size() == this.capacity());}
+    public final boolean isFull(){return (this.size() == this.capacity());}
+
 
     /**
      * Returns the capacity of the stack i.e. how many elements it can accommodate
      */
     public final int capacity(){return this.stack_.size();}
 
+
     /**
      * Returns the size of the stack which is its capacity
      */
     public final int size(){return this.size_;}
+
 
     /**
      * Push the new element in the stack
@@ -68,6 +67,10 @@ public class ArrayStack<E> {
         size_++;
     }
 
+
+    /**
+     * Pop off the stack the top element
+     */
     public final E pop(){
 
         if(this.empty()){
@@ -82,6 +85,9 @@ public class ArrayStack<E> {
         return item;
     }
 
+    /**
+     * Create the stack having the specified capacity
+     */
     private final void create(int capacity){
 
         this.stack_ = new ArrayList<E>(capacity);
