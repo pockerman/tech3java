@@ -1,6 +1,8 @@
 package datastructs.adt;
 
-import java.util.ArrayList;
+
+import utils.ITreeInsertStrategy;
+import utils.TreeNode;
 
 /**
  * Base class for trees
@@ -19,13 +21,33 @@ public abstract class Tree<E> implements IAdt<E> {
      * Returns how many elements the ADT has
      */
     @Override
-    public final int size(){return this.nNodes_;};
+    public final int size(){return this.nNodes_;}
+
+
+    /**
+     * Return the insertion strategy for the node
+     */
+    public final ITreeInsertStrategy getInsertStrategy() {
+        return insertStrategy_;
+    }
+
+    public final void setInsertStrategy(ITreeInsertStrategy insertStrategy) {
+        this.insertStrategy_ = insertStrategy;
+    }
+
+
+    /**
+     * Returns the root node of the tree
+     */
+    public TreeNode<E> getRoot() {  return root_; }
 
     /**
      * Constructor
      */
-    protected Tree()
-    { }
+    protected Tree(ITreeInsertStrategy insertStrategy)
+    {
+        this.insertStrategy_ = insertStrategy;
+    }
 
 
     /**
@@ -38,4 +60,10 @@ public abstract class Tree<E> implements IAdt<E> {
      * How many nodes the Tree has
      */
     protected int nNodes_ = 0;
+
+
+    /**
+     * Insert strategy for the tree
+     */
+    protected ITreeInsertStrategy insertStrategy_;
 }

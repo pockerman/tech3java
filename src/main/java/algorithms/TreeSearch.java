@@ -1,6 +1,6 @@
 package algorithms;
 
-import datastructs.adt.TreeNode;
+import utils.TreeNode;
 import utils.IPredicate;
 
 /**
@@ -25,7 +25,7 @@ public class TreeSearch {
         }
         else{
 
-            for(int c=0; c<node.nChildren(); ++c){
+            for(int c = 0; c<node.getNChildren(); ++c){
                 dfs(node.getChild(c), node, predicate);
             }
         }

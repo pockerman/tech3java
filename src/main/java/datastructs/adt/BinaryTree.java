@@ -1,7 +1,6 @@
 package datastructs.adt;
 
-import algorithms.TreeSearch;
-import utils.IPredicate;
+import utils.*;
 
 public class BinaryTree<E> extends Tree<E> {
 
@@ -9,9 +8,10 @@ public class BinaryTree<E> extends Tree<E> {
     /**
      * Constructor
      */
-    public BinaryTree(){
-        super();
+    public BinaryTree(ITreeInsertStrategy insertStrategy){
+        super(insertStrategy);
     }
+
 
     /**
      * Push a new element in the ADT
@@ -20,20 +20,32 @@ public class BinaryTree<E> extends Tree<E> {
 
         if(super.root_ == null){
 
-            super.root_ = new TreeNode<E>(element, null, 0, 2);    
+            TreeNodeCreator<E> creator = new TreeNodeCreator<>();
+            super.root_  = creator.create(element, null, 0, 2);
+            super.nNodes_++;
         }
-        else{
-            addRecursive(element);
+        else {
+
+            boolean rslt = super.insertStrategy_.insert(super.root_, null, element, new IPredicate<TreeNode<E>>() {
+                @Override
+                public boolean satisfies(TreeNode<E> data) {
+                    return (data == null);
+                }
+            });
+
+            if(rslt) {
+                super.nNodes_++;
+            }
         }
-        
-        super.nNodes_++;
+
     }
+
 
     /**
      * Recursively add the element at the first null entry that is
      * found. TODO We should specify how the search for inserting is done
      */
-    protected void addRecursive(E element){
+    /*protected void addRecursive(E element){
 
         TreeSearch search = new TreeSearch();
         TreeNode<E> parentNode = null;
@@ -45,6 +57,6 @@ public class BinaryTree<E> extends Tree<E> {
         });
 
         node = new TreeNode<E>(element, parentNode, parentNode.getLevel()+1, 2 );
-    }
+    }*/
 
 }
