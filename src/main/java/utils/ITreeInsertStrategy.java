@@ -11,4 +11,9 @@ public interface ITreeInsertStrategy {
      * the calling site the newly created node
      */
     <DataTp> boolean  insert(TreeNode<DataTp> root, TreeNode<DataTp> parent, DataTp data, IPredicate<TreeNode<DataTp>> insertPosPredicate);
+
+    /**
+      * Returns the type of the insert
+     */
+    TreeInsertMethod type();
 }

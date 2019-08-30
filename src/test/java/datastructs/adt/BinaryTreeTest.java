@@ -31,7 +31,6 @@ public class BinaryTreeTest {
         assertNotNull(root);
 
         for(int i=0; i<9; ++i){
-
             root = root.getChild(0);
             assertNotNull(root);
         }

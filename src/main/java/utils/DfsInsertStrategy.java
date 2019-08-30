@@ -4,6 +4,10 @@ package utils;
 
 public class DfsInsertStrategy implements ITreeInsertStrategy {
 
+    @Override
+    public final TreeInsertMethod type(){return TreeInsertMethod.DFS; }
+
+    @Override
     public final <DataTp> boolean  insert(TreeNode<DataTp> root, TreeNode<DataTp> parent, DataTp data, IPredicate<TreeNode<DataTp>> insertPosPredicate){
 
         return doInsert(root,  parent, data, insertPosPredicate).first;
@@ -37,7 +41,7 @@ public class DfsInsertStrategy implements ITreeInsertStrategy {
         else{
 
             for(int c = 0; c<root.getNChildren(); ++c){
-                
+
                 rslt = doInsert(root.getChild(c), root, data, insertPosPredicate);
 
                 if(rslt != null && rslt.first && rslt.second != null){
