@@ -58,7 +58,7 @@ public class TreeNode<E> {
      * Set the c-th child
      */
     public final void setChild(int c, TreeNode<E> node){
-        this.children_.add(c, node);
+        this.children_.set(c, node);
     }
 
 

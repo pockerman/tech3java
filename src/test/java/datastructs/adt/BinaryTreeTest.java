@@ -30,9 +30,10 @@ public class BinaryTreeTest {
         TreeNode<Integer> root = binaryTree.getRoot();
         assertNotNull(root);
 
-        while(root != null){
+        for(int i=0; i<9; ++i){
+
             root = root.getChild(0);
-            //assertNotNull(root);
+            assertNotNull(root);
         }
     }
 }
