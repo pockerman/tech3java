@@ -16,7 +16,7 @@ public class TrainSorting {
         Random random = new Random();
         random.setSeed(2);
 
-        ArrayStack<Integer> input = new ArrayStack<>(20);
+        ArrayStack<Integer> input = new ArrayStack<Integer>(20);
 
         for (int i = 0; i < input.size(); ++i) {
 
@@ -24,13 +24,13 @@ public class TrainSorting {
         }
 
         // holds items for destination 2
-        ArrayStack<Integer> hold1 = new ArrayStack<>(20);
+        ArrayStack<Integer> hold1 = new ArrayStack<Integer>(20);
 
         // holds items for destination 3
-        ArrayStack<Integer> hold2 = new ArrayStack<>(20);
+        ArrayStack<Integer> hold2 = new ArrayStack<Integer>(20);
 
         // holds items for destination 1
-        ArrayStack<Integer> output = new ArrayStack<>(20);
+        ArrayStack<Integer> output = new ArrayStack<Integer>(20);
 
         for(int i=0; i<input.size(); ++i){
 

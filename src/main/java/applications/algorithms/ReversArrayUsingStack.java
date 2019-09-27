@@ -17,7 +17,7 @@ public class ReversArrayUsingStack {
             array[i] = i;
         }
 
-        ArrayStack<Integer> stack = new ArrayStack<>(array.length);
+        ArrayStack<Integer> stack = new ArrayStack<Integer>(array.length);
 
         for(int i=0; i<stack.size(); ++i){
             stack.push(array[i]);

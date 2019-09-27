@@ -14,7 +14,7 @@ public class SingleLinkedListTest {
     @Test(expected = IllegalStateException.class)
     public final void testAccessFrontEmptyList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
         linkedList.front();
     }
 
@@ -26,7 +26,7 @@ public class SingleLinkedListTest {
     @Test(expected = IllegalStateException.class)
     public final void testAccessPopFrontEmptyList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
         linkedList.popFront();
     }
 
@@ -39,7 +39,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testAccessFrontFilledList(){
 
-        SingleLinkedList<Double> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Double> linkedList = new SingleLinkedList<Double>();
 
         for(int i=0; i<50; ++i){
             linkedList.pushFront(new Double(i));
@@ -58,7 +58,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testPopFrontFilledList(){
 
-        SingleLinkedList<Double> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Double> linkedList = new SingleLinkedList<Double>();
 
         for(int i=0; i<50; ++i){
             linkedList.pushFront(new Double(i));
@@ -80,7 +80,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testPushFrontEmptyList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
         linkedList.pushFront(new Integer(10));
         assertEquals(linkedList.size(), 1);
     }
@@ -93,7 +93,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testPushBackEmptyList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
         linkedList.pushBack(new Integer(10));
         assertEquals(linkedList.size(), 1);
     }
@@ -106,7 +106,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testPushBackFullList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         for(int i=0; i<10; ++i){
             linkedList.pushFront(new Integer(i));
@@ -125,7 +125,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testpopBackFullList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         for(int i=0; i<10; ++i){
             linkedList.pushFront(new Integer(i));
@@ -145,7 +145,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testpopFrontFullList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         for(int i=0; i<10; ++i){
             linkedList.pushFront(new Integer(i));
@@ -170,11 +170,11 @@ public class SingleLinkedListTest {
     @Test
     public final void testInsertAtEmptyList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         linkedList.pushFront(new Integer(10));
         SingleLinkedList<Integer>.Node front = linkedList.front();
-        var newNode = linkedList.insertAt(front, new Integer(20));
+        SingleLinkedList<Integer>.Node newNode = linkedList.insertAt(front, new Integer(20));
         assertEquals(linkedList.size(), 2);
         front = linkedList.popFront();
         assertEquals(front.next.data.intValue() , newNode.data.intValue());
@@ -182,6 +182,7 @@ public class SingleLinkedListTest {
         assertEquals(newNode.data.intValue(), 20);
 
     }
+
 
     /**
      * Test Scenario: Application creates an empty list. It then pushes
@@ -192,7 +193,7 @@ public class SingleLinkedListTest {
     @Test
     public final void testContainsFullList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         for(int i=0; i<10; ++i){
             linkedList.pushFront(new Integer(i));
@@ -200,6 +201,7 @@ public class SingleLinkedListTest {
 
         assertEquals(linkedList.contains(0), true);
     }
+
 
     /**
      * Test Scenario: Application creates an empty list. It then pushes
@@ -210,12 +212,32 @@ public class SingleLinkedListTest {
     @Test
     public final void testFindFullList(){
 
-        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
 
         for(int i=0; i<10; ++i){
             linkedList.pushFront(new Integer(i));
         }
 
         assertEquals(linkedList.find(0).data.intValue(), 0);
+    }
+
+
+    /**
+     * Test Scenario: Application creates an empty list and then pushes several elements into it.
+     * It then removes an element at a specified position.
+     * Expected Output: The element at the given position is removed from the list
+     */
+    @Test
+    public final void testeraseAtFullList(){
+
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<Integer>();
+        for(int i=0; i<10; ++i){
+            linkedList.pushFront(new Integer(i));
+        }
+
+        linkedList.eraseAt(5);
+        assertEquals(linkedList.contains(4), false);
+        assertEquals(linkedList.size(), 9);
+
     }
 }

@@ -9,7 +9,7 @@ public class ListUtils {
     /**
      * Compute the max of the List elements
      */
-    public static double max(final List data){
+    public static double max(final List<Double> data){
 
         double rslt = (double) data.get(0);
 
@@ -27,7 +27,7 @@ public class ListUtils {
     /**
      * Compute the min of the List elements
      */
-    public static double min(final List data){
+    public static double min(final List<Double> data){
 
         double rslt = (double) data.get(0);
 
@@ -44,7 +44,7 @@ public class ListUtils {
     /**
      * Compute the sum of the  List elements
      */
-    public static double sum(final List data){
+    public static double sum(final List<Double> data){
 
         double rslt = 0.0;
 
@@ -58,7 +58,7 @@ public class ListUtils {
     /**
      * Compute the sum of the absolute values of the List elements
      */
-    public static double absSum(final List data){
+    public static double absSum(final List<Double> data){
 
         double rslt = 0.0;
 
