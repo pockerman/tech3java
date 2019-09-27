@@ -18,7 +18,7 @@ public class VectorOperations {
             throw new IllegalStateException("v1 size not equal to v2 size");
         }
 
-        var rslt = new Vector(v1.size(),0.0);
+        Vector rslt = new Vector(v1.size(),0.0);
 
         for(int i=0; i<v1.size(); ++i){
             rslt.set(i, v1.get(i) + v2.get(i));
@@ -36,7 +36,7 @@ public class VectorOperations {
             throw new IllegalStateException("v1 size not equal to v2 size");
         }
 
-        var rslt = new Vector(v1.size(),0.0);
+        Vector rslt = new Vector(v1.size(),0.0);
 
         for(int i=0; i<v1.size(); ++i){
             rslt.set(i, v1.get(i) - v2.get(i));
@@ -68,7 +68,7 @@ public class VectorOperations {
       * Computes the L2 norm of the vector
      */
     public static double l2Norm(final Vector v1){
-        var dotProduct = VectorOperations.dotProduct(v1 ,v1);
+        double dotProduct = VectorOperations.dotProduct(v1 ,v1);
         return StrictMath.sqrt(dotProduct);
     }
 

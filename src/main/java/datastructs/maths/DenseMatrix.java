@@ -21,9 +21,9 @@ public class DenseMatrix {
 
     public final Vector diagonal(){
 
-        if(m() != n()){
+        /*if(m() != n()){
             throw new IllegalCallerException("Diagonal can only be computed for square matrices");
-        }
+        }*/
 
         Vector diag = new Vector(m(), 0.0);
 

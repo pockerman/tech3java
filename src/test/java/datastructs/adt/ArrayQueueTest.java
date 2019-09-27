@@ -12,7 +12,7 @@ public class ArrayQueueTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testZeroCapacityConstruction(){
-        ArrayQueue<Double> queue = new ArrayQueue<>(0);
+        ArrayQueue<Double> queue = new ArrayQueue<Double>(0);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ArrayQueueTest {
     @Test
     public final void testFullQueueThenPopThenPush(){
 
-        ArrayQueue<Integer> queue = new ArrayQueue<>(10);
+        ArrayQueue<Integer> queue = new ArrayQueue<Integer>(10);
         for(int i=0; i<queue.capacity(); ++i){
             queue.push(i);
         }
@@ -73,7 +73,7 @@ public class ArrayQueueTest {
     @Test
     public final void testFullQueueThenPopThenPushThenEmpty(){
 
-        ArrayQueue<Integer> queue = new ArrayQueue<>(10);
+        ArrayQueue<Integer> queue = new ArrayQueue<Integer>(10);
         for(int i=0; i<queue.capacity(); ++i){
             queue.push(i);
         }
@@ -88,9 +88,7 @@ public class ArrayQueueTest {
 
         int i=0;
         while(!queue.empty()){
-
-            var item = queue.pop();
-            assertEquals(item.intValue(), i+2);
+            assertEquals(queue.pop().intValue(), i+2);
             i++;
         }
 

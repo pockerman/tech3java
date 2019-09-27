@@ -5,6 +5,7 @@ package datastructs.adt;
  */
 public class SingleLinkedList<T> {
 
+
     /**
      * Constructs an empty List
      */
@@ -14,10 +15,12 @@ public class SingleLinkedList<T> {
         head_ = new Node(null, tail_);
     }
 
+
     /**
      * Returns the current number of items in the lst
      */
     public final int size(){return currentSize_;}
+
 
     /**
      * Returns true iff the list is empty
@@ -36,6 +39,7 @@ public class SingleLinkedList<T> {
         return head_.next;
     }
 
+
     /**
      * Removes the front node from the list and
      * returns the data held by it.
@@ -51,6 +55,7 @@ public class SingleLinkedList<T> {
         return tmp;
     }
 
+
     /**
      * Push at the front of the list the given element
      */
@@ -61,6 +66,7 @@ public class SingleLinkedList<T> {
         head_.next = newHeadNext;
         currentSize_++;
     }
+
 
     /**
      * Push at the back of the list
@@ -88,6 +94,7 @@ public class SingleLinkedList<T> {
         }
     }
 
+
     /**
      * Returns the item at the end
      */
@@ -106,6 +113,7 @@ public class SingleLinkedList<T> {
 
         return previous;
     }
+
 
     /**
      * Returns the item at the end and removes the node containing that item
@@ -132,6 +140,7 @@ public class SingleLinkedList<T> {
         return previous;
     }
 
+
     /**
      * Insert the new item exaclty after pos i.e pos.next = new Node(data, pos.next)
      * and returns the newly constructed node
@@ -144,6 +153,39 @@ public class SingleLinkedList<T> {
         currentSize_++;
         return newNode;
     }
+
+
+    /**
+     * Remove the node at the specified i-th position
+     */
+    public final void eraseAt(int i){
+
+        if(this.empty()){
+            throw new IllegalStateException("List is empty.");
+        }
+
+        int counter = 0;
+        Node current = head_.next;
+        Node previous = null;
+
+        while(current != null){
+
+            if(counter == i){
+
+              previous.next = current.next;
+              currentSize_--;
+              break;
+            }
+
+
+            previous = current;
+            current = current.next;
+            counter++;
+        }
+
+
+    }
+
 
     /**
      * Returns true if the given data is contained in the list
@@ -171,6 +213,7 @@ public class SingleLinkedList<T> {
         return rslt;
     }
 
+
     /**
      * Returns the first Node that holds the given data
      * Returns null if the data is not found
@@ -189,6 +232,21 @@ public class SingleLinkedList<T> {
         }
 
         return null;
+    }
+
+
+    /**
+     * Prints the data held by the list
+     */
+    public final void print(){
+
+        Node current = head_.next;
+
+        while(current != null){
+
+            System.out.println(current.data);
+            current = current.next;
+        }
     }
 
     public class Node

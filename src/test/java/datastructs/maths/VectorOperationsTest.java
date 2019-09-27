@@ -27,8 +27,8 @@ public class VectorOperationsTest {
     @Test(expected = IllegalStateException.class)
     public void testUnequalVectorAdd(){
 
-        var v1 = new Vector(20, 0.0);
-        var v2 = new Vector(10, 0.0);
+        Vector v1 = new Vector(20, 0.0);
+        Vector v2 = new Vector(10, 0.0);
         VectorOperations.add(v1, v2);
     }
 }
