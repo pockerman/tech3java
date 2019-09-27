@@ -3,11 +3,6 @@
 This is my humble attempt to code in Java...
 
 
-# tech3python
-
-This is my Python playground...
-
-
 ## Applications Map
 
 ### Algorithms
