@@ -1,0 +1,17 @@
+<persistence
+        version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistencehttp://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
+
+     <persistence-unitname="HelloWorldPU">
+     <jta-data-source>myDS</jta-data-source>
+     <class>org.jpwh.model.helloworld.Message</class>
+     <exclude-unlisted-classes>true</exclude-unlisted-classes>
+     <properties>
+        <propertyname="javax.persistence.schema-generation.database.action"value="drop-and-create"/>
+        <propertyname="hibernate.format_sql"value="true"/>
+        <propertyname="hibernate.use_sql_comments"value="true"/>
+     </properties>
+   </persistence-unit>
+   </persistence>

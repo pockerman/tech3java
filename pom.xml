@@ -42,8 +42,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-
+        
         <!-- https://mvnrepository.com/artifact/tech.tablesaw/tablesaw-core -->
         <dependency>
             <groupId>tech.tablesaw</groupId>

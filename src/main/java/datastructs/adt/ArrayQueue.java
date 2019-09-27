@@ -6,16 +6,16 @@ import java.util.ArrayList;
  * Implementation of an array based queue data structure
  * The queue is bounded
  */
-public class ArrayQueue<E> {
+public class ArrayQueue<E> implements IBoundedAdt<E> {
 
-    public static final int DEFAULT_CAPACITY = 10;
 
     /**
      * Creates an empty queue with DEFAULT_CAPACITY
      */
     public ArrayQueue(){
-        this(ArrayQueue.DEFAULT_CAPACITY);
+        this(IBoundedAdt.DEFAULT_CAPACITY);
     }
+
 
     /**
       * Creates an empty queue with the given capacity
@@ -28,35 +28,42 @@ public class ArrayQueue<E> {
         currentSize_ = 0;
     }
 
+
     /**
      * Returns the front index. This is just to accommodate testing
      */
     public final int frontIdx(){return front_;}
+
 
     /**
      * Returns the back index. This is just to accommodate testing
      */
     public final int backIdx(){return back_;}
 
+
     /**
      * Returns true if the queue is empty
      */
     public final boolean empty(){return (this.currentSize_ == 0);}
 
+
     /**
-     * Returns truwe if the queue is full
+     * Returns true if the queue is full
      */
-    public final boolean is_full(){return (this.currentSize_ == this.capacity());}
+    public final boolean isFull(){return (this.currentSize_ == this.capacity());}
+
 
     /**
      * Returns the capacity of the queue
      */
     public final int capacity(){return this.data_.size();}
 
+
     /**
      * Returns how many elements the queue has
      */
     public final int size(){return this.currentSize_;}
+
 
     /**
      * Enqueues an element
@@ -76,8 +83,8 @@ public class ArrayQueue<E> {
         this.back_++;
         this.data_.set(back_, element);
         this.currentSize_++;
-
     }
+
 
     /**
       * Pop off the queue the first element
@@ -100,6 +107,10 @@ public class ArrayQueue<E> {
         return rslt;
     }
 
+
+    /**
+     * Create the queue
+     */
     private final void create(int capacity){
 
         if(capacity <= 0){
