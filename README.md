@@ -10,6 +10,7 @@ This is my humble attempt to code in Java...
 
 - <a href="#">Example 2</a>: Convert a binary number to its decimal representation
 - <a href="#">Example 3</a>: Fibonacci Sequence
+- <a href="src/main/java/applications/algorithms/FindMinimumTwoSortedSubArrays.java">FindMinimumTwoSortedSubArrays</a>: Find the minimum element between two increasingly sorted sub-arrays
 
 ### Numerics 
 
