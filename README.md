@@ -7,7 +7,7 @@ This is my humble attempt to code in Java...
 
 ### Algorithms
 
-- <a href="- <src/main/java/applications/algorithms/FibonacciSequence.java">Example 1</a>: Fibonacci Sequence
+- <a href="src/main/java/applications/algorithms/FibonacciSequence.java">Example 1</a>: Fibonacci Sequence
 - <a href="src/main/java/applications/algorithms/FindFirstNonRepeatedCharInString.java">Example 2</a>: Finds first non-repeated character in a string
 - <a href="src/main/java/applications/algorithms/FindFirstOccurenceString.java">Example 3</a>: Finds first occurence of a character in a string
 - <a href="src/main/java/applications/algorithms/FindMinimumTwoSortedSubArrays.java">Example 4</a>: Find the minimum element between two increasingly sorted sub-arrays
