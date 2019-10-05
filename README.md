@@ -7,10 +7,13 @@ This is my humble attempt to code in Java...
 
 ### Algorithms
 
-
-- <a href="#">Example 2</a>: Convert a binary number to its decimal representation
-- <a href="#">Example 3</a>: Fibonacci Sequence
-- <a href="src/main/java/applications/algorithms/FindMinimumTwoSortedSubArrays.java">FindMinimumTwoSortedSubArrays</a>: Find the minimum element between two increasingly sorted sub-arrays
+- <a href="src/main/java/applications/algorithms/FibonacciSequence.java">Example 1</a>: Fibonacci Sequence
+- <a href="src/main/java/applications/algorithms/FindFirstNonRepeatedCharInString.java">Example 2</a>: Finds first non-repeated character in a string
+- <a href="src/main/java/applications/algorithms/FindFirstOccurenceString.java">Example 3</a>: Finds first occurence of a character in a string
+- <a href="src/main/java/applications/algorithms/FindMinimumTwoSortedSubArrays.java">Example 4</a>: Find the minimum element between two increasingly sorted sub-arrays
+- <a href="src/main/java/applications/algorithms/ReversArrayUsingStack.java">Example 5</a>: Reverse an array using a stack
+- <a href="src/main/java/applications/algorithms/TowersOfHanoi.java">Example 6</a>: Solves the Tower of Hanoi problem using stacks
+- <a href="src/main/java/applications/algorithms/TrainSorting.java">Example 7</a>: Sorts cars of a train according to destination
 
 ### Numerics 
 
