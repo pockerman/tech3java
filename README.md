@@ -1,6 +1,6 @@
 # tech3java
 
-This is my humble attempt to code in Java...
+This is my  Java playground...
 
 
 ## Applications Map
