@@ -1,6 +1,6 @@
 # tech3java
 
-This is my humble attempt to code in Java...
+This is my  Java playground...
 
 
 ## Applications Map
@@ -14,6 +14,7 @@ This is my humble attempt to code in Java...
 - <a href="src/main/java/applications/algorithms/ReversArrayUsingStack.java">Example 5</a>: Reverse an array using a stack
 - <a href="src/main/java/applications/algorithms/TowersOfHanoi.java">Example 6</a>: Solves the Tower of Hanoi problem using stacks
 - <a href="src/main/java/applications/algorithms/TrainSorting.java">Example 7</a>: Sorts cars of a train according to destination
+- <a href="src/main/java/applications/algorithms/TrainSorting.java">Example 8</a>: Find number of digits in an integer
 
 ### Numerics 
 
