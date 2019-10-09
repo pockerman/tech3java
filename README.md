@@ -17,6 +17,8 @@ This is my humble attempt to code in Java...
 
 ### Numerics 
 
+- <a href="src/main/java/applications/numerics/MonteCarloIntegration.java">Example 1</a>: Monte Carlo integration
+
 ### Linear Algebra
 
 ### Statistics
