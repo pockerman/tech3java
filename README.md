@@ -18,6 +18,8 @@ This is my  Java playground...
 
 ### Numerics 
 
+- <a href="src/main/java/applications/numerics/MonteCarloIntegration.java">Example 1</a>: Monte Carlo integration
+
 ### Linear Algebra
 
 ### Statistics
