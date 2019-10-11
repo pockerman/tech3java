@@ -14,6 +14,7 @@ public class IterativePolicyEvaluationParams {
         dst.tol = src.tol;
         dst.reward = src.reward;
         dst.gamma = src.gamma;
+        dst.showItrs = src.showItrs;
     }
 
     /**
@@ -31,4 +32,9 @@ public class IterativePolicyEvaluationParams {
      * Discount parameter
      */
     public double gamma;
+
+    /**
+     * Whether iterations are shown
+     */
+    public boolean showItrs = true;
 }
