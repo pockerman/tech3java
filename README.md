@@ -45,6 +45,10 @@ This is my  Java playground...
 
 ### Machine Learning
 
+### Reinforcement Learning
+
+- <a href="#">GridWorldWithIterativePolicyEvaluation</a>: Iterative Policy Evaluation applied on GridWorld
+
 
 ## Useful Links
 
