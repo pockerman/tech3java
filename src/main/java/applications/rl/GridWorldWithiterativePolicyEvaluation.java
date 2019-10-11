@@ -3,9 +3,8 @@ package applications.rl;
 
 import rl.*;
 import static base.CommonConstants.getTol;
-
 import java.util.ArrayList;
-import java.util.Map;
+
 
 public class GridWorldWithiterativePolicyEvaluation {
 
@@ -41,19 +40,12 @@ public class GridWorldWithiterativePolicyEvaluation {
     class State implements IState
     {
 
-        public State(String name, int id){
+        public State(int id){
 
-            this.name = name;
             this.id = id;
             this.actions = new ArrayList<IAction>();
-            this.transitionStates = new ArrayList<IState>();
-        }
 
-        /**
-         * Returns the name of the state
-         */
-        @Override
-        public String getName(){return this.name;}
+        }
 
 
         /**
@@ -95,31 +87,8 @@ public class GridWorldWithiterativePolicyEvaluation {
          * whilst at this state
          */
         @Override
-        public double getActionProbability(String actionName){
-            return 0.25;
-        }
-
-
-        /**
-         * Return the probability of taking the action with the given name
-         * whilst at this state
-         */
-        @Override
         public double getActionProbability(int actionIdx){
             return 0.25;
-        }
-
-
-        @Override
-        public double getStateSumValue(double reward, double discount, double[] previousStates){
-
-            double rslt = 0.0;
-            for (int i = 0; i < transitionStates.size() ; i++) {
-
-                rslt += 0.25*(reward + discount*previousStates[i]);
-            }
-
-            return rslt;
         }
 
 
@@ -128,22 +97,6 @@ public class GridWorldWithiterativePolicyEvaluation {
             return -1.0;
         }
 
-        /**
-         * Returns the number of states this state can transition to
-         */
-        @Override
-        public int nStateToTransitions(){
-            return transitionStates.size();
-        }
-
-
-        /**
-         * Returns the i-th IState this IState can transition to
-         */
-        @Override
-        public IState getStateToTransition(int i){
-            return transitionStates.get(i);
-        }
 
 
         /**
@@ -154,12 +107,7 @@ public class GridWorldWithiterativePolicyEvaluation {
             return this.isTerminalState;
         }
 
-        /**
-         * Set a state that this state can transition to
-         */
-        public void setStateToTransition(IState state){
-            this.transitionStates.add(state);
-        }
+
 
         /**
          * Set a state that this state can transition to
@@ -168,10 +116,8 @@ public class GridWorldWithiterativePolicyEvaluation {
             this.isTerminalState = true;
         }
 
-        String name;
         int id;
         ArrayList<IAction> actions;
-        ArrayList<IState> transitionStates;
         boolean isTerminalState = false;
     }
 
@@ -185,7 +131,7 @@ public class GridWorldWithiterativePolicyEvaluation {
         // populate with states
         for(int s=0; s<16; s++) {
 
-            State state = new State("State", s);
+            State state = new State(s);
             stateSpace.addState(state);
         }
 

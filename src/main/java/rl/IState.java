@@ -2,11 +2,6 @@ package rl;
 
 public interface IState {
 
-    /**
-     * Returns the name of the state
-     */
-    String getName();
-
 
     /**
      * Returns the id of the state
@@ -38,20 +33,7 @@ public interface IState {
      * Return the probability of taking the action with the given name
      * whilst at this state
      */
-    double getActionProbability(String actionName);
-
-
-    /**
-     * Return the probability of taking the action with the given name
-     * whilst at this state
-     */
     double getActionProbability(int actionIdx);
-
-
-    /**
-     * Returns the sum: p()*[r + gamma*V(s')]
-     */
-    double getStateSumValue(double reward, double discount, double[] previousStates);
 
 
     /**
@@ -59,16 +41,6 @@ public interface IState {
      */
     double getReward();
 
-    /**
-     * Returns the number of states this state can transition to
-     */
-    int nStateToTransitions();
-
-
-    /**
-     * Returns the i-th IState this IState can transition to
-     */
-    IState getStateToTransition(int i);
 
 
     /**
