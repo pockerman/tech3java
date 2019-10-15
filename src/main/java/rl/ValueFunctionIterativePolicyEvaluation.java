@@ -6,16 +6,39 @@ import java.util.Collections;
  * Two-arrays based iterative policy evaluation for
  * policy estimation
  */
-public class IterativePolicyEvaluation {
+public class ValueFunctionIterativePolicyEvaluation {
 
 
     /**
      * Constructor
      */
-    public IterativePolicyEvaluation(IterativePolicyEvaluationParams params){
+    public ValueFunctionIterativePolicyEvaluation(IterativePolicyEvaluationParams params){
 
         this.params = new IterativePolicyEvaluationParams();
         IterativePolicyEvaluationParams.copy(params, this.params);
+    }
+
+    /**
+     * Returns the reward factor
+     * @return
+     */
+    public double getReward(){
+        return this.params.reward;
+    }
+
+    /**
+     * Returns the discount factor
+     */
+    public double getGamma(){
+        return this.params.gamma;
+    }
+
+
+    /**
+     * Returns the value function for the given state
+     */
+    public double valueFunction(IState state){
+        return this.v[state.getId()];
     }
 
 
@@ -53,11 +76,11 @@ public class IterativePolicyEvaluation {
 
                     double weightedSum = 0.0;
 
-                    for (int action = 0; action < state.nActions(); action++) {
+                    for (int a = 0; a < state.nActions(); a++) {
 
-
-                        double actionProb = state.getActionProbability(action);
-                        IState stateAfterAction = state.applyAction(action);
+                        IAction action =state.getAction(a);
+                        IState stateAfterAction = state.applyAction(a);
+                        double actionProb = space.transitionDynamics(stateAfterAction, this.params.reward, state, action);
                         double nextStateValue = v[stateAfterAction.getId()];
                         weightedSum += actionProb * nextStateValue;
                     }

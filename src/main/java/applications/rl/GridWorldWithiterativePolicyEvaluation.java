@@ -23,7 +23,6 @@ public class GridWorldWithiterativePolicyEvaluation {
         @Override
         public void addTransitionToState(IState state){
             this.state = state;
-
         }
 
         /**
@@ -61,6 +60,16 @@ public class GridWorldWithiterativePolicyEvaluation {
         @Override
         public void addAction(IAction action){
             actions.add(action);
+        }
+
+        /**
+         * Returns the i-th action that is possible when at this state
+         * @param i
+         * @return IAction The i-th action when at this state
+         */
+        @Override
+        public IAction getAction(int i){
+            return this.actions.get(i);
         }
 
         /**
@@ -121,12 +130,24 @@ public class GridWorldWithiterativePolicyEvaluation {
         boolean isTerminalState = false;
     }
 
-    private IStateSpace<State> stateSpace;
-    private IterativePolicyEvaluation iterativePolicyEvaluation;
+    /**
+     * The state space
+     */
+    private StateSpaceImpl<State> stateSpace;
+
+    /**
+     * An object that performs value function evaluation using iterative policy
+     */
+    private ValueFunctionIterativePolicyEvaluation valueFunction;
+
+    /**
+     * The object that holds the optimal policy
+     */
+    ValueFunctionOptimalPolicyBuilder<StateSpaceImpl<State>, OptimalPolicyImpl> policyBuilder;
 
     public void createStateSpace(){
 
-        stateSpace = new StateSpaceImpl<>(16);
+        stateSpace = new StateSpaceImpl<>(16, new ConstantTransitionDynamics(0.25));
 
         // populate with states
         for(int s=0; s<16; s++) {
@@ -248,13 +269,22 @@ public class GridWorldWithiterativePolicyEvaluation {
     public void createGame(IterativePolicyEvaluationParams params){
 
         createStateSpace();
-        iterativePolicyEvaluation = new IterativePolicyEvaluation(params);
+        valueFunction = new ValueFunctionIterativePolicyEvaluation(params);
+        policyBuilder = new ValueFunctionOptimalPolicyBuilder<>();
+
+
     }
 
 
     public void play(){
 
-        iterativePolicyEvaluation.evaluate(this.stateSpace);
+        valueFunction.evaluate(this.stateSpace);
+
+        // we now have Vstar available. We want to calculate the
+        // optimal policy pi star from it
+        policyBuilder.buildFrom(this.stateSpace, valueFunction);
+
+        // let's record the game
     }
 
     public static void main(String[] args){
