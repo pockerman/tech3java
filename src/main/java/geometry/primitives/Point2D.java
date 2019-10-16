@@ -2,6 +2,9 @@ package geometry.primitives;
 
 public class Point2D<T extends  Number> {
 
+
+
+
     public Point2D(T i, T j){
         this.i = i;
         this.j = j;
