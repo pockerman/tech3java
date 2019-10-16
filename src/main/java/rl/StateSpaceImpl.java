@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class StateSpaceImpl<T extends IState> implements IStateSpace<T> {
 
-    public StateSpaceImpl(int nStates){
+    public StateSpaceImpl(int nStates, ITransitionDynamics dynamics){
+
         this.states = new ArrayList<IState>(nStates);
+        this.dynamics = dynamics;
     }
 
     /**
@@ -38,7 +40,27 @@ public class StateSpaceImpl<T extends IState> implements IStateSpace<T> {
 
 
     /**
+     * Returns the probability getting at state sprime with reward r
+     * when at state s and executing action a
+     * @param sprime The state to get to
+     * @param r The reward anticipated
+     * @param s the state currently on
+     * @param a The action required from s to sprime
+     * @return probability estimate
+     */
+    @Override
+    public double transitionDynamics(IState sprime, double r, IState s, IAction a){
+        return this.dynamics.pr(sprime, r, s, a);
+    }
+
+
+    /**
      * The states
      */
     private ArrayList<IState> states;
+
+    /**
+     * the object that describes the dynamics
+     */
+    ITransitionDynamics dynamics;
 }
