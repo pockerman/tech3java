@@ -1,6 +1,7 @@
 package environments;
 
-import geometry.Point;
+import geometry.primitives.Point2D;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class MazeCell {
      */
     public MazeCell(int id, int i, int j, String b){
 
-        this.centroid = new Point(i, j);
+        this.centroid = new Point2D<Integer>(i, j);
         this.id = id;
         this.setIsBlockedFlag(b);
         neighbors = new HashMap<>();
@@ -39,7 +40,7 @@ public class MazeCell {
      * Return the centroid of the cell
      * @return
      */
-    public final Point getCentroid(){
+    public final Point2D<Integer> getCentroid(){
         return this.centroid;
     }
 
@@ -69,7 +70,6 @@ public class MazeCell {
         }
     }
 
-
     /**
      *  Returns true if the cell is blocked
      */
@@ -95,7 +95,6 @@ public class MazeCell {
         return neighbors.get(dir);
     }
 
-
     /**
      * Returns the i-th neighbor
      */
@@ -112,7 +111,7 @@ public class MazeCell {
     /**
      * Hold the i, j coordinates of the cell
      */
-    private Point centroid;
+    private Point2D<Integer> centroid;
 
     /**
      * The global id of the cell

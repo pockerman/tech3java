@@ -1,6 +1,7 @@
 package environments;
 
-import geometry.Point;
+import geometry.primitives.Point2D;
+
 import java.util.ArrayList;
 
 /**
@@ -80,7 +81,7 @@ public class Maze2D<CellType extends MazeCell> {
     /**
      * Returns the cell with the given centroid
      */
-    CellType findCell(Point centroid){
+    public CellType findCell(Point2D<Integer> centroid){
 
         for (int c = 0; c < this.size(); c++) {
 

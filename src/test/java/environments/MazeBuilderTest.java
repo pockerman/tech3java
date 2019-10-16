@@ -1,6 +1,6 @@
 package environments;
 
-import geometry.Point;
+import geometry.primitives.Point2D;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class MazeBuilderTest {
 
     /**
      * Test Scenario: The application attempts to build a Maze with a null filename
-     * Expected Output: NullPointerException is thrown
+     * Expected Output: NullPoint2D<Integer>erException is thrown
      */
     @Test(expected = NullPointerException.class)
     public void testNullFileName(){
@@ -78,11 +78,11 @@ public class MazeBuilderTest {
                 MazeCell cell = maze.getCell(c);
                 assertEquals(cell.getId(), c);
 
-                Point centroid = cell.getCentroid();
+                Point2D<Integer> centroid = cell.getCentroid();
 
                 if(c == 0){
 
-                    assertTrue(centroid.equals(new Point(0, 0)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(0, 0)));
                     assertFalse(cell.isBlocked());
 
                     assertNull(cell.getNeighbor(Direction.WEST));
@@ -96,7 +96,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 1){
 
-                    assertTrue(centroid.equals(new Point(0, 1)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(0, 1)));
                     assertTrue(cell.isBlocked());
 
                     assertNull(cell.getNeighbor(Direction.SOUTH));
@@ -112,7 +112,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 2){
 
-                    assertTrue(centroid.equals(new Point(0, 2)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(0, 2)));
                     assertTrue(cell.isBlocked());
 
                     assertNull(cell.getNeighbor(Direction.SOUTH));
@@ -128,7 +128,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 3){
 
-                    assertTrue(centroid.equals(new Point(1, 0)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(1, 0)));
                     assertFalse(cell.isBlocked());
 
                     assertNull(cell.getNeighbor(Direction.WEST));
@@ -144,7 +144,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 4){
 
-                    assertTrue(centroid.equals(new Point(1, 1)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(1, 1)));
                     assertFalse(cell.isBlocked());
 
                     assertNotNull(cell.getNeighbor(Direction.WEST));
@@ -161,7 +161,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 5){
 
-                    assertTrue(centroid.equals(new Point(1, 2)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(1, 2)));
                     assertFalse(cell.isBlocked());
 
                     assertNotNull(cell.getNeighbor(Direction.WEST));
@@ -177,7 +177,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 6){
 
-                    assertTrue(centroid.equals(new Point(2, 0)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(2, 0)));
                     assertFalse(cell.isBlocked());
 
                     assertNull(cell.getNeighbor(Direction.WEST));
@@ -194,7 +194,7 @@ public class MazeBuilderTest {
                 }
                 if(c == 7){
 
-                    assertTrue(centroid.equals(new Point(2, 1)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(2, 1)));
                     assertTrue(cell.isBlocked());
 
                     assertNotNull(cell.getNeighbor(Direction.WEST));
@@ -212,7 +212,7 @@ public class MazeBuilderTest {
 
                 if(c == 8){
 
-                    assertTrue(centroid.equals(new Point(2, 2)));
+                    assertTrue(centroid.equals(new Point2D<Integer>(2, 2)));
                     assertFalse(cell.isBlocked());
 
                     assertNotNull(cell.getNeighbor(Direction.WEST));

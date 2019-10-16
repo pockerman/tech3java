@@ -1,5 +1,6 @@
 package environments;
-import geometry.Point;
+import geometry.primitives.Point2D;
+
 import java.io.*;
 
 
@@ -70,7 +71,7 @@ public class MazeBuilder {
             MazeCell cell = maze.getCell(c);
             int id = cell.getId();
 
-            Point pos = cell.getCentroid();
+            Point2D<Integer> pos = cell.getCentroid();
             int i = pos.getI();
             int j = pos.getJ();
 
