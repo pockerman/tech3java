@@ -1,6 +1,6 @@
 package rl;
 
-public interface IPolicy {
+public interface IPolicyValue {
 
     /**
      * Returns the value of the policy for the given action when at the given state

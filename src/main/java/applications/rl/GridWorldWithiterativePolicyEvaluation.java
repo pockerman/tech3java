@@ -25,6 +25,12 @@ public class GridWorldWithiterativePolicyEvaluation {
             this.state = state;
         }
 
+        @Override
+        public String toString(){
+
+            return this.actionType;
+        }
+
         /**
          * Returns the state to transition to
          */
@@ -43,9 +49,7 @@ public class GridWorldWithiterativePolicyEvaluation {
 
             this.id = id;
             this.actions = new ArrayList<IAction>();
-
         }
-
 
         /**
          * Returns the id of the state
@@ -81,6 +85,26 @@ public class GridWorldWithiterativePolicyEvaluation {
         }
 
 
+        @Override
+        public boolean equals(Object other){
+
+            if(this == other){
+                return true;
+            }
+
+            if(!(other instanceof State)){
+                return false;
+            }
+
+            return this.getId() == ((State)other).getId();
+        }
+
+        @Override
+        public int hashCode(){
+            return this.getId();
+        }
+
+
         /**
          * Returns the state that this state transitions to when the action with the given local id is apllied
          * @param actionId Action local id
@@ -100,13 +124,10 @@ public class GridWorldWithiterativePolicyEvaluation {
             return 0.25;
         }
 
-
         @Override
         public double getReward(){
             return -1.0;
         }
-
-
 
         /**
          * Returns true if the state is a terminal state
@@ -115,7 +136,6 @@ public class GridWorldWithiterativePolicyEvaluation {
         public boolean isTerminal(){
             return this.isTerminalState;
         }
-
 
 
         /**
@@ -143,7 +163,7 @@ public class GridWorldWithiterativePolicyEvaluation {
     /**
      * The object that holds the optimal policy
      */
-    //ValueFunctionOptimalPolicyBuilder<StateSpaceImpl<State>, PolicyImpl> policyBuilder;
+    ValueFunctionOptimalPolicyBuilder<StateSpaceImpl<State>, PolicyImpl> policyBuilder;
 
     public void createStateSpace(){
 
@@ -292,31 +312,36 @@ public class GridWorldWithiterativePolicyEvaluation {
 
         createStateSpace();
         valueFunction = new ValueFunctionIterativePolicyEvaluation(params);
-        //policyBuilder = new ValueFunctionOptimalPolicyBuilder<>();
 
-
+        IPolicyBuilder<PolicyImpl> builder = ()->{return new PolicyImpl();};
+        policyBuilder = new ValueFunctionOptimalPolicyBuilder<>(builder, -(Double.MAX_VALUE - 1));
     }
 
 
     public void play(){
 
-        valueFunction.evaluate(this.stateSpace, new UniformPolicy(0.25));
+        valueFunction.evaluate(this.stateSpace, new UniformPolicyValue(0.25));
 
         double[] values = valueFunction.getValues();
 
-        for(int s=0; s<this.stateSpace.nStates(); s++){
-
-            IState state = this.stateSpace.getState(s);
-            double valueFunction = values[state.getId()];
-
-            System.out.println("For state: "+state.getId()+" value function: "+valueFunction);
-        }
-
         // we now have Vstar available. We want to calculate the
         // optimal policy pi star from it
-        //policyBuilder.buildFrom(this.stateSpace, valueFunction);
+        policyBuilder.buildFrom(this.stateSpace, valueFunction);
 
-        // let's record the game
+        // let's check the policy
+        IPolicy policy = policyBuilder.getPolicy();
+
+        for(int s=0; s<this.stateSpace.nStates(); ++s){
+
+            IState state = this.stateSpace.getState(s);
+
+            if(!state.isTerminal()){
+
+                IAction action = policy.getAction(state);
+                System.out.println("For state: "+state.getId()+" Action is: "+action);
+
+            }
+        }
     }
 
     public static void main(String[] args){
@@ -326,6 +351,7 @@ public class GridWorldWithiterativePolicyEvaluation {
         params.tol = getTol();
         params.gamma = 1.0;
         params.reward = -1.0;
+        params.showItrs = false;
 
         GridWorldWithiterativePolicyEvaluation game = new GridWorldWithiterativePolicyEvaluation();
         game.createGame(params);

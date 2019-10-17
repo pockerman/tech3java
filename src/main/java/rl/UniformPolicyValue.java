@@ -1,9 +1,9 @@
 package rl;
 
-public class UniformPolicy implements IPolicy {
+public class UniformPolicyValue implements IPolicyValue {
 
 
-    public UniformPolicy(double value){
+    public UniformPolicyValue(double value){
         this.value = value;
     }
 
@@ -13,6 +13,7 @@ public class UniformPolicy implements IPolicy {
      * @param state The state at which the action takes place
      * @return
      */
+     @Override
      public double value(IAction action, IState state){
          return  this.value;
      }

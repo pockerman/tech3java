@@ -1,7 +1,5 @@
 package rl;
 
-import java.util.Collections;
-
 /**
  * Two-arrays based iterative policy evaluation for
  * policy estimation
@@ -53,7 +51,7 @@ public class ValueFunctionIterativePolicyEvaluation {
     /**
      * Run the evaluation
      */
-    public <T extends IState> void evaluate(IStateSpace<T> space, IPolicy initialPolicy){
+    public <T extends IState> void evaluate(IStateSpace<T> space, IPolicyValue initialPolicy){
 
         //initialize V and V prime
         this.initialize(space.nStates());
@@ -125,7 +123,6 @@ public class ValueFunctionIterativePolicyEvaluation {
 
             this.v[i] = 0.0;
             this.vPrime[i] = 0.0;
-
         }
     }
 
