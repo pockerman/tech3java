@@ -3,9 +3,9 @@ package rl;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OptimalPolicyImpl implements IPolicy {
+public class PolicyImpl  {
 
-    public OptimalPolicyImpl(){
+    public PolicyImpl(){
         this.policy = new HashMap<>();
     }
 

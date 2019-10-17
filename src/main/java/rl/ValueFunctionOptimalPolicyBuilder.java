@@ -5,8 +5,7 @@ package rl;
  * Build and maintain an optimal policy from an optimal
  * value function
  */
-public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, PolicyType extends IPolicy> implements
-        IOptimalPolicyBuilder<StateSpace, IPolicy, ValueFunctionIterativePolicyEvaluation> {
+public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, PolicyType>{
 
     /**
      * Build the optimal policy from the given EvaluatorType
@@ -42,17 +41,17 @@ public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, P
             }
 
             // we are done for this state add the action with the maximum reward
-            policy.addAction(state, maxAction);
+            //policy.addAction(state, maxAction);
         }
     }
 
     /**
      * Returns the PolicyType
      */
-    public PolicyType getPolicy(){
+    /*public PolicyType getPolicy(){
 
         return null;
-    }
+    }*/
 
 
 

@@ -143,11 +143,11 @@ public class GridWorldWithiterativePolicyEvaluation {
     /**
      * The object that holds the optimal policy
      */
-    ValueFunctionOptimalPolicyBuilder<StateSpaceImpl<State>, OptimalPolicyImpl> policyBuilder;
+    //ValueFunctionOptimalPolicyBuilder<StateSpaceImpl<State>, PolicyImpl> policyBuilder;
 
     public void createStateSpace(){
 
-        stateSpace = new StateSpaceImpl<>(16, new ConstantTransitionDynamics(0.25));
+        stateSpace = new StateSpaceImpl<>(16, new ConstantTransitionDynamics(1.0));
 
         // populate with states
         for(int s=0; s<16; s++) {
@@ -160,31 +160,46 @@ public class GridWorldWithiterativePolicyEvaluation {
         for(int s=0; s<16; s++) {
 
             IState state = stateSpace.getState(s);
-            if(s == 1){
 
-                state.addAction(new Action("RIGHT", stateSpace.getState(0)) );
-                state.addAction(new Action("TOP",   stateSpace.getState(2)));
-                state.addAction(new Action("LEFT",  stateSpace.getState(5)));
+            if(s == 0){
+
+                state.addAction(new Action("RIGHT", stateSpace.getState(1)) );
+                state.addAction(new Action("TOP",   stateSpace.getState(4)));
+                state.addAction(new Action("LEFT",  stateSpace.getState(0)));
+                state.addAction(new Action("BOTTOM",  stateSpace.getState(0)));
+
+            }
+
+            else if(s == 1){
+
+                state.addAction(new Action("RIGHT", stateSpace.getState(2)) );
+                state.addAction(new Action("TOP",   stateSpace.getState(5)));
+                state.addAction(new Action("LEFT",  stateSpace.getState(0)));
+                state.addAction(new Action("BOTTOM",  stateSpace.getState(1)));
 
                 
             }
             else if(s  == 2){
 
-                state.addAction(new Action("RIGHT", stateSpace.getState(1)));
-                state.addAction(new Action("TOP",   stateSpace.getState(3)));
-                state.addAction(new Action("LEFT",  stateSpace.getState(6)));
+                state.addAction(new Action("RIGHT", stateSpace.getState(3)));
+                state.addAction(new Action("TOP",   stateSpace.getState(6)));
+                state.addAction(new Action("LEFT",  stateSpace.getState(1)));
+                state.addAction(new Action("BOTTOM",  stateSpace.getState(2)));
 
             }
-            else if( s == 3){
+            /*else if( s == 3){
 
                 state.addAction(new Action("TOP",  stateSpace.getState(7)));
                 state.addAction(new Action("LEFT", stateSpace.getState(2)));
-            }
+                state.addAction(new Action("BOTTOM",  stateSpace.getState(3)));
+                state.addAction(new Action("RIGHT",  stateSpace.getState(3)));
+            }*/
             else if(s == 4){
 
                 state.addAction(new Action("BOTTOM",stateSpace.getState(0) ));
                 state.addAction(new Action("RIGHT" ,stateSpace.getState(5) ));
                 state.addAction(new Action("TOP"   ,stateSpace.getState(8) ));
+                state.addAction(new Action("LEFT",  stateSpace.getState(4)));
                
             }
             else if(s == 5){
@@ -207,12 +222,14 @@ public class GridWorldWithiterativePolicyEvaluation {
                 state.addAction(new Action("BOTTOM",stateSpace.getState(3)  ));
                 state.addAction(new Action("TOP"   ,stateSpace.getState(11) ));
                 state.addAction(new Action("LEFT"  ,stateSpace.getState(6)  ));
+                state.addAction(new Action("RIGHT",  stateSpace.getState(7)));
             }
             else if( s ==  8){
 
                 state.addAction(new Action("BOTTOM",stateSpace.getState(4)  ));
                 state.addAction(new Action("RIGHT" ,stateSpace.getState(9)  ));
                 state.addAction(new Action("TOP"   ,stateSpace.getState(12) ));
+                state.addAction(new Action("LEFT",  stateSpace.getState(8)));
             }
             else if(s == 9){
 
@@ -233,34 +250,39 @@ public class GridWorldWithiterativePolicyEvaluation {
                 state.addAction(new Action("BOTTOM",stateSpace.getState(7)  ));
                 state.addAction(new Action("TOP"   ,stateSpace.getState(15) ));
                 state.addAction(new Action("LEFT"  ,stateSpace.getState(10) ));
+                state.addAction(new Action("RIGHT",  stateSpace.getState(11)));
             }
-            else if(s  == 12){
+            /*else if(s  == 12){
 
                 state.addAction(new Action("BOTTOM",stateSpace.getState(8)  ));
                 state.addAction(new Action("RIGHT" ,stateSpace.getState(13) ));
 
-            }
+            }*/
             else if( s == 13){
 
                 state.addAction(new Action("BOTTOM",stateSpace.getState(9)   ));
                 state.addAction(new Action("RIGHT" ,stateSpace.getState(14)  ));
                 state.addAction(new Action("LEFT"  ,stateSpace.getState(12)  ));
+                state.addAction(new Action("TOP",  stateSpace.getState(13)));
             }
             else if(s == 14){
 
                 state.addAction(new Action("BOTTOM", stateSpace.getState(10) ));
                 state.addAction(new Action("RIGHT" , stateSpace.getState(15) ));
                 state.addAction(new Action("LEFT"  , stateSpace.getState(13) ));
+                state.addAction(new Action("TOP",  stateSpace.getState(14)));
 
             }
             else if(s == 15){
 
                 state.addAction(new Action("BOTTOM", stateSpace.getState(11) ));
                 state.addAction(new Action("LEFT"  , stateSpace.getState(14) ));
+                state.addAction(new Action("TOP",  stateSpace.getState(15)));
+                state.addAction(new Action("RIGHT",  stateSpace.getState(15)));
             }
 
 
-            if(state.getId() == 0 || state.getId() == 15){
+            if(state.getId() == 3 || state.getId() == 12){
                 ((State) state).makeTerminalState();
             }
         }
@@ -270,7 +292,7 @@ public class GridWorldWithiterativePolicyEvaluation {
 
         createStateSpace();
         valueFunction = new ValueFunctionIterativePolicyEvaluation(params);
-        policyBuilder = new ValueFunctionOptimalPolicyBuilder<>();
+        //policyBuilder = new ValueFunctionOptimalPolicyBuilder<>();
 
 
     }
@@ -278,11 +300,21 @@ public class GridWorldWithiterativePolicyEvaluation {
 
     public void play(){
 
-        valueFunction.evaluate(this.stateSpace);
+        valueFunction.evaluate(this.stateSpace, new UniformPolicy(0.25));
+
+        double[] values = valueFunction.getValues();
+
+        for(int s=0; s<this.stateSpace.nStates(); s++){
+
+            IState state = this.stateSpace.getState(s);
+            double valueFunction = values[state.getId()];
+
+            System.out.println("For state: "+state.getId()+" value function: "+valueFunction);
+        }
 
         // we now have Vstar available. We want to calculate the
         // optimal policy pi star from it
-        policyBuilder.buildFrom(this.stateSpace, valueFunction);
+        //policyBuilder.buildFrom(this.stateSpace, valueFunction);
 
         // let's record the game
     }

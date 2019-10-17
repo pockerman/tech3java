@@ -43,9 +43,17 @@ public class ValueFunctionIterativePolicyEvaluation {
 
 
     /**
+     * Returns the values of the value function
+     */
+    public double[] getValues(){
+        return this.v;
+    }
+
+
+    /**
      * Run the evaluation
      */
-    public <T extends IState> void evaluate(IStateSpace<T> space){
+    public <T extends IState> void evaluate(IStateSpace<T> space, IPolicy initialPolicy){
 
         //initialize V and V prime
         this.initialize(space.nStates());
@@ -78,18 +86,21 @@ public class ValueFunctionIterativePolicyEvaluation {
 
                     for (int a = 0; a < state.nActions(); a++) {
 
-                        IAction action =state.getAction(a);
+                        IAction action = state.getAction(a);
+
+                        double actionProb = initialPolicy.value(action, state);
+
                         IState stateAfterAction = state.applyAction(a);
-                        double actionProb = space.transitionDynamics(stateAfterAction, this.params.reward, state, action);
+                        double transitionDynamicValue = space.transitionDynamics(stateAfterAction, this.params.reward, state, action);
                         double nextStateValue = v[stateAfterAction.getId()];
-                        weightedSum += actionProb * nextStateValue;
+                        weightedSum += actionProb * (transitionDynamicValue*(this.params.reward + this.params.gamma*nextStateValue));
                     }
 
 
-                    double stateSumVal = state.getReward() + this.params.gamma * weightedSum;
-                    this.vPrime[state.getId()] = stateSumVal;
+                    //double stateSumVal = state.getReward() + this.params.gamma * weightedSum;
+                    this.vPrime[state.getId()] = weightedSum;
 
-                    delta = Math.max(delta, Math.abs(oldV - stateSumVal));
+                    delta = Math.max(delta, Math.abs(oldV - weightedSum));
                 }
             }
 
