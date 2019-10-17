@@ -5,16 +5,33 @@ package rl;
  * Build and maintain an optimal policy from an optimal
  * value function
  */
-public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, PolicyType extends IPolicy> implements
-        IOptimalPolicyBuilder<StateSpace, IPolicy, ValueFunctionIterativePolicyEvaluation> {
+public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, PolicyType extends IPolicy>{
+
+
+    /**
+     * Constructor
+     * @param builder
+     */
+    public ValueFunctionOptimalPolicyBuilder(IPolicyBuilder<PolicyType> builder){
+
+        this.policy = builder.build();
+        this.maxRewardInitial = 0.0;
+    }
+
+    /**
+     * Constructor
+     * @param builder
+     */
+    public ValueFunctionOptimalPolicyBuilder(IPolicyBuilder<PolicyType> builder, double maxRewardInitial){
+
+        this.policy = builder.build();
+        this.maxRewardInitial = maxRewardInitial;
+    }
 
     /**
      * Build the optimal policy from the given EvaluatorType
      */
     public void  buildFrom(final StateSpace stateSpace, final ValueFunctionIterativePolicyEvaluation evaluatorType){
-
-
-        PolicyType policy = null;
 
         final double gamma = evaluatorType.getGamma();
         final double R = evaluatorType.getReward();
@@ -25,7 +42,7 @@ public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, P
             IState state = stateSpace.getState(s);
 
             IAction maxAction = null;
-            double maxReward = 0.0;
+            double maxReward = this.maxRewardInitial; //-(Double.MAX_VALUE - 1);
 
             // loop over the actions in this state
             for(int a=0; a<state.nActions(); ++a){
@@ -34,15 +51,19 @@ public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, P
                 IAction action = state.getAction(a);
 
                 IState stateAfterAction = action.getTransitionToState();
-                double actionValue = stateSpace.transitionDynamics(stateAfterAction, R, state, action)*(R + gamma*evaluatorType.valueFunction(stateAfterAction));
+
+                double transitionDynmicsValue = stateSpace.transitionDynamics(stateAfterAction, R, state, action);
+                double valueFunctionValue = evaluatorType.valueFunction(stateAfterAction);
+                double actionValue = transitionDynmicsValue*(R + gamma*valueFunctionValue);
 
                 if(actionValue > maxReward) {
+                    maxReward = actionValue;
                     maxAction = action;
                 }
             }
 
             // we are done for this state add the action with the maximum reward
-            policy.addAction(state, maxAction);
+            this.policy.addAction(state, maxAction);
         }
     }
 
@@ -51,9 +72,11 @@ public class ValueFunctionOptimalPolicyBuilder<StateSpace extends IStateSpace, P
      */
     public PolicyType getPolicy(){
 
-        return null;
+        return this.policy;
     }
 
 
+    private PolicyType policy;
+    private double maxRewardInitial;
 
 }
