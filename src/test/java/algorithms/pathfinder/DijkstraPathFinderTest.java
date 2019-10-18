@@ -51,6 +51,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: IllegalArgumentException is thrown
      */
     @Test(expected = IllegalArgumentException.class)
+    @Ignore
     public void testInvalidStartLocation() {
 
         try {
@@ -84,6 +85,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: IllegalArgumentException is thrown
      */
     @Test(expected = IllegalArgumentException.class)
+    @Ignore
     public void testInvalidGoalLocation() {
 
         try {
@@ -118,6 +120,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: IllegalArgumentException is thrown
      */
     @Test(expected = IllegalArgumentException.class)
+    @Ignore
     public void testBlockedGoalLocation() {
 
         try {
@@ -151,6 +154,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: IllegalArgumentException is thrown
      */
     @Test(expected = IllegalArgumentException.class)
+    @Ignore
     public void testBlockedStartLocation() {
 
         try {
@@ -183,6 +187,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: A valid route should be computed
      */
     @Test
+    @Ignore
     public void testDijkstraPathFinder() throws IOException {
 
         File directory = new File("./");
@@ -218,6 +223,7 @@ public class DijkstraPathFinderTest {
      * Expected Output: A valid route should be computed
      */
     @Test
+    @Ignore
     public void testDijkstraPathFinder1220() throws IOException {
 
         File directory = new File("./");
