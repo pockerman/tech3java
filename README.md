@@ -52,7 +52,7 @@ This is my  Java playground...
 
 ### Java Threads
 
-- <a href="src/main/java/applications/rl/GridWorldWithiterativePolicyEvaluation.java">Example 1</a>: Get the sum of the elements of an array
+- <a href="src/main/java/applications/threading/SumArrayElements.java">Example 1</a>: Get the sum of the elements of an array
 
 ## Useful Links
 
