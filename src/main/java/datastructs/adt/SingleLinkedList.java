@@ -254,9 +254,22 @@ public class SingleLinkedList<T> {
         T data = null;
         Node next = null;
 
-        Node(T data, Node next){
+        public Node(T data, Node next){
             this.data = data;
             this.next = next;
+        }
+
+
+        public T getData(){
+            return this.data;
+        }
+
+        public Node getNext(){
+            return this.next;
+        }
+
+        public void setNext(Node n){
+            this.next = n;
         }
     }
 
