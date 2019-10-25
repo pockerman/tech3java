@@ -16,13 +16,11 @@ public class BinaryTree<E> extends Tree<E> {
     /**
      * Push a new element in the ADT
      */
-    public final void push(E element){
+    public  void push(E element){
 
         if(super.root_ == null){
 
-            TreeNodeCreator<E> creator = new TreeNodeCreator<>();
-            super.root_  = creator.create(element, null, 0, 2);
-            super.nNodes_++;
+           this.createRoot(element);
         }
         else {
 
@@ -39,6 +37,19 @@ public class BinaryTree<E> extends Tree<E> {
         }
 
     }
+
+    /**
+     * Create the root element
+     * @param element
+     */
+    protected void createRoot(E element){
+
+            TreeNodeCreator<E> creator = new TreeNodeCreator<>();
+            super.root_  = creator.create(element, null, 0, 2);
+            super.nNodes_++;
+    }
+
+
 
 
     /**

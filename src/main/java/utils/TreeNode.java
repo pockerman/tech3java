@@ -29,10 +29,39 @@ public class TreeNode<E> {
         }
     }
 
+
+    /**
+     * Create a node with the specified data and the given father
+     */
+    public TreeNode(E data, TreeNode<E> parent,  int nChildren){
+
+        this.data_ = data;
+        this.parent_ = parent;
+        this.level_ = 0;
+
+        if(parent != null){
+            this.level_ = parent.getLevel() + 1;
+        }
+
+        if(nChildren >=1) {
+            this.children_ = new ArrayList<TreeNode<E>>(nChildren);
+        }
+
+        for(int c=0; c < nChildren; ++c){
+            this.children_.add(null);
+        }
+    }
+
     /**
      * Set the data of the node
      */
     public final void setData(E data){this.data_ = data;}
+
+
+    /**
+     * Returns the data stored by the node
+     */
+    public final E getData(){return  this.data_; }
 
 
     /**

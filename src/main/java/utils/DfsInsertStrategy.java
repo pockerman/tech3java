@@ -2,13 +2,13 @@ package utils;
 
 
 
-public class DfsInsertStrategy implements ITreeInsertStrategy {
+public class DfsInsertStrategy<E> implements ITreeInsertStrategy<E> {
 
     @Override
     public final TreeInsertMethod type(){return TreeInsertMethod.DFS; }
 
     @Override
-    public final <DataTp> boolean  insert(TreeNode<DataTp> root, TreeNode<DataTp> parent, DataTp data, IPredicate<TreeNode<DataTp>> insertPosPredicate){
+    public final boolean  insert(TreeNode<E> root, TreeNode<E> parent, E data, IPredicate<TreeNode<E>> insertPosPredicate){
 
         return doInsert(root,  parent, data, insertPosPredicate).first;
     }
