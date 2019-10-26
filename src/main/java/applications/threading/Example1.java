@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 /**
  * Category: Threading
- * ID: SumArrayElements
+ * ID: Example1
  * Description: Get the sum of the elements of an array
  * Taken From: Code from the book Modern Java in Action 2nd Edition
  *
@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Fork(value = 2, jvmArgs={"-Xms4G", "-Xmx4G"})
-public class SumArrayElements {
+public class Example1 {
 
     @Benchmark
     public long seqSum(long n){
@@ -59,7 +59,7 @@ public class SumArrayElements {
 
     public static  void main(String[] args){
 
-        SumArrayElements sumArrayElements = new SumArrayElements();
+        Example1 sumArrayElements = new Example1();
         final long N =  10000000L;
 
         sumArrayElements.seqSum(N);
