@@ -54,7 +54,8 @@ This is my  Java playground...
 
 ### Java Threads
 
-- <a href="src/main/java/applications/threading/SumArrayElements.java">Example 1</a>: Get the sum of the elements of an array
+- <a href="src/main/java/applications/threading/Example1.java">Example 1</a>: Get the sum of the elements of an array
+- <a href="src/main/java/applications/threading/Example2.java">Example 2</a>: Parallel trapezoid rule
 
 ## Useful Links
 
