@@ -56,6 +56,7 @@ This is my  Java playground...
 
 - <a href="src/main/java/applications/threading/Example1.java">Example 1</a>: Get the sum of the elements of an array
 - <a href="src/main/java/applications/threading/Example2.java">Example 2</a>: Parallel trapezoid rule
+- <a href="src/main/java/applications/threading/Example3.java">Example 3</a>: Producer/Consumer pattern
 
 ## Useful Links
 
