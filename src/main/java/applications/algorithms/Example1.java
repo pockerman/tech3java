@@ -39,14 +39,15 @@ public class Example1 {
             else{
 
                 int value = current.getData();
-                SingleLinkedList<Integer>.Node pToBeDeleted = current;
+                SingleLinkedList<Integer>.Node toBeDeleted = current;
 
-                while(pToBeDeleted != null && pToBeDeleted.getData().equals(value)) {
+                while(toBeDeleted != null && toBeDeleted.getData().equals(value)) {
 
-                    next = pToBeDeleted.getNext();
+                    next = toBeDeleted.getNext();
+                    toBeDeleted = null;
+                    toBeDeleted = next;
                 }
 
-                pToBeDeleted = next;
                 if(previous == null) {
                     head = next;
                 }
@@ -66,15 +67,19 @@ public class Example1 {
         SingleLinkedList<Integer> list = new SingleLinkedList<>();
 
         // create a sorted linked list
-        list.pushBack(5);
-        list.pushBack(4);
-        list.pushBack(4);
-        list.pushBack(3);
-        list.pushBack(3);
-        list.pushBack(3);
-        list.pushBack(2);
         list.pushBack(1);
+        list.pushBack(2);
+        list.pushBack(3);
+        list.pushBack(3);
+        list.pushBack(4);
+        list.pushBack(4);
+        list.pushBack(5);
+        System.out.println("List before removing duplicates: \n");
+        list.print();
 
         Example1.deleteDuplicateElements(list);
+
+        System.out.println("\nList after removing duplicates: \n");
+        list.print();
     }
 }
