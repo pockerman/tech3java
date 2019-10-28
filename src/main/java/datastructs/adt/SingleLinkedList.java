@@ -12,7 +12,7 @@ public class SingleLinkedList<T> {
     public SingleLinkedList(){
         currentSize_ = 0;
         tail_ = new Node(null, null);
-        head_ = new Node(null, tail_);
+        head_ = new Node(null, null);
     }
 
 
