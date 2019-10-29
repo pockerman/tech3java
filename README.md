@@ -18,6 +18,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example8.java">Example 8</a>: Solves the Tower of Hanoi problem using stacks
 - <a href="src/main/java/applications/algorithms/Example9.java">Example 9</a>: Sorts cars of a train according to destination
 - <a href="src/main/java/applications/algorithms/Example10.java">Example 10</a>: Find number of digits in an integer
+- <a href="src/main/java/applications/algorithms/Example11.java">Example 11</a>: Partition an array into odds and evens
 
 ### Numerics 
 
