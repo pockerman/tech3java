@@ -9,7 +9,8 @@ package applications.algorithms;
   * We can get the number of digits contained in an integer by continuously
   * dividing with 10 as long as the number is greater than 0
 */
-public class FindNumberOfDigitsInInteger {
+public class Example7
+{
 
     public static void run(String[] args){
 
@@ -27,6 +28,6 @@ public class FindNumberOfDigitsInInteger {
 
     public static void main(String[] args){
 
-        FindNumberOfDigitsInInteger.run(args);
+        Example7.run(args);
     }
 }

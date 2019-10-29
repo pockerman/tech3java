@@ -10,7 +10,7 @@ import java.util.Random;
  * are grouped according to the destination
  */
 
-public class TrainSorting {
+public class Example10 {
 
     public static void run(String[] args) {
         Random random = new Random();
@@ -69,7 +69,7 @@ public class TrainSorting {
     }
 
     public static  void main(String[] args){
-        TrainSorting.run(args);
+        Example10.run(args);
     }
 
 }

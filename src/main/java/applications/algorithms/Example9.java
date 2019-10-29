@@ -6,7 +6,7 @@ import datastructs.adt.ArrayStack;
  * Demonstrates how to use stacks to solve the
  * Towers of Hanoi problem
  */
-public class TowersOfHanoi {
+public class Example9 {
 
     public class Disk
     {
@@ -20,7 +20,7 @@ public class TowersOfHanoi {
 
     public static void run(String[] args){
 
-        TowersOfHanoi game = new TowersOfHanoi();
+        Example9 game = new Example9();
         ArrayStack<Disk> peg1 = new ArrayStack<Disk>(10);
 
         for(int i=0; i< peg1.capacity(); ++i){
@@ -32,6 +32,6 @@ public class TowersOfHanoi {
     }
 
     public static  void main(String[] args){
-        TowersOfHanoi.run(args);
+        Example9.run(args);
     }
 }

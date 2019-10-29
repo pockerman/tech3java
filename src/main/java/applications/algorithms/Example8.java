@@ -6,7 +6,7 @@ import datastructs.adt.ArrayStack;
  * Such an approach takes O(N) time but it requires
  * O(N) extra space
  */
-public class ReversArrayUsingStack {
+public class Example8 {
 
 
     public static void run(String[] args){
@@ -30,6 +30,6 @@ public class ReversArrayUsingStack {
     }
 
     public static  void main(String[] args){
-        ReversArrayUsingStack.run(args);
+        Example8.run(args);
     }
 }

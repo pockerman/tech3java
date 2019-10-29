@@ -9,14 +9,15 @@ This is my  Java playground...
 
 
 - <a href="src/main/java/applications/algorithms/Example1.java">Example 1</a>: Delete duplicated elements in a sorted linked list
-- <a href="src/main/java/applications/algorithms/FibonacciSequence.java">Example 1</a>: Fibonacci Sequence
-- <a href="src/main/java/applications/algorithms/FindFirstNonRepeatedCharInString.java">Example 2</a>: Finds first non-repeated character in a string
-- <a href="src/main/java/applications/algorithms/FindFirstOccurenceString.java">Example 3</a>: Finds first occurence of a character in a string
-- <a href="src/main/java/applications/algorithms/FindMinimumTwoSortedSubArrays.java">Example 4</a>: Find the minimum element between two increasingly sorted sub-arrays
-- <a href="src/main/java/applications/algorithms/ReversArrayUsingStack.java">Example 5</a>: Reverse an array using a stack
-- <a href="src/main/java/applications/algorithms/TowersOfHanoi.java">Example 6</a>: Solves the Tower of Hanoi problem using stacks
-- <a href="src/main/java/applications/algorithms/TrainSorting.java">Example 7</a>: Sorts cars of a train according to destination
-- <a href="src/main/java/applications/algorithms/TrainSorting.java">Example 8</a>: Find number of digits in an integer
+- <a href="src/main/java/applications/algorithms/Example2.java">Example 2</a>: Vanilla implementation of binary search
+- <a href="src/main/java/applications/algorithms/Example3.java">Example 3</a>: Fibonacci Sequence
+- <a href="src/main/java/applications/algorithms/Example4.java">Example 4</a>: Finds first non-repeated character in a string
+- <a href="src/main/java/applications/algorithms/Example5.java">Example 5</a>: Finds first occurence of a character in a string
+- <a href="src/main/java/applications/algorithms/Example6.java">Example 6</a>: Find the minimum element between two increasingly sorted sub-arrays
+- <a href="src/main/java/applications/algorithms/Example7.java">Example 7</a>: Reverse an array using a stack
+- <a href="src/main/java/applications/algorithms/Example8.java">Example 8</a>: Solves the Tower of Hanoi problem using stacks
+- <a href="src/main/java/applications/algorithms/Example9.java">Example 9</a>: Sorts cars of a train according to destination
+- <a href="src/main/java/applications/algorithms/Example10.java">Example 10</a>: Find number of digits in an integer
 
 ### Numerics 
 

@@ -8,7 +8,7 @@ import java.util.Map;
  * Fibonacci sequence calculation
  */
 
-public class FibonacciSequence {
+public class Example3 {
 
     public static  int recursive_fib(int n){
 
@@ -68,19 +68,19 @@ public class FibonacciSequence {
 
     public static  void main(String[] args){
 
-        int rslt = FibonacciSequence.recursive_fib(5);
+        int rslt = Example3.recursive_fib(5);
 
         if (rslt != 5){
             System.out.println("Recursive Fibonacci: Invalid Fibonacci result " + rslt + "not equal to 5");
         }
 
-        rslt = FibonacciSequence.iterative_fib(5);
+        rslt = Example3.iterative_fib(5);
 
         if (rslt != 5){
             System.out.println("Iterative Fibonacci: Invalid Fibonacci result " + rslt + "not equal to 5");
         }
 
-        rslt = FibonacciSequence.memo_fib(5);
+        rslt = Example3.memo_fib(5);
 
         if (rslt != 5){
             System.out.println("Memo Fibonacci: Invalid Fibonacci result " + rslt + "not equal to 5");
