@@ -6,7 +6,7 @@ import java.util.Scanner;
  * user specified string. It assumes ASCII characters
  */
 
-public class FindFirstNonRepeatedCharInString {
+public class Example4 {
 
     public static void find(String str){
 

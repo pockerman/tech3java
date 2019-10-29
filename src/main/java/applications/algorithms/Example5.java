@@ -8,7 +8,7 @@ import java.util.Scanner;
  * user specified string.
  */
 
-public class FindFirstOccurenceString {
+public class Example5 {
 
 
     public static void findChar(String input) {

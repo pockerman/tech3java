@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
   *Category: Algorithms
-  *ID: FindMinimumTwoSortedSubArrays
+  *ID: Example6
   *Description: Find the minimum element between two increasingly sorted sub-arrays
   *            comming from a rotation of the main array
   *Taken From: Code from the book: Coding Interviews: Questions, Analysis & Solutions
@@ -34,7 +34,7 @@ import java.util.ArrayList;
   *second sub-array, which is also the minimum of the array.
 */
 
-public class FindMinimumTwoSortedSubArrays {
+public class Example6 {
 
     public static Integer findMin(ArrayList<Integer> data){
 
@@ -76,7 +76,7 @@ public class FindMinimumTwoSortedSubArrays {
 
     public static  void main(String[] args){
 
-        FindMinimumTwoSortedSubArrays obj = new FindMinimumTwoSortedSubArrays();
+        Example6 obj = new Example6();
         System.out.println("Running Example algorithms/"+obj.getClass().getName());
         ArrayList<Integer> data = new ArrayList<>();
         data.add(3);
@@ -85,7 +85,7 @@ public class FindMinimumTwoSortedSubArrays {
         data.add(1);
         data.add(2);
 
-        Integer rslt = FindMinimumTwoSortedSubArrays.findMin(data);
+        Integer rslt = Example6.findMin(data);
 
         if (rslt != null){
             System.out.println("Min element is " + rslt);
