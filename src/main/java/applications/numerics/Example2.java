@@ -4,7 +4,7 @@ import geometry.shapes.Circle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class CircleAreaCalculationWithMonteCarloIntegration {
+public class Example1 {
 
     public static void main(String[] args){
 
