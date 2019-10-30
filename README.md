@@ -19,11 +19,12 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example9.java">Example 9</a>: Sorts cars of a train according to destination
 - <a href="src/main/java/applications/algorithms/Example10.java">Example 10</a>: Find number of digits in an integer
 - <a href="src/main/java/applications/algorithms/Example11.java">Example 11</a>: Partition an array into odds and evens
+- <a href="src/main/java/applications/algorithms/Example12.java">Example 12</a>: Compute the equivalence classes of a list of numbers
 
 ### Numerics 
 
-- <a href="src/main/java/applications/numerics/MonteCarloIntegration.java">Example 1</a>: Monte Carlo integration
-- <a href="src/main/java/applications/numerics/CircleAreaCalculationWithMonteCarloIntegration.java">Example 2</a>: Area calculation of a circle using Monte Carlo integration
+- <a href="src/main/java/applications/numerics/Example1.java">Example 1</a>: Monte Carlo integration
+- <a href="src/main/java/applications/numerics/Example2.java">Example 2</a>: Area calculation of a circle using Monte Carlo integration
 
 ### Linear Algebra
 

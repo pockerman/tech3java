@@ -3,7 +3,7 @@ package applications.numerics;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MonteCarloIntegration {
+public class Example1 {
 
     public static final int N_ITRS = 1000;
 
@@ -20,13 +20,13 @@ public class MonteCarloIntegration {
 
 
         double yLower = 0.0;
-        double yUpper = MonteCarloIntegration.f(b);
+        double yUpper = Example1.f(b);
         double RECT_AREA = (b - a)*(yUpper - yLower);
 
         long total_area_points = 0;
         long under_curve_points = 0;
 
-        for(int i=0; i<MonteCarloIntegration.N_ITRS; ++i){
+        for(int i = 0; i< Example1.N_ITRS; ++i){
 
             // generate the random x and y
             double x = ThreadLocalRandom.current().nextDouble(a , b);
@@ -36,7 +36,7 @@ public class MonteCarloIntegration {
 
             total_area_points += 1;
 
-            double yCalc = MonteCarloIntegration.f(x);
+            double yCalc = Example1.f(x);
 
             if( y <= yCalc ){
                 under_curve_points += 1;
