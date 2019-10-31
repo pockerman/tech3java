@@ -20,6 +20,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example10.java">Example 10</a>: Find number of digits in an integer
 - <a href="src/main/java/applications/algorithms/Example11.java">Example 11</a>: Partition an array into odds and evens
 - <a href="src/main/java/applications/algorithms/Example12.java">Example 12</a>: Compute the equivalence classes of a list of numbers
+- <a href="src/main/java/applications/algorithms/Example13.java">Example 13</a>: Test if a given string is a palindrome
 
 ### Numerics 
 
