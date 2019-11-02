@@ -20,6 +20,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example10.java">Example 10</a>: Find number of digits in an integer
 - <a href="src/main/java/applications/algorithms/Example11.java">Example 11</a>: Partition an array into odds and evens
 - <a href="src/main/java/applications/algorithms/Example12.java">Example 12</a>: Compute the equivalence classes of a list of numbers
+- <a href="src/main/java/applications/algorithms/Example13.java">Example 13</a>: Test if a given string is a palindrome
 
 ### Numerics 
 
@@ -60,6 +61,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/threading/Example1.java">Example 1</a>: Get the sum of the elements of an array
 - <a href="src/main/java/applications/threading/Example2.java">Example 2</a>: Parallel trapezoid rule
 - <a href="src/main/java/applications/threading/Example3.java">Example 3</a>: Producer/Consumer pattern
+- <a href="src/main/java/applications/threading/Example4.java">Example 4</a>: Using ```ExecutorService``` interface
 
 ## Useful Links
 
