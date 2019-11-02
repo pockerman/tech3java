@@ -54,7 +54,7 @@ This is my  Java playground...
 
 ### Reinforcement Learning
 
-- <a href="src/main/java/applications/rl/GridWorldWithiterativePolicyEvaluation.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
+- <a href="src/main/java/applications/rl/Example1.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
 
 ### Java Threads
 
