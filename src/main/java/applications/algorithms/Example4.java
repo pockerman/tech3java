@@ -1,10 +1,15 @@
 package applications.algorithms;
 import java.util.Scanner;
 
-/**
- * Finds the first non-repeated character in a
- * user specified string. It assumes ASCII characters
+/** Category: Algorithms
+ * ID: Example 4
+ * Description: Finds the first non-repeated character in a
+ *              user specified string. It assumes ASCII characters
+ * Taken From:
+ * Details:
+ * TODO
  */
+
 
 public class Example4 {
 

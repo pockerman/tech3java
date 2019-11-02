@@ -4,8 +4,12 @@ package applications.algorithms;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Fibonacci sequence calculation
+/** Category: Algorithms
+ * ID: Example13
+ * Description: Fibonacci nth value calculation with various methods
+ * Taken From:
+ * Details:
+ * TODO
  */
 
 public class Example3 {
