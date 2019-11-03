@@ -24,6 +24,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example14.java">Example 14</a>: Fibonacci sequence calculation
 - <a href="src/main/java/applications/algorithms/Example15.java">Example 15</a>: Factorial calculation without recursion
 - <a href="src/main/java/applications/algorithms/Example16.java">Example 16</a>: Test if a word is an anagram of another
+- <a href="src/main/java/applications/algorithms/Example17.java">Example 17</a>: Given a list of words get all the anagrams of a given string
 
 ### Numerics 
 
