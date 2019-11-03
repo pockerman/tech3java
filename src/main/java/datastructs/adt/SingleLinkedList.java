@@ -10,9 +10,9 @@ public class SingleLinkedList<T> {
      * Constructs an empty List
      */
     public SingleLinkedList(){
-        currentSize_ = 0;
-        tail_ = new Node(null, null);
-        head_ = new Node(null, null);
+        this.currentSize_ = 0;
+        this.tail_ = new Node(null, null);
+        this.head_ = new Node(null, null);
     }
 
 
@@ -154,6 +154,32 @@ public class SingleLinkedList<T> {
         return newNode;
     }
 
+    /**
+     * Returns the node at the i-th position
+     */
+    public final Node get(int i){
+
+        if(this.empty()){
+            throw new IllegalStateException("List is empty.");
+        }
+
+        int counter = 0;
+        Node current = head_.next;
+        Node previous = null;
+
+        while(current != null){
+
+            if(counter == i){
+
+                return current;
+            }
+
+            current = current.next;
+            counter++;
+        }
+
+        return null;
+    }
 
     /**
      * Remove the node at the specified i-th position
@@ -260,14 +286,34 @@ public class SingleLinkedList<T> {
         }
 
 
+        /**
+         * Returns a reference to the data held by this Node
+         * @return
+         */
         public T getData(){
             return this.data;
         }
 
+        /**
+         * Set the data held by this node
+         * @param data
+         */
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        /**
+         * Returns reference to the next node
+         * @return
+         */
         public Node getNext(){
             return this.next;
         }
 
+        /**
+         * Set the reference to the next node
+         * @param n
+         */
         public void setNext(Node n){
             this.next = n;
         }
