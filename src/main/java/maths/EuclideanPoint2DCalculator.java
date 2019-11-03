@@ -7,7 +7,8 @@ import algorithms.pathfinder.HeuristicFunction;
  * Euclidean distance calculation
  */
 
-public class EuclideanCalculator<PointType extends Point2D> implements DistanceCalculator<PointType>, HeuristicFunction<Pair<PointType, PointType>, Double> {
+public class EuclideanPoint2DCalculator<PointType extends Point2D> implements DistanceCalculator<PointType, Double>,
+                                                                       HeuristicFunction<Pair<PointType, PointType>, Double> {
 
     /**
      * Implement the HeuristicFunction interface contract
@@ -22,7 +23,7 @@ public class EuclideanCalculator<PointType extends Point2D> implements DistanceC
      * @param p1 the first  point
      * @param p2 the second point
      */
-    public double calculate(final PointType p1, final PointType p2){
+    public Double calculate(final PointType p1, final PointType p2){
 
         double dx = p1.getI().doubleValue() - p2.getI().doubleValue();
         double dy = p1.getJ().doubleValue() - p2.getJ().doubleValue();
