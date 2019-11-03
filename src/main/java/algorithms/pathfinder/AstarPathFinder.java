@@ -174,7 +174,7 @@ public class AstarPathFinder<MazeType extends Maze2D> implements PathFinder<Maze
                 //this actually the cost of the path from the current node
                 //to reach its neighbor
                 int tgCost = (int)(currentNode.gCost +
-                                   this.distanceCalculator.calculate(currentNode.cell.getCentroid(), aCell.cell.getCentroid()));
+                        (int) this.distanceCalculator.calculate(currentNode.cell.getCentroid(), aCell.cell.getCentroid()));
 
                 if (tgCost >= aCell.gCost) {
                     continue; //this is not a better path
