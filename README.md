@@ -25,6 +25,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example15.java">Example 15</a>: Factorial calculation without recursion
 - <a href="src/main/java/applications/algorithms/Example16.java">Example 16</a>: Test if a word is an anagram of another
 - <a href="src/main/java/applications/algorithms/Example17.java">Example 17</a>: Given a list of words get all the anagrams of a given string
+- <a href="src/main/java/applications/algorithms/Example18.java">Example 18</a>: Reverse single linked list in place
 
 ### Numerics 
 
