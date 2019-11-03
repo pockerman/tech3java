@@ -6,6 +6,6 @@ public interface IVoter<ItemType, CriterionType, ResultType> {
 
     void addItem(ItemType item, CriterionType criterionType);
 
-    ResultType getResult();
+    ResultType getResult(int max);
 
 }

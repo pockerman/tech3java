@@ -57,6 +57,8 @@ This is my  Java playground...
 
 ### Machine Learning
 
+- <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
+
 ### Reinforcement Learning
 
 - <a href="src/main/java/applications/rl/Example1.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld

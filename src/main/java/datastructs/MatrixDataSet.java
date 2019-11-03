@@ -29,6 +29,10 @@ public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
         return this;
     }
 
+    /**
+     * Add a new column to the data set
+     * @param colName
+     */
     public void addColumn(String colName){
 
         if(this.hasColumn(colName)){
@@ -38,11 +42,22 @@ public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
         this.colNames.add(colName);
     }
 
+    /**
+     * Add multiply columns to the data set
+     * @param colNames
+     */
+    public void addColumns(String... colNames){
 
-    public int nRows(){
-        return this.data.size();
+        for(String  name : colNames){
+            this.addColumn(name);
+        }
     }
 
+    /**
+     * Returns true if the given column exists
+     * @param colName
+     * @return
+     */
     public boolean hasColumn(String colName){
         for(String name : this.colNames){
             if(name.equals(colName)){
@@ -52,6 +67,34 @@ public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
 
         return false;
     }
+
+
+    /**
+     * Add a row to the data set
+     * @return
+     */
+    public void addRow(RowDataSet<T> r){
+
+        if(this.colNames.size() == 0){
+            throw new IllegalStateException("Columns have not been initialized");
+        }
+
+        if(r.size() != this.colNames.size()){
+            throw new IllegalArgumentException(" Row size does not match number of columns");
+        }
+
+        r.setId(this.data.size());
+        this.data.add(r);
+    }
+
+    /**
+     * How many rows the data set has
+     * @return
+     */
+    public int nRows(){
+        return this.data.size();
+    }
+
 
     /**
      * Returns the i-th row

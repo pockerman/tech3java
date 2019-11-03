@@ -5,21 +5,31 @@ import java.util.*;
 public class ClassificationVoter implements IVoter<Integer, Double, List<Pair<Integer, Double>> > {
 
 
-    public ClassificationVoter(int maxResults){
-
-        this.maxResults = maxResults;
-
+    public ClassificationVoter(){
+        this.values = new ArrayList<Pair<Integer, Double>>();
     }
 
+    @Override
     public void addItem(Integer item, Double criterionType){
         this.values.add(PairBuilder.makePair(item, criterionType));
     }
 
+    /**
+     * Allow any Object cast to double to be added
+     * @param item
+     * @param criterionType
+     */
+    public void addItem(Integer item, Object criterionType){
+        this.addItem(item, (Double) criterionType);
+    }
+
     @Override
-    public List<Pair<Integer, Double>> getResult(){
+    public List<Pair<Integer, Double>> getResult(int max){
 
         //get the values
-        Arrays.sort((Object[]) values.toArray(), new Comparator<Object>() {
+        Object[] valuesArr = (Object[]) values.toArray();
+
+        Arrays.sort(valuesArr, new Comparator<Object>() {
             @Override
             public int compare(Object t, Object t1) {
 
@@ -34,9 +44,21 @@ public class ClassificationVoter implements IVoter<Integer, Double, List<Pair<In
             }
         });
 
-        return this.values.subList(0, this.maxResults);
+        List<Pair<Integer, Double>> subList = new ArrayList<Pair<Integer, Double>>();
+
+        for(int i=0; i<max; ++i){
+            subList.add((Pair<Integer, Double>) valuesArr[i]);
+        }
+
+
+        return subList;
+    }
+
+
+    public void clear(){
+
+        this.values = new ArrayList<Pair<Integer, Double>>();
     }
 
     private List<Pair<Integer, Double>> values;
-    private int maxResults;
 }
