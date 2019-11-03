@@ -6,12 +6,12 @@ package maths;
   *  for distance claculation between two Points
   *
  */
-public interface DistanceCalculator<PointType> {
+public interface DistanceCalculator<PointType, ResultType> {
 
     /**
      * Returns the distance between the two points
      * @param p1 the first  point
      * @param p2 the second point
      */
-    double calculate(final PointType p1, final PointType p2);
+    ResultType calculate(final PointType p1, final PointType p2);
 }
