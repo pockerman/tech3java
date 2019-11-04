@@ -1,4 +1,4 @@
-package datastructs;
+package datastructs.adt;
 
 import java.util.List;
 

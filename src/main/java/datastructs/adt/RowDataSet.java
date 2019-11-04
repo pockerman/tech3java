@@ -1,4 +1,4 @@
-package datastructs;
+package datastructs.adt;
 
 import tech.tablesaw.api.Row;
 
@@ -75,6 +75,5 @@ public class RowDataSet<T> {
     }
 
     private int id;
-    private String[] colNames;
     private List<T> values;
 }

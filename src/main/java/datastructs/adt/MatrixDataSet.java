@@ -1,4 +1,4 @@
-package datastructs;
+package datastructs.adt;
 
 import utils.IDataSetWrapper;
 
@@ -68,6 +68,20 @@ public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
         return false;
     }
 
+    /**
+     * Returns the number of columns the dataset has
+     *
+     */
+    public final int nColumns(){
+        return this.colNames.size();
+    }
+
+    /**
+     * Returns the coumns of the dataset
+     */
+    public final List<String> getColNames(){
+        return this.colNames;
+    }
 
     /**
      * Add a row to the data set
@@ -100,9 +114,22 @@ public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
      * Returns the i-th row
      */
     public RowDataSet<T> getRow(int i){
+
+        if(this.data.size() == 0){
+            throw new IllegalStateException("Rows are empty");
+        }
+
+        if(i<0 || i > this.data.size()){
+            throw new IllegalArgumentException("Index "+i+" is out of bounds. Should be in [0,"+this.data.size()+")");
+        }
+
         return this.data.get(i);
     }
 
+
+    /**
+     * Iterate over the rows of the dataset
+     */
     @Override
     public Iterator<RowDataSet<T>> iterator() {
         return data.iterator();
