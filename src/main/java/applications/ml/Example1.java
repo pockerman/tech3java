@@ -1,7 +1,7 @@
 package applications.ml;
 
-import datastructs.MatrixDataSet;
-import datastructs.RowDataSet;
+import datastructs.adt.MatrixDataSet;
+import datastructs.adt.RowDataSet;
 import maths.EuclideanRowSetCalculator;
 import ml.KNNClassifier;
 import utils.ClassificationVoter;

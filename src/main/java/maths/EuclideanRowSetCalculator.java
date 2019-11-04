@@ -1,6 +1,6 @@
 package maths;
 
-import datastructs.RowDataSet;
+import datastructs.adt.RowDataSet;
 
 public class EuclideanRowSetCalculator<T> implements DistanceCalculator<RowDataSet<T>, Double> {
 
