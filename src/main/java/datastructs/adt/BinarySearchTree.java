@@ -1,9 +1,6 @@
 package datastructs.adt;
 
-import utils.BSTInsertStratergy;
-import utils.IPredicate;
-import utils.TreeNode;
-import utils.TreeNodeCreator;
+import datastructs.adt.utils.BSTInsertStratergy;
 
 import java.util.Comparator;
 
@@ -38,6 +35,5 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
                 super.nNodes_++;
             }
         }
-
     }
 }

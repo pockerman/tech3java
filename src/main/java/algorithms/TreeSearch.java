@@ -1,6 +1,6 @@
 package algorithms;
 
-import utils.TreeNode;
+import datastructs.adt.utils.TreeNode;
 import utils.IPredicate;
 
 /**

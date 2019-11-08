@@ -1,8 +1,8 @@
 package datastructs.adt;
 
 
-import utils.ITreeInsertStrategy;
-import utils.TreeNode;
+import datastructs.adt.utils.ITreeInsertStrategy;
+import datastructs.adt.utils.TreeNode;
 
 /**
  * Base class for trees

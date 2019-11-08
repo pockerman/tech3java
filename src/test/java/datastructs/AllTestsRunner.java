@@ -18,6 +18,7 @@ public class AllTestsRunner {
         ArrayQueueTestRunner.run(args);
         SingleLinkedListTestRunner.run(args);
         BinaryTreeTestRunner.run(args);
+        AVLTreeTestRunner.run(args);
         MatrixDataSetTestRunner.run(args);
     }
 }

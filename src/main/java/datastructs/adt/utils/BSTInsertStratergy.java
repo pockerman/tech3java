@@ -1,4 +1,6 @@
-package utils;
+package datastructs.adt.utils;
+
+import utils.IPredicate;
 
 import java.util.Comparator;
 
@@ -21,7 +23,7 @@ public class BSTInsertStratergy<E> implements ITreeInsertStrategy<E> {
      * the calling site the newly created node
      */
     public boolean  insert(TreeNode<E> root, TreeNode<E> parent, E data,
-                                    IPredicate<TreeNode<E>> insertPosPredicate){
+                           IPredicate<TreeNode<E>> insertPosPredicate){
 
         if(comparator.compare(data, parent.getData()) == 1){
 

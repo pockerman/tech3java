@@ -1,5 +1,8 @@
 package datastructs.adt;
 
+import datastructs.adt.utils.ITreeInsertStrategy;
+import datastructs.adt.utils.TreeNode;
+import datastructs.adt.utils.TreeNodeCreator;
 import utils.*;
 
 public class BinaryTree<E> extends Tree<E> {
