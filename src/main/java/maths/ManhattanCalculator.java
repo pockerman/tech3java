@@ -2,7 +2,7 @@ package maths;
 import algorithms.pathfinder.HeuristicFunction;
 import utils.Pair;
 
-public class ManhattanCalculator<PointType> implements DistanceCalculator<PointType>,
+public class ManhattanCalculator<PointType> implements DistanceCalculator<PointType, Double>,
         HeuristicFunction<Pair<PointType, PointType>, Double> {
 
 
@@ -19,7 +19,7 @@ public class ManhattanCalculator<PointType> implements DistanceCalculator<PointT
      * @param p1 the first  point
      * @param p2 the second point
      */
-    public double calculate(final PointType p1, final PointType p2){
+    public Double calculate(final PointType p1, final PointType p2){
         return 0.0;
     }
 }

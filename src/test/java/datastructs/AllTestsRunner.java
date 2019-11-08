@@ -1,13 +1,10 @@
 package datastructs;
 
-import datastructs.adt.ArrayQueueTestRunner;
-import datastructs.adt.BinaryTreeTestRunner;
-import datastructs.adt.SingleLinkedListTestRunner;
+import datastructs.adt.*;
 import datastructs.maths.DenseMatrixTestRunner;
 import datastructs.maths.MatrixVectorOperationsTestRunner;
 import datastructs.maths.VectorOperationsTestRunner;
 import datastructs.maths.VectorTestRunner;
-import datastructs.adt.ArrayStackTestRunner;
 
 public class AllTestsRunner {
 
@@ -21,5 +18,6 @@ public class AllTestsRunner {
         ArrayQueueTestRunner.run(args);
         SingleLinkedListTestRunner.run(args);
         BinaryTreeTestRunner.run(args);
+        MatrixDataSetTestRunner.run(args);
     }
 }

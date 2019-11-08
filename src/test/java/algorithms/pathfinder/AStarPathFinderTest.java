@@ -4,7 +4,7 @@ import environments.MazeBuilder;
 import environments.MazeCell;
 import environments.MazeCellBuilder;
 import geometry.primitives.Point2D;
-import maths.EuclideanCalculator;
+import maths.EuclideanPoint2DCalculator;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -44,8 +44,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                                                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                                                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> start = new Point2D<Integer>(-1, -1);
             Point2D<Integer> end = new Point2D<Integer>(0, 0);
@@ -89,8 +89,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> end = new Point2D<Integer>(-1, -1);
             Point2D<Integer> start = new Point2D<Integer>(0, 0);
@@ -134,8 +134,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
 
             Point2D<Integer> start = new Point2D<Integer>(0, 0);
@@ -180,8 +180,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> end = new Point2D<Integer>(0, 0);
             Point2D<Integer> start = new Point2D<Integer>(2, 1);
@@ -224,8 +224,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> end = new Point2D<Integer>(2, 2);
             Point2D<Integer> start = new Point2D<Integer>(0, 0);
@@ -279,8 +279,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 12 * 20);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> end = new Point2D<Integer>(11, 19);
             Point2D<Integer> start = new Point2D<Integer>(0, 0);
@@ -339,8 +339,8 @@ public class AStarPathFinderTest {
             assertNotNull(maze);
             assertEquals(maze.size(), 3 * 3);
 
-            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>(),
-                    new EuclideanCalculator<Point2D<Integer>>());
+            PathFinder<Maze2D<MazeCell>> finder = new AstarPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>(),
+                    new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
             Point2D<Integer> end = new Point2D<Integer>(2, 2);
             Point2D<Integer> start = new Point2D<Integer>(0, 0);

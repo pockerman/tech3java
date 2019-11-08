@@ -21,6 +21,11 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example11.java">Example 11</a>: Partition an array into odds and evens
 - <a href="src/main/java/applications/algorithms/Example12.java">Example 12</a>: Compute the equivalence classes of a list of numbers
 - <a href="src/main/java/applications/algorithms/Example13.java">Example 13</a>: Test if a given string is a palindrome
+- <a href="src/main/java/applications/algorithms/Example14.java">Example 14</a>: Fibonacci sequence calculation
+- <a href="src/main/java/applications/algorithms/Example15.java">Example 15</a>: Factorial calculation without recursion
+- <a href="src/main/java/applications/algorithms/Example16.java">Example 16</a>: Test if a word is an anagram of another
+- <a href="src/main/java/applications/algorithms/Example17.java">Example 17</a>: Given a list of words get all the anagrams of a given string
+- <a href="src/main/java/applications/algorithms/Example18.java">Example 18</a>: Reverse single linked list in place
 
 ### Numerics 
 
@@ -52,9 +57,11 @@ This is my  Java playground...
 
 ### Machine Learning
 
+- <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
+
 ### Reinforcement Learning
 
-- <a href="src/main/java/applications/rl/GridWorldWithiterativePolicyEvaluation.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
+- <a href="src/main/java/applications/rl/Example1.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
 
 ### Java Threads
 

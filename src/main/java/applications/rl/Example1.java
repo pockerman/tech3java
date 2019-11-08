@@ -5,8 +5,16 @@ import rl.*;
 import static base.CommonConstants.getTol;
 import java.util.ArrayList;
 
+/** Category: Reinforcement Learning
+ * ID: Example1
+ * Description: Iterative Policy Evaluation applied on GridWorld
+ * Taken From:
+ * Details:
+ * TODO
+ */
 
-public class GridWorldWithiterativePolicyEvaluation {
+
+public class Example1 {
 
     class Action implements IAction
     {
@@ -353,7 +361,7 @@ public class GridWorldWithiterativePolicyEvaluation {
         params.reward = -1.0;
         params.showItrs = false;
 
-        GridWorldWithiterativePolicyEvaluation game = new GridWorldWithiterativePolicyEvaluation();
+        Example1 game = new Example1();
         game.createGame(params);
         game.play();
         System.out.println("Done...");

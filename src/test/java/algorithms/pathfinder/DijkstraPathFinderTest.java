@@ -4,7 +4,7 @@ import environments.MazeBuilder;
 import environments.MazeCell;
 import environments.MazeCellBuilder;
 import geometry.primitives.Point2D;
-import maths.EuclideanCalculator;
+import maths.EuclideanPoint2DCalculator;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -39,7 +39,7 @@ public class DijkstraPathFinderTest {
 
     static PathFinder<Maze2D<MazeCell>> buildPathFinder(){
 
-        PathFinder<Maze2D<MazeCell>> finder = new DijkstraPathFinder<Maze2D<MazeCell>>(new EuclideanCalculator<Point2D<Integer>>());
+        PathFinder<Maze2D<MazeCell>> finder = new DijkstraPathFinder<Maze2D<MazeCell>>(new EuclideanPoint2DCalculator<Point2D<Integer>>());
 
         return finder;
     }
