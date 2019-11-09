@@ -34,6 +34,8 @@ This is my  Java playground...
 
 ### Linear Algebra
 
+- <a href="src/main/java/applications/linalgebra/Example1.java">Example 1</a>: Using ND4j
+
 ### Statistics
 
 - <a href="#">Example 1</a>: Compute basic statistics using NumPy
