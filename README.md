@@ -69,6 +69,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/threading/Example2.java">Example 2</a>: Parallel trapezoid rule
 - <a href="src/main/java/applications/threading/Example3.java">Example 3</a>: Producer/Consumer pattern
 - <a href="src/main/java/applications/threading/Example4.java">Example 4</a>: Using ```ExecutorService``` interface
+- <a href="src/main/java/applications/threading/Example5.java">Example 5</a>: Using ```CyclicBarrier``` class
 
 ## Useful Links
 
