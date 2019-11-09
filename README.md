@@ -31,8 +31,8 @@ This is my  Java playground...
 
 - <a href="src/main/java/applications/numerics/Example1.java">Example 1</a>: Monte Carlo integration
 - <a href="src/main/java/applications/numerics/Example2.java">Example 2</a>: Area calculation of a circle using Monte Carlo integration
+- <a href="src/main/java/applications/numerics/Example3.java">Example 2</a>: Using ```ND4j INDArray``` class
 
-### Linear Algebra
 
 ### Statistics
 
