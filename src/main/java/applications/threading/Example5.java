@@ -11,7 +11,7 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * Category: Threading
- * ID: Example
+ * ID: Example5
  * Description: Illustrates CyclicBarrier class
  * Taken From:
  *
