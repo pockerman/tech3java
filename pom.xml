@@ -78,7 +78,7 @@
             <artifactId>nd4j-api</artifactId>
             <version>1.0.0-beta5</version>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/org.nd4j/nd4j-native-platform -->
         <dependency>
             <groupId>org.nd4j</groupId>
