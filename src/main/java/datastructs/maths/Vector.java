@@ -1,6 +1,7 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import tech.tablesaw.api.Row;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +138,20 @@ public class Vector {
         for(int i=0; i<this.size(); ++i){
             this.data.set(i, values.get(i));
         }
+    }
 
+    /**
+     * Set the values of the Vector using the Row provided
+     */
+    public final void set(Row row){
+
+        if(row == null){
+            throw  new IllegalArgumentException("Row input should not be null");
+        }
+
+        for (int i = 0; i < row.columnCount(); i++) {
+            this.set(i, row.getDouble(i));
+        }
     }
 
     /**

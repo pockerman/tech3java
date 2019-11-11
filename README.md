@@ -26,13 +26,16 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example16.java">Example 16</a>: Test if a word is an anagram of another
 - <a href="src/main/java/applications/algorithms/Example17.java">Example 17</a>: Given a list of words get all the anagrams of a given string
 - <a href="src/main/java/applications/algorithms/Example18.java">Example 18</a>: Reverse single linked list in place
+- <a href="src/main/java/applications/algorithms/Example19.java">Example 19</a>: Find the binary representation of an integer
 
 ### Numerics 
 
 - <a href="src/main/java/applications/numerics/Example1.java">Example 1</a>: Monte Carlo integration
 - <a href="src/main/java/applications/numerics/Example2.java">Example 2</a>: Area calculation of a circle using Monte Carlo integration
+- <a href="src/main/java/applications/numerics/Example3.java">Example 2</a>: Using ```ND4j INDArray``` class
 
-### Linear Algebra
+
+- <a href="src/main/java/applications/linalgebra/Example1.java">Example 1</a>: Using ND4j
 
 ### Statistics
 
@@ -68,7 +71,9 @@ This is my  Java playground...
 - <a href="src/main/java/applications/threading/Example1.java">Example 1</a>: Get the sum of the elements of an array
 - <a href="src/main/java/applications/threading/Example2.java">Example 2</a>: Parallel trapezoid rule
 - <a href="src/main/java/applications/threading/Example3.java">Example 3</a>: Producer/Consumer pattern
-- <a href="src/main/java/applications/threading/Example4.java">Example 4</a>: Using ```ExecutorService``` interface
+- <a href="src/main/java/applications/threading/Example4.java">Example 4</a>: Using the ```ExecutorService``` interface
+- <a href="src/main/java/applications/threading/Example5.java">Example 5</a>: Using the ```CyclicBarrier``` class
+- <a href="src/main/java/applications/threading/Example6.java">Example 6</a>: Using the ```Lock``` interface
 
 ## Useful Links
 

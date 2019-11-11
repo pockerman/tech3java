@@ -1,5 +1,8 @@
 package datastructs.maths;
 
+import tech.tablesaw.api.Row;
+import tech.tablesaw.api.Table;
+
 import java.util.ArrayList;
 
 /**
@@ -12,13 +15,48 @@ public class DenseMatrix {
     }
 
     public DenseMatrix(int m, int n, double val){
+
         this.create(m ,n, val);
     }
 
-    public final int m(){return this.data_.size();}
+    /**
+     * Rerturns the number of rows
+     */
+    public final int m(){return this.data.size();}
 
-    public final int n(){return this.data_.get(0).size();}
+    /**
+     * Returns the number of columns
+     */
+    public final int n(){return this.data.get(0).size();}
 
+    /**
+     * Initialize the matrix from the given Table dataset
+     */
+    public void initializeFrom(final Table table){
+
+        if(table == null){
+            throw new IllegalArgumentException("Input Table should not be null");
+        }
+
+        // how many rows and columns
+        int m = table.rowCount();
+        int n = table.columnCount();
+
+        this.create(m, n, 0.0);
+
+        int rowCounter = 0;
+        for (Row row: table ) {
+
+            Vector vecRow = new Vector(row.columnCount());
+            vecRow.set(row);
+            this.set(rowCounter++, vecRow);
+        }
+    }
+
+    /**
+     * Returns the diagonal of the matrix
+     * @return
+     */
     public final Vector diagonal(){
 
         /*if(m() != n()){
@@ -29,7 +67,7 @@ public class DenseMatrix {
 
         for(int i=0; i < m(); ++i){
 
-            diag.set(i, this.data_.get(i).get(i));
+            diag.set(i, this.data.get(i).get(i));
         }
 
         return diag;
@@ -45,7 +83,7 @@ public class DenseMatrix {
             throw new IllegalArgumentException("Invalid column index");
         }
 
-        this.data_.get(i).set(j, value);
+        this.data.get(i).set(j, value);
     }
 
     public final void set(int i, Vector value){
@@ -53,7 +91,7 @@ public class DenseMatrix {
         if( i >= m() || i < 0 ){
             throw new IllegalArgumentException("Invalid row index");
         }
-        this.data_.get(i).set(value);
+        this.data.get(i).set(value);
     }
 
     public final Vector row(int r){
@@ -62,7 +100,7 @@ public class DenseMatrix {
             throw new IllegalArgumentException("Invalid row index");
         }
 
-        return this.data_.get(r);
+        return this.data.get(r);
     }
 
     private final void create(int m, int n, double val){
@@ -71,14 +109,14 @@ public class DenseMatrix {
             throw new IllegalArgumentException("Cannot create a matrix with zero rows or columns");
         }
 
-        this.data_ = new ArrayList<Vector>(m);
+        this.data = new ArrayList<Vector>(m);
 
         for(int i=0; i<m; ++i){
 
             Vector row = new Vector(n, val);
-            this.data_.add(row);
+            this.data.add(row);
         }
     }
 
-    private ArrayList<Vector> data_ = null;
+    private ArrayList<Vector> data = null;
 }

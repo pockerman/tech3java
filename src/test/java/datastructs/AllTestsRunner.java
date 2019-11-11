@@ -5,6 +5,7 @@ import datastructs.maths.DenseMatrixTestRunner;
 import datastructs.maths.MatrixVectorOperationsTestRunner;
 import datastructs.maths.VectorOperationsTestRunner;
 import datastructs.maths.VectorTestRunner;
+import maths.LinearVectorPolynomialTestRunner;
 
 public class AllTestsRunner {
 
@@ -20,5 +21,6 @@ public class AllTestsRunner {
         BinaryTreeTestRunner.run(args);
         AVLTreeTestRunner.run(args);
         MatrixDataSetTestRunner.run(args);
+        LinearVectorPolynomialTestRunner.run(args);
     }
 }
