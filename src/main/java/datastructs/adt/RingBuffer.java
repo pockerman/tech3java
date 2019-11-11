@@ -1,5 +1,7 @@
 package datastructs.adt;
 
+import java.lang.reflect.Array;
+
 /**
  * A ring buffer is an array together with read and write operations that wrap around. That is, when the
  * last position of the array is reached, writing continues at the begin of the array, thereby erasing the oldest
@@ -8,6 +10,18 @@ package datastructs.adt;
 public class RingBuffer<T> {
 
 
+    /**
+     * Constructor
+     */
+    public RingBuffer(int capacity){
+
+        if(capacity <=0 ){
+            throw new IllegalArgumentException("RingBuffer capacity should be greater than 0");
+        }
+
+        this.capacity = capacity;
+        this.elements = new Object[capacity];
+    }
 
 
     public long capacity(){
@@ -22,7 +36,11 @@ public class RingBuffer<T> {
         return this.size;
     }
 
-    T[] elements;
+
+    /**
+     * The items of the buffer
+     */
+    Object[] elements;
 
     /**
      * How many elements the buffer can store

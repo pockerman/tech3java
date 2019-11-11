@@ -22,5 +22,6 @@ public class AllTestsRunner {
         AVLTreeTestRunner.run(args);
         MatrixDataSetTestRunner.run(args);
         LinearVectorPolynomialTestRunner.run(args);
+        RingBufferTestRunner.run(args);
     }
 }
