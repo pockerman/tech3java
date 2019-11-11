@@ -45,12 +45,37 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     }
 
     /**
+     * Returns the gradients with respect to the coefficients at the given data point
+     */
+    @Override
+    public Vector gradidents(Vector data){
+        Vector rslt = new Vector(data);
+        rslt.set(0, 1.0);
+        return rslt;
+    }
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    @Override
+    public double gradient(int i, Vector data){
+
+        if(i==0){
+            return 1.0;
+        }
+
+        //this is  a linear model with respect to
+        //the weights so simply return the value of the feature
+        //for the i-th weight
+        return data.get(i);
+    }
+
+    /**
      * Zero the coefficients
      */
     public final void zeroCoeffs(){
         coeffs.zero();
     }
-
 
     /**
      * The coefficients of the vector

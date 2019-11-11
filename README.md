@@ -40,6 +40,7 @@ This is my  Java playground...
 ### Machine Learning
 
 - <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
+- <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Batch Gradient Descent
 
 ### Reinforcement Learning
 
