@@ -40,6 +40,15 @@ public class Vector {
 
 
     /**
+     * Create a vector from another vector i.e. copy constructor
+     */
+    public Vector(Vector data){
+        this(data.size(), 0.0);
+        this.set(data);
+    }
+
+
+    /**
       * Resize the vector
      */
     public final void resize(int size){
@@ -168,7 +177,14 @@ public class Vector {
 
             this.data.set(i, factor*this.data.get(i));
         }
+    }
 
+    /**
+     * operation +=
+     */
+    public void add(int i, double value){
+        double val = this.data.get(i);
+        this.data.set(i , val + value);
     }
 
     /**

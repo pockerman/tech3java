@@ -12,4 +12,9 @@ public class GDInput extends AlgorithmInput {
      */
     public double eta;
 
+    /**
+     * Use momentum implementation
+     */
+    boolean useMomentum=false;
+
 }
