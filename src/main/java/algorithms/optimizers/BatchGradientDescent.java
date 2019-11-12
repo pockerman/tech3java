@@ -27,20 +27,19 @@ public class BatchGradientDescent {
         reslt.numThreadsUsed = 1;
 
         // compute the value of f with the current weights
-        double jOld = errF.evaluate(data, y );
+        double jOld = errF.evaluate(data, y);
         double jCurr = 0.0;
 
-        //the gradients of the error function.
-        //List<Double> jGrads = BatchGradientDescent.initializeGradients(f.numCoeffs());
         Vector coeffs = f.getCoeffs();
 
         for(int itr=0; itr<this.input.numIterations; ++itr){
 
+            //the gradients of the error function.
             Vector jGrads = errF.gradients(data, y);
 
             // update the
             for(int c=0; c<coeffs.size(); ++c){
-                coeffs.set(c, -this.input.eta*jGrads.get(c));
+                coeffs.add(c, -this.input.eta*jGrads.get(c));
             }
 
             jCurr = errF.evaluate(data, y);
@@ -63,7 +62,6 @@ public class BatchGradientDescent {
 
             jOld = jCurr;
             jGrads.zero();
-
         }
 
         return reslt;

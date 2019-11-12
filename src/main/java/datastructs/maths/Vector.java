@@ -1,7 +1,9 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
+import tech.tablesaw.api.Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,14 @@ public class Vector {
     public Vector(Vector data){
         this(data.size(), 0.0);
         this.set(data);
+    }
+
+
+    public Vector(Table table, String columnName){
+
+        DoubleColumn column = table.doubleColumn(columnName);
+        this.create(column.size(), 0.0);
+        this.set(column);
     }
 
 
@@ -163,6 +173,13 @@ public class Vector {
         }
     }
 
+    public final void set(DoubleColumn column){
+
+        for (int i = 0; i < column.size() ; i++) {
+            this.set(i, column.getDouble(i));
+        }
+    }
+
     /**
      * Scale the components of the vector with the given scalar
      */
@@ -178,6 +195,8 @@ public class Vector {
             this.data.set(i, factor*this.data.get(i));
         }
     }
+
+
 
     /**
      * operation +=
