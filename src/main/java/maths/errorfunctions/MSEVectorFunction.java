@@ -21,6 +21,10 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
     @Override
     public double evaluate(DenseMatrix data, Vector labels){
 
+        if(data.m() != labels.size()){
+            throw new IllegalArgumentException("Invalid number of data points and labels vector size");
+        }
+
         double rlst = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
@@ -41,12 +45,15 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
 
         Vector gradients = new Vector(this.hypothesis.numCoeffs(), 0.0);
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
+
             Vector row = data.row(rowIdx);
+
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
+
             Vector hypothesisGrads = this.hypothesis.gradidents(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
-                gradients.add(coeff, diff*hypothesisGrads.get(coeff));
+                gradients.add(coeff, (-2.0/data.m())*diff*hypothesisGrads.get(coeff));
             }
         }
 

@@ -13,7 +13,8 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
      */
     public LinearVectorPolynomial(int order){
 
-        this.coeffs = new Vector(order, 0.0);
+        // we also need the constant coefficient
+        this.coeffs = new Vector(order + 1, 0.0);
     }
 
     @Override
@@ -68,6 +69,14 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
         //the weights so simply return the value of the feature
         //for the i-th weight
         return data.get(i);
+    }
+
+
+    /**
+     * Returns the coeff-th coefficient
+     */
+    public double getCoeff(int coeff){
+        return this.coeffs.get(coeff);
     }
 
     /**
