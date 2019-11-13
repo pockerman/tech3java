@@ -7,12 +7,10 @@ import utils.PairBuilder;
 /**
  * Category: Threading
  * ID: Example2
- * Description: Implement trapezoid rule in action
- * Taken From: Code from the book Modern Java in Action 2nd Edition
- *
+ * Description: Implement trapezoid rule using threads
+ * Taken From: 
  * Details:
- *
- *
+ * TODO
  */
 
 public class Example2 {
