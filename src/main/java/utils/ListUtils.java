@@ -1,4 +1,6 @@
 package utils;
+import tech.tablesaw.api.DoubleColumn;
+
 import java.util.List;
 
 /**
@@ -22,7 +24,6 @@ public class ListUtils {
         }
 
         return rslt;
-
     }
 
 
@@ -72,6 +73,36 @@ public class ListUtils {
         }
 
         return rslt;
+    }
 
+
+    /**
+     * Normalize the data in the List.
+     * See: https://www.statisticshowto.datasciencecentral.com/normalized/
+     */
+    public static void normalize(List<Double> data){
+
+       double min = ListUtils.min(data);
+       double max = ListUtils.max(data);
+
+       for(int i=0; i<data.size(); ++i){
+           double x = data.get(i);
+           data.set(i, (x-min)/(max - min));
+       }
+    }
+
+    /**
+     * Normalize the data in the List.
+     * See: https://www.statisticshowto.datasciencecentral.com/normalized/
+     */
+    public static void normalize(DoubleColumn data){
+
+        double min = ListUtils.min(data.asList());
+        double max = ListUtils.max(data.asList());
+
+        for(int i=0; i<data.size(); ++i){
+            double x = data.get(i);
+            data.set(i, (x-min)/(max - min));
+        }
     }
 }

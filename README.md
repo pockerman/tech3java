@@ -37,7 +37,8 @@ This is my  Java playground...
 ### Machine Learning
 
 - <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
-- <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Batch Gradient Descent
+- <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Using Batch Gradient Descent with only one feature
+- <a href="src/main/java/applications/ml/Example6.java">Example 6</a>: Batch Gradient Descent with two features 
 
 ### Reinforcement Learning
 

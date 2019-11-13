@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /** Category: Machine Learning
  * ID: Example5
- * Description: Using Batch Gradient Descent
+ * Description: Using Batch Gradient Descent with only one feature
  * Taken From:
  * Details:
  * TODO
