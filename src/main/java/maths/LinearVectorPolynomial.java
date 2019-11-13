@@ -4,7 +4,8 @@ import datastructs.maths.Vector;
 import datastructs.maths.VectorOperations;
 
 /**
- * class that represents a linear polynomial
+ * class that represents a linear polynomial of the form
+ * f = w0 + w1*X1 + w2*X2+...worder-1*Xorder-1
  */
 public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
 

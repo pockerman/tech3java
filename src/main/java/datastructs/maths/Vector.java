@@ -51,8 +51,10 @@ public class Vector {
 
 
     public Vector(Table table, String columnName){
+        this(table.doubleColumn(columnName));
+    }
 
-        DoubleColumn column = table.doubleColumn(columnName);
+    public Vector(DoubleColumn column){
         this.create(column.size(), 0.0);
         this.set(column);
     }
@@ -178,6 +180,17 @@ public class Vector {
         for (int i = 0; i < column.size() ; i++) {
             this.set(i, column.getDouble(i));
         }
+    }
+
+    public double[] toArrary(){
+
+        double[] arrData = new double[this.data.size()];
+
+        for(int i=0; i<this.data.size(); ++i){
+            arrData[i] = this.data.get(i);
+        }
+
+        return arrData;
     }
 
     /**
