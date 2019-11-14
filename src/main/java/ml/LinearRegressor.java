@@ -13,12 +13,20 @@ public class LinearRegressor<DataSetType extends DenseMatrix > {
     /**
      * Constructor
      */
-    public LinearRegressor(){
+    public LinearRegressor(int numFeatures){
 
+        this.polynomial = new LinearVectorPolynomial(numFeatures);
     }
 
     public void train(DataSetType dataSet, Vector y, ISupervisedOptimizer optimizer){
         optimizer.optimize(dataSet, y, this.polynomial);
+    }
+
+    /**
+     * Predict the value for the given input
+     */
+    public double predict(Vector y){
+        return this.polynomial.evaluate(y);
     }
 
     /**
