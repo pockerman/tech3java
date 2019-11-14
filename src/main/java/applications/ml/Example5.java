@@ -36,17 +36,18 @@ public class Example5 {
         DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 2, 1.0);
         denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
 
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
+        MSEVectorFunction objective = new MSEVectorFunction(hypothesis);
+
         GDInput gdInput = new GDInput();
         gdInput.showIterations = true;
         gdInput.numIterations = 10000;
         gdInput.eta=0.01;
         gdInput.tolerance=1.0e-8;
+        gdInput.errF = new MSEVectorFunction(hypothesis);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
-        MSEVectorFunction objective = new MSEVectorFunction(hypothesis);
-
-        IterativeAlgorithmResult result = gdSolver.optimize(denseMatrix, labels, objective, hypothesis);
+        IterativeAlgorithmResult result = gdSolver.optimize(denseMatrix, labels, hypothesis);
 
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));
