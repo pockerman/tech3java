@@ -23,4 +23,9 @@ public interface IVectorRealFunction<VectorType> extends IRealFunction<VectorTyp
      * Returns the gradient with respect to the i-th coeff
      */
     double gradient(int i, Vector data);
+
+    /**
+     * Set the coefficients of the function
+     */
+    void setCoeffs(double[] coeffs);
 }
