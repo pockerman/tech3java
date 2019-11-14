@@ -5,6 +5,13 @@ import datastructs.maths.Vector;
 import maths.IVectorErrorRealFunction;
 import maths.IVectorRealFunction;
 
+/**
+ * The Mean Square Error or MSE is defined as
+ * MSE = 1/N Sum_{i = 1}^N (y_i - \hat{y}_i)^2
+ *
+ * The \hat{y} value is modeled after the IVectorRealFunction passed
+ * to the object when instantiated
+ */
 public class MSEVectorFunction implements IVectorErrorRealFunction {
 
     public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
