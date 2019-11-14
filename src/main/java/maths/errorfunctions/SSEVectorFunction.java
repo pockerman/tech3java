@@ -1,29 +1,30 @@
 package maths.errorfunctions;
 
+
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.IVectorErrorRealFunction;
 import maths.IVectorRealFunction;
 
 /**
- * The Mean Square Error or MSE is defined as
- * MSE = 1/N Sum_{i = 1}^N (y_i - \hat{y}_i)^2
+ * The Sum Square Error or SSE is defined as
+ * SSE =  Sum_{i = 1}^N (y_i - \hat{y}_i)^2
  *
  * The \hat{y} value is modeled after the IVectorRealFunction passed
  * to the object when instantiated
  */
-public class MSEVectorFunction implements IVectorErrorRealFunction {
+public class SSEVectorFunction implements IVectorErrorRealFunction {
 
-    public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
+    public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
 
+        if(hypothesis == null){
+            throw new IllegalArgumentException("Hypothesis gunction cannot be null");
+        }
         this.hypothesis = hypothesis;
     }
 
     /**
      * Evaluate the error function using the given data, labels
-     * @param data
-     * @param labels
-     * @return
      */
     @Override
     public double evaluate(DenseMatrix data, Vector labels){
@@ -51,6 +52,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
 
 
         Vector gradients = new Vector(this.hypothesis.numCoeffs(), 0.0);
+
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
             Vector row = data.row(rowIdx);
@@ -60,7 +62,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
             Vector hypothesisGrads = this.hypothesis.gradidents(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
-                gradients.add(coeff, (-2.0/data.m())*diff*hypothesisGrads.get(coeff));
+                gradients.add(coeff, -2.0*diff*hypothesisGrads.get(coeff));
             }
         }
 

@@ -13,6 +13,6 @@ public class LinearVectorPolynomialTest {
     @Test
     public void createValidPolynomial(){
         LinearVectorPolynomial poly = new LinearVectorPolynomial(3);
-        assertEquals("Invalid polynomial order", poly.numCoeffs(), 3);
+        assertEquals("Invalid polynomial order", poly.numCoeffs(), 4);
     }
 }
