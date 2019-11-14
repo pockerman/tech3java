@@ -31,7 +31,7 @@ public class SSEVectorFunctionTest {
 
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(3);
         hypothesis.setCoeffs(new Vector(hypothesis.numCoeffs(), 1.0));
-        
+
         SSEVectorFunction sseVectorFunction = new SSEVectorFunction(hypothesis);
         Vector labels = new Vector(4, 1.0);
         DenseMatrix dataSet = new DenseMatrix(labels.size(), hypothesis.numCoeffs(), 1.0);

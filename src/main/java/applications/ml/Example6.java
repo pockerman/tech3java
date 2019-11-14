@@ -1,6 +1,6 @@
 package applications.ml;
 
-import algorithms.AlgorithmResult;
+import algorithms.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrix;
@@ -69,17 +69,17 @@ public class Example6 {
         // compute with Apache OLS for reference
         Example6.apacheOLS(dataSet.first, dataSet.second);
 
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(2);
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
         gdInput.numIterations = 10000;
         gdInput.eta=0.01;
         gdInput.tolerance=1.0e-8;
+        gdInput.errF = new MSEVectorFunction(hypothesis);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(2);
-        MSEVectorFunction objective = new MSEVectorFunction(hypothesis);
 
-        AlgorithmResult result = gdSolver.optimize(dataSet.first, dataSet.second, objective, hypothesis); //denseMatrix, labels, objective, hypothesis);
+        IterativeAlgorithmResult result = gdSolver.optimize(dataSet.first, dataSet.second, hypothesis);
 
         System.out.println(" ");
         System.out.println(result);

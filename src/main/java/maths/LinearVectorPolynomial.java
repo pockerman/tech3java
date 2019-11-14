@@ -31,6 +31,13 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     }
 
     /**
+     * Set the coefficients of the function
+     */
+    public final void setCoeffs(double[] coeffs){
+        this.coeffs.set(coeffs);
+    }
+
+    /**
      * Returns the coefficients of the vector function
      */
     @Override

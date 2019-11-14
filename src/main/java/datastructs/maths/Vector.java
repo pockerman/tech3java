@@ -175,10 +175,23 @@ public class Vector {
         }
     }
 
+    /**
+     * Set the data of the vector from a DoubleColumn
+     */
     public final void set(DoubleColumn column){
 
         for (int i = 0; i < column.size() ; i++) {
             this.set(i, column.getDouble(i));
+        }
+    }
+
+    /**
+     * Set the data from a simple array
+     */
+    public final void set(double[] data){
+
+        for (int i = 0; i < data.length ; i++) {
+            this.set(i, data[i]);
         }
     }
 

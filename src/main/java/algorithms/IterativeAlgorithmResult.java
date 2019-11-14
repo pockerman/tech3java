@@ -2,7 +2,7 @@ package algorithms;
 
 import java.util.Timer;
 
-public class AlgorithmResult {
+public class IterativeAlgorithmResult  {
 
     public boolean converged=false;
     public double tolerance;

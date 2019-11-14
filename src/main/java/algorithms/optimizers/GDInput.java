@@ -1,6 +1,7 @@
 package algorithms.optimizers;
 
 import algorithms.AlgorithmInput;
+import maths.IVectorErrorRealFunction;
 
 /**
  * Input class for Gradient Descent algorithm
@@ -15,6 +16,11 @@ public class GDInput extends AlgorithmInput {
     /**
      * Use momentum implementation
      */
-    boolean useMomentum=false;
+    public boolean useMomentum=false;
+
+    /**
+     * The error function used
+     */
+    public IVectorErrorRealFunction errF;
 
 }
