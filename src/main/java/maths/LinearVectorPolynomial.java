@@ -4,7 +4,8 @@ import datastructs.maths.Vector;
 import datastructs.maths.VectorOperations;
 
 /**
- * class that represents a linear polynomial
+ * class that represents a linear polynomial of the form
+ * f = w0 + w1*X1 + w2*X2+...worder-1*Xorder-1
  */
 public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
 
@@ -13,7 +14,8 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
      */
     public LinearVectorPolynomial(int order){
 
-        this.coeffs = new Vector(order, 0.0);
+        // we also need the constant coefficient
+        this.coeffs = new Vector(order + 1, 0.0);
     }
 
     @Override
@@ -26,6 +28,13 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
      */
     public final void setCoeffs(Vector coeffs){
         this.coeffs = coeffs;
+    }
+
+    /**
+     * Set the coefficients of the function
+     */
+    public final void setCoeffs(double[] coeffs){
+        this.coeffs.set(coeffs);
     }
 
     /**
@@ -45,12 +54,45 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     }
 
     /**
+     * Returns the gradients with respect to the coefficients at the given data point
+     */
+    @Override
+    public Vector gradidents(Vector data){
+        Vector rslt = new Vector(data);
+        rslt.set(0, 1.0);
+        return rslt;
+    }
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    @Override
+    public double gradient(int i, Vector data){
+
+        if(i==0){
+            return 1.0;
+        }
+
+        //this is  a linear model with respect to
+        //the weights so simply return the value of the feature
+        //for the i-th weight
+        return data.get(i);
+    }
+
+
+    /**
+     * Returns the coeff-th coefficient
+     */
+    public double getCoeff(int coeff){
+        return this.coeffs.get(coeff);
+    }
+
+    /**
      * Zero the coefficients
      */
     public final void zeroCoeffs(){
         coeffs.zero();
     }
-
 
     /**
      * The coefficients of the vector

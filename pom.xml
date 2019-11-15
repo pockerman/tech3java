@@ -86,5 +86,11 @@
             <version>1.0.0-beta5</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-core</artifactId>
+            <version>1.0.0-beta5</version>
+        </dependency>
+
     </dependencies>
 </project>

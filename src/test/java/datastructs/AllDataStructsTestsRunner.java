@@ -5,11 +5,11 @@ import datastructs.maths.DenseMatrixTestRunner;
 import datastructs.maths.MatrixVectorOperationsTestRunner;
 import datastructs.maths.VectorOperationsTestRunner;
 import datastructs.maths.VectorTestRunner;
-import maths.LinearVectorPolynomialTestRunner;
 
-public class AllTestsRunner {
 
-    public static void main(String[] args) {
+public class AllDataStructsTestsRunner {
+
+    public static void run(String[] args){
 
         VectorTestRunner.run(args);
         VectorOperationsTestRunner.run(args);
@@ -21,7 +21,11 @@ public class AllTestsRunner {
         BinaryTreeTestRunner.run(args);
         AVLTreeTestRunner.run(args);
         MatrixDataSetTestRunner.run(args);
-        LinearVectorPolynomialTestRunner.run(args);
         RingBufferTestRunner.run(args);
+    }
+
+    public static void main(String[] args) {
+
+        AllDataStructsTestsRunner.run(args);
     }
 }

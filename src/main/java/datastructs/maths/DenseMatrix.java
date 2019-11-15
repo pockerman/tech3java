@@ -1,9 +1,11 @@
 package datastructs.maths;
 
+import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a dense matrix
@@ -53,6 +55,22 @@ public class DenseMatrix {
         }
     }
 
+    public final double[][] getSubMatrix(int numColsToInclude, int... includeCols){
+
+        double[][] subMatix = new double[this.m()][numColsToInclude];
+
+        for(int i=0; i<this.m(); ++i){
+
+            int colCounter=0;
+            for( int col:includeCols){
+                subMatix[i][colCounter++] = this.data.get(i).get(col);
+            }
+
+        }
+
+        return subMatix;
+    }
+
     /**
      * Returns the diagonal of the matrix
      * @return
@@ -92,6 +110,40 @@ public class DenseMatrix {
             throw new IllegalArgumentException("Invalid row index");
         }
         this.data.get(i).set(value);
+    }
+
+    public final void setColumn(int c, DoubleColumn col){
+
+        if(col.size() != this.m()){
+            throw new IllegalArgumentException("Column size not equal to the number of rows");
+        }
+
+        for(int i=0; i<this.m(); ++i){
+
+            Vector row =  this.data.get(i);
+            for(int j=0; j<this.n(); ++j){
+                if(j==c){
+                    row.set(j, col.getDouble(i));
+                }
+            }
+        }
+    }
+
+    public final void setColumn(int c, List<Double> col){
+
+        if(col.size() != this.m()){
+            throw new IllegalArgumentException("Column size not equal to the number of rows");
+        }
+
+        for(int i=0; i<this.m(); ++i){
+
+            Vector row =  this.data.get(i);
+            for(int j=0; j<this.n(); ++j){
+                if(j==c){
+                    row.set(j, col.get(i));
+                }
+            }
+        }
     }
 
     public final Vector row(int r){

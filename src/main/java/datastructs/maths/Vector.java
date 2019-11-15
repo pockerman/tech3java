@@ -1,7 +1,9 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
+import tech.tablesaw.api.Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,25 @@ public class Vector {
      */
     public Vector(int size){
         this(size, 0.0);
+    }
+
+
+    /**
+     * Create a vector from another vector i.e. copy constructor
+     */
+    public Vector(Vector data){
+        this(data.size(), 0.0);
+        this.set(data);
+    }
+
+
+    public Vector(Table table, String columnName){
+        this(table.doubleColumn(columnName));
+    }
+
+    public Vector(DoubleColumn column){
+        this.create(column.size(), 0.0);
+        this.set(column);
     }
 
 
@@ -155,6 +176,37 @@ public class Vector {
     }
 
     /**
+     * Set the data of the vector from a DoubleColumn
+     */
+    public final void set(DoubleColumn column){
+
+        for (int i = 0; i < column.size() ; i++) {
+            this.set(i, column.getDouble(i));
+        }
+    }
+
+    /**
+     * Set the data from a simple array
+     */
+    public final void set(double[] data){
+
+        for (int i = 0; i < data.length ; i++) {
+            this.set(i, data[i]);
+        }
+    }
+
+    public double[] toArrary(){
+
+        double[] arrData = new double[this.data.size()];
+
+        for(int i=0; i<this.data.size(); ++i){
+            arrData[i] = this.data.get(i);
+        }
+
+        return arrData;
+    }
+
+    /**
      * Scale the components of the vector with the given scalar
      */
     public final void scale(double factor){
@@ -168,7 +220,16 @@ public class Vector {
 
             this.data.set(i, factor*this.data.get(i));
         }
+    }
 
+
+
+    /**
+     * operation +=
+     */
+    public void add(int i, double value){
+        double val = this.data.get(i);
+        this.data.set(i , val + value);
     }
 
     /**

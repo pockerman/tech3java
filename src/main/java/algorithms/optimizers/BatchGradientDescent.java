@@ -1,49 +1,47 @@
 package algorithms.optimizers;
 
-import algorithms.AlgorithmResult;
+import algorithms.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.IVectorErrorRealFunction;
 import maths.IVectorRealFunction;
 
-public class BatchGradientDescent {
+public class BatchGradientDescent implements ISupervisedOptimizer {
 
+    /**
+     * Constructor
+     */
     public BatchGradientDescent(GDInput input){
 
         this.input = input;
-    }
-
-    public AlgorithmResult call(){
-        return null;
     }
 
     /**
      * Optimize the weights of the given hypothesis function
      * by minimizing the given error metric over the provided dataset
      */
-    public AlgorithmResult optimize(final DenseMatrix data, final Vector y, IVectorErrorRealFunction errF, IVectorRealFunction f){
+    public IterativeAlgorithmResult optimize(final DenseMatrix data, final Vector y, IVectorRealFunction f){
 
-        AlgorithmResult reslt = new AlgorithmResult();
+        IterativeAlgorithmResult reslt = new IterativeAlgorithmResult();
         reslt.numThreadsUsed = 1;
 
         // compute the value of f with the current weights
-        double jOld = errF.evaluate(data, y );
+        double jOld = this.input.errF.evaluate(data, y);
         double jCurr = 0.0;
 
-        //the gradients of the error function.
-        //List<Double> jGrads = BatchGradientDescent.initializeGradients(f.numCoeffs());
         Vector coeffs = f.getCoeffs();
 
         for(int itr=0; itr<this.input.numIterations; ++itr){
 
-            Vector jGrads = errF.gradients(data, y);
+            //the gradients of the error function.
+            Vector jGrads = this.input.errF.gradients(data, y);
 
             // update the
             for(int c=0; c<coeffs.size(); ++c){
-                coeffs.set(c, -this.input.eta*jGrads.get(c));
+                coeffs.add(c, -this.input.eta*jGrads.get(c));
             }
 
-            jCurr = errF.evaluate(data, y);
+            jCurr = this.input.errF.evaluate(data, y);
             double error = Math.abs(jOld-jCurr);
 
             if(this.input.showIterations){
@@ -63,7 +61,6 @@ public class BatchGradientDescent {
 
             jOld = jCurr;
             jGrads.zero();
-
         }
 
         return reslt;
