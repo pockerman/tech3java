@@ -59,7 +59,20 @@ public class ScalarMonomial implements IScalarRealFunction {
         return this.a*this.order*Math.pow(data, this.order-1);
     }
 
+    /**
+     * Compute the gradient with respect to the coefficient at the given point
+     */
+    public double coeffGradient(double data){
+        return Math.pow(data, this.order);
+    }
 
+    /**
+     * The coefficient of the monomial
+     */
     private double a;
+
+    /**
+     * The order of the monomial
+     */
     private int order;
 }

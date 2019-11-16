@@ -21,18 +21,16 @@ public class DefaultIterativeAlgorithmController implements IterativAlgorithmCon
         if(this.currentIterationIdx >= this.maxIterations){
             return false;
         }
-
-        if(this.currentRes > this.exitTolerance){
+        else if(this.currentRes < this.exitTolerance){
 
             this.currentIterationIdx++;
-            return true;
+            return false;
         }
 
         this.currentIterationIdx++;
         return true;
     }
-
-
+    
     /**
      * Returns the current iteration index
      */

@@ -7,7 +7,6 @@ import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.errorfunctions.MSEVectorFunction;
-import maths.functions.NonLinearScalarPolynomial;
 import maths.functions.NonLinearVectorPolynomial;
 import maths.functions.ScalarMonomial;
 import ml.NonLinearRegressor;
@@ -36,10 +35,11 @@ public class Example7 {
 
         DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 2, 1.0);
         denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
+        denseMatrix.duplicateColumn(1);
 
         // assume a hypothesis of the form w0 +w1*X + w2*X^2
         // initially all weights are set o zeor
-        NonLinearScalarPolynomial hypothesis = new NonLinearScalarPolynomial(new ScalarMonomial(0, 0.0),
+        NonLinearVectorPolynomial hypothesis = new NonLinearVectorPolynomial(new ScalarMonomial(0, 0.0),
                                                                              new ScalarMonomial(1, 0.0),
                                                                              new ScalarMonomial(2, 0.0));
 
@@ -49,7 +49,7 @@ public class Example7 {
 
         GDInput gdInput = new GDInput();
         gdInput.showIterations = true;
-        gdInput.eta=0.01;
+        gdInput.eta=0.001;
         gdInput.errF = new MSEVectorFunction(hypothesis);
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 

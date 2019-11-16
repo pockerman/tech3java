@@ -38,6 +38,8 @@ public class BatchGradientDescent implements ISupervisedOptimizer {
                 coeffs.add(c, -this.input.eta*jGrads.get(c));
             }
 
+            f.setCoeffs(coeffs);
+
             jCurr = this.input.errF.evaluate(data, y);
             double error = Math.abs(jOld-jCurr);
             this.input.iterationContorller.updateResidual(error);

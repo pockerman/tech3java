@@ -33,6 +33,7 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     /**
      * Set the coefficients of the function
      */
+    @Override
     public final void setCoeffs(double[] coeffs){
         this.coeffs.set(coeffs);
     }
@@ -70,6 +71,22 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     public double gradient(int i, Vector data){
 
         if(i==0){
+            return 0.0;
+        }
+
+        //this is  a linear model with respect to
+        //the weights so simply return the value of the feature
+        //for the i-th weight
+        return this.coeffs.get(i);
+    }
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    @Override
+    public double coeffGradient(int i, Vector data){
+
+        if(i==0){
             return 1.0;
         }
 
@@ -77,6 +94,21 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
         //the weights so simply return the value of the feature
         //for the i-th weight
         return data.get(i);
+
+    }
+
+    /**
+     * Compute the gradients with respect to the coefficients
+     */
+    @Override
+    public Vector coeffGradients(Vector data){
+        Vector grads = new Vector(this.coeffs.size(), 0.0);
+
+        for (int i = 0; i < grads.size(); i++) {
+            grads.set(i, this.coeffGradient(i, data));
+        }
+
+        return grads;
     }
 
     /**

@@ -58,7 +58,7 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 
-            Vector hypothesisGrads = this.hypothesis.gradidents(row);
+            Vector hypothesisGrads = this.hypothesis.coeffGradients(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
                 gradients.add(coeff, -2.0*diff*hypothesisGrads.get(coeff));
