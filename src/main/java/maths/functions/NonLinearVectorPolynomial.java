@@ -110,6 +110,31 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
     }
 
     /**
+     * Compute the gradients with respect to the coefficients
+     */
+    @Override
+    public Vector coeffGradients(Vector data){
+
+        Vector grads = new Vector(this.terms.size(), 0.0);
+
+        for (int i = 0; i < grads.size(); i++) {
+            grads.set(i, this.coeffGradient(i, data));
+        }
+
+        return grads;
+    }
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    @Override
+    public double coeffGradient(int i, Vector data){
+
+        return this.terms.get(i).coeffGradient(data.get(i));
+    }
+
+
+    /**
      * Returns the gradient with respect to the i-th coeff
      */
     @Override

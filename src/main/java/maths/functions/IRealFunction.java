@@ -18,4 +18,10 @@ public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
      * Set the coefficients of the function
      */
     void setCoeffs(double[] coeffs);
+
+    /**
+     * Set the coefficents of the function
+     */
+    default void setCoeffs(Vector coeffs){this.setCoeffs(coeffs.toArrary());}
+
 }

@@ -12,9 +12,19 @@ public interface IVectorRealFunction<VectorType> extends IRealFunction<VectorTyp
     Vector gradidents(Vector data);
 
     /**
-     * Returns the gradient with respect to the i-th coeff
+     * Compute the gradients with respect to the coefficients
+     */
+    Vector coeffGradients(Vector data);
+
+    /**
+     * Returns the gradient
      */
     double gradient(int i, Vector data);
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    double coeffGradient(int i, Vector data);
 
 
 }
