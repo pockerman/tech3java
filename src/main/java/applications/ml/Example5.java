@@ -38,7 +38,6 @@ public class Example5 {
         denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
 
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
-        MSEVectorFunction objective = new MSEVectorFunction(hypothesis);
 
         GDInput gdInput = new GDInput();
         gdInput.showIterations = true;

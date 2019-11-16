@@ -8,29 +8,20 @@ import maths.functions.LinearVectorPolynomial;
 /**
  * Linear regression modelling
  */
-public class LinearRegressor<DataSetType extends DenseMatrix > {
+public class LinearRegressor<DataSetType extends DenseMatrix > extends RegressorBase<DataSetType, LinearVectorPolynomial> {
 
     /**
      * Constructor
      */
     public LinearRegressor(int numFeatures){
-
-        this.polynomial = new LinearVectorPolynomial(numFeatures);
-    }
-
-    public void train(DataSetType dataSet, Vector y, ISupervisedOptimizer optimizer){
-        optimizer.optimize(dataSet, y, this.polynomial);
+        super(new LinearVectorPolynomial(numFeatures));
     }
 
     /**
-     * Predict the value for the given input
+     * Constructor
      */
-    public double predict(Vector y){
-        return this.polynomial.evaluate(y);
+    public LinearRegressor(LinearVectorPolynomial hypothesis){
+        super(hypothesis);
     }
 
-    /**
-     * The object that represents the linear polynomial
-     */
-    LinearVectorPolynomial polynomial;
 }

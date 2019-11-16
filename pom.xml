@@ -91,6 +91,5 @@
             <artifactId>deeplearning4j-core</artifactId>
             <version>1.0.0-beta5</version>
         </dependency>
-
     </dependencies>
 </project>

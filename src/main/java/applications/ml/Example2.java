@@ -1,15 +1,24 @@
 package applications.ml;
 
+import algorithms.optimizers.BatchGradientDescent;
+import algorithms.optimizers.GDInput;
+import algorithms.utils.DefaultIterativeAlgorithmController;
+import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
+import datastructs.maths.Vector;
+import maths.errorfunctions.MSEVectorFunction;
+import maths.functions.LinearVectorPolynomial;
+import ml.LinearRegressor;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
+import utils.TableDataSetLoader;
 
 import java.io.File;
 import java.io.IOException;
 
 /** Category: Machine Learning
  * ID: Example1
- * Description: Apply regression on an energy efficiency dataset
+ * Description: Using LinearRegressor class
  * Taken From:
  * Details:
  * Dataset taken from: https://archive.ics.uci.edu/ml/datasets/Energy+efficiency.
@@ -17,28 +26,32 @@ import java.io.IOException;
  */
 public class Example2 {
 
-    public static Table loadDataSet(File csvFile) throws IOException {
 
-        CsvReadOptions options = CsvReadOptions.builder(csvFile).missingValueIndicator("null").build();
-        Table dataSet = Table.read().usingOptions(options);
-        return dataSet;
-    }
+    public static void main(String[] args)throws IOException{
 
-    public static void main(String[] args){
+        // load the data
+        Table dataSet = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/car_plant.csv"));
 
-        try {
+        Vector labels = new Vector(dataSet, "Electricity Usage");
+        Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
 
-            // load the dataset
-            Table dataSet = Example2.loadDataSet(new File("src/main/resources/datasets/ENB2012_data.csv"));
-            System.out.println(dataSet.rowCount());
-            System.out.println(dataSet.columnCount());
+        DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 2, 1.0);
+        denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
 
-            //DenseMatrix denseMatrix = new DenseMatrix();
-            //denseMatrix.initializeFrom(dataSet);
-        }
-        catch(IOException e)
-        {
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
+        LinearRegressor regressor = new LinearRegressor(hypothesis);
 
-        }
+        GDInput gdInput = new GDInput();
+        gdInput.showIterations = true;
+        gdInput.eta=0.01;
+        gdInput.errF = new MSEVectorFunction(hypothesis);
+        gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
+
+        BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
+
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(denseMatrix, labels, gdSolver);
+
+        System.out.println(result);
+        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));
     }
 }
