@@ -1,6 +1,6 @@
 package algorithms.optimizers;
 
-import algorithms.IterativeAlgorithmResult;
+import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.IVectorRealFunction;

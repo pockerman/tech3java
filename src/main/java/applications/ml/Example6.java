@@ -1,6 +1,7 @@
 package applications.ml;
 
-import algorithms.IterativeAlgorithmResult;
+import algorithms.utils.DefaultIterativeAlgorithmController;
+import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrix;
@@ -72,10 +73,11 @@ public class Example6 {
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(2);
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
-        gdInput.numIterations = 10000;
+        //gdInput.numIterations = 10000;
         gdInput.eta=0.01;
-        gdInput.tolerance=1.0e-8;
+        //gdInput.tolerance=1.0e-8;
         gdInput.errF = new MSEVectorFunction(hypothesis);
+        gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 

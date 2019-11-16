@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.utils;
 
 public class AlgorithmInput {
 

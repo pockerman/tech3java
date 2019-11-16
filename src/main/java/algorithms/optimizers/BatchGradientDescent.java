@@ -1,9 +1,8 @@
 package algorithms.optimizers;
 
-import algorithms.IterativeAlgorithmResult;
+import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.IVectorErrorRealFunction;
 import maths.IVectorRealFunction;
 
 public class BatchGradientDescent implements ISupervisedOptimizer {
@@ -22,8 +21,6 @@ public class BatchGradientDescent implements ISupervisedOptimizer {
      */
     public IterativeAlgorithmResult optimize(final DenseMatrix data, final Vector y, IVectorRealFunction f){
 
-        IterativeAlgorithmResult reslt = new IterativeAlgorithmResult();
-        reslt.numThreadsUsed = 1;
 
         // compute the value of f with the current weights
         double jOld = this.input.errF.evaluate(data, y);
@@ -31,7 +28,7 @@ public class BatchGradientDescent implements ISupervisedOptimizer {
 
         Vector coeffs = f.getCoeffs();
 
-        for(int itr=0; itr<this.input.numIterations; ++itr){
+        while(this.input.iterationContorller.continueIterations()){
 
             //the gradients of the error function.
             Vector jGrads = this.input.errF.gradients(data, y);
@@ -43,28 +40,23 @@ public class BatchGradientDescent implements ISupervisedOptimizer {
 
             jCurr = this.input.errF.evaluate(data, y);
             double error = Math.abs(jOld-jCurr);
+            this.input.iterationContorller.updateResidual(error);
 
             if(this.input.showIterations){
 
-                System.out.println("BatchGD: iteration: "+itr);
+                System.out.println("BatchGD: iteration: "+this.input.iterationContorller.getCurrentIteration());
                 System.out.println("\tJold: "+jOld + " Jcur: " + jCurr);
                 System.out.println("\terror |Jcur-Jold|: "+ error);
-                System.out.println("\texit tolerance: "+this.input.tolerance);
-            }
-
-            reslt.numIterationsNeeded = itr + 1;
-            if(error < this.input.tolerance){
-                reslt.tolerance = error;
-                reslt.converged = true;
-                break;
+                System.out.println("\texit tolerance: "+this.input.iterationContorller.getExitTolerance());
             }
 
             jOld = jCurr;
             jGrads.zero();
         }
 
+        IterativeAlgorithmResult reslt = this.input.iterationContorller.getState();
+        reslt.numThreadsUsed = 1;
         return reslt;
-
     }
 
     GDInput input;
