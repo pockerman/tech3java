@@ -79,7 +79,6 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
         return data.get(i);
     }
 
-
     /**
      * Returns the coeff-th coefficient
      */
@@ -87,12 +86,6 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
         return this.coeffs.get(coeff);
     }
 
-    /**
-     * Zero the coefficients
-     */
-    public final void zeroCoeffs(){
-        coeffs.zero();
-    }
 
     /**
      * The coefficients of the vector

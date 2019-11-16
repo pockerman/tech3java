@@ -1,8 +1,9 @@
 package maths.functions;
 
+
 import datastructs.maths.Vector;
 
-public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
+public interface IScalarRealFunction extends IRealFunction<Double>  {
 
     /**
      * Returns the number of coefficients
@@ -17,5 +18,11 @@ public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
     /**
      * Set the coefficients of the function
      */
-    void setCoeffs(double[] coeffs);
+    void setCoeff(double coeff);
+
+    /**
+     * Returns the gradient with respect to the i-th coeff
+     */
+    double gradient(double data);
+
 }
