@@ -7,7 +7,7 @@ import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.LinearVectorPolynomial;
+import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
 import tech.tablesaw.api.Table;
 import utils.TableDataSetLoader;
@@ -42,9 +42,7 @@ public class Example5 {
 
         GDInput gdInput = new GDInput();
         gdInput.showIterations = true;
-        //gdInput.numIterations = 10000;
         gdInput.eta=0.01;
-        //gdInput.tolerance=1.0e-8;
         gdInput.errF = new MSEVectorFunction(hypothesis);
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 

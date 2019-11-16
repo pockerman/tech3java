@@ -2,8 +2,7 @@ package maths.errorfunctions;
 
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.IVectorErrorRealFunction;
-import maths.IVectorRealFunction;
+import maths.functions.IVectorRealFunction;
 
 /**
  * The Mean Square Error or MSE is defined as

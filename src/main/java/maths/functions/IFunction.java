@@ -1,4 +1,4 @@
-package maths;
+package maths.functions;
 
 public interface IFunction<InputType, OutputType> {
 

@@ -2,8 +2,7 @@ package algorithms.optimizers;
 
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.IVectorErrorRealFunction;
-import maths.IVectorRealFunction;
+import maths.functions.IVectorRealFunction;
 
 public interface ISupervisedOptimizer {
 

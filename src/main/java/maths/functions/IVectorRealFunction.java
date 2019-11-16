@@ -1,4 +1,4 @@
-package maths;
+package maths.functions;
 
 import datastructs.maths.Vector;
 

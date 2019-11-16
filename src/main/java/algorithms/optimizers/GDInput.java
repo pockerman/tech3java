@@ -1,8 +1,7 @@
 package algorithms.optimizers;
 
-import algorithms.utils.AlgorithmInput;
 import algorithms.utils.IterativAlgorithmController;
-import maths.IVectorErrorRealFunction;
+import maths.errorfunctions.IVectorErrorRealFunction;
 
 /**
  * Input class for Gradient Descent algorithm

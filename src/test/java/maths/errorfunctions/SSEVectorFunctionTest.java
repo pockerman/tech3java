@@ -1,11 +1,9 @@
 package maths.errorfunctions;
 
 import base.CommonConstants;
-import datastructs.adt.MatrixDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.IVectorRealFunction;
-import maths.LinearVectorPolynomial;
+import maths.functions.LinearVectorPolynomial;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

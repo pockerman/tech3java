@@ -1,4 +1,4 @@
-package maths;
+package maths.errorfunctions;
 
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;

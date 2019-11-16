@@ -3,8 +3,7 @@ package maths.errorfunctions;
 
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.IVectorErrorRealFunction;
-import maths.IVectorRealFunction;
+import maths.functions.IVectorRealFunction;
 
 /**
  * The Sum Square Error or SSE is defined as

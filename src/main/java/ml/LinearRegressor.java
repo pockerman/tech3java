@@ -3,7 +3,7 @@ package ml;
 import algorithms.optimizers.ISupervisedOptimizer;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.LinearVectorPolynomial;
+import maths.functions.LinearVectorPolynomial;
 
 /**
  * Linear regression modelling
