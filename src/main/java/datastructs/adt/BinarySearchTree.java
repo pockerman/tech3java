@@ -1,9 +1,6 @@
 package datastructs.adt;
 
-import utils.BSTInsertStratergy;
-import utils.IPredicate;
-import utils.TreeNode;
-import utils.TreeNodeCreator;
+import datastructs.adt.utils.BSTInsertStratergy;
 
 import java.util.Comparator;
 
@@ -26,18 +23,17 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
     @Override
     public  void push(E element){
 
-        if(super.root_ == null){
+        if(super.root == null){
 
             this.createRoot(element);
         }
         else {
 
-            boolean rslt = super.getInsertStrategy().insert(super.root_, super.root_, element, null);
+            boolean rslt = super.getInsertStrategy().insert(super.root, super.root, element, null);
 
             if(rslt) {
-                super.nNodes_++;
+                super.nNodes++;
             }
         }
-
     }
 }

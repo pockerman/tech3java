@@ -1,7 +1,7 @@
 package datastructs.adt;
 
 import org.junit.Test;
-import utils.TreeNode;
+import datastructs.adt.utils.TreeNode;
 
 import java.util.Comparator;
 import static org.junit.Assert.assertEquals;

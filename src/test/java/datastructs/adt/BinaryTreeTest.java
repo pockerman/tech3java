@@ -1,8 +1,8 @@
 package datastructs.adt;
 
-import utils.DfsInsertStrategy;
+import datastructs.adt.utils.DfsInsertStrategy;
 import org.junit.Test;
-import utils.TreeNode;
+import datastructs.adt.utils.TreeNode;
 
 import static junit.framework.Assert.*;
 

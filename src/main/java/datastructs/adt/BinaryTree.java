@@ -1,5 +1,8 @@
 package datastructs.adt;
 
+import datastructs.adt.utils.ITreeInsertStrategy;
+import datastructs.adt.utils.TreeNode;
+import datastructs.adt.utils.TreeNodeCreator;
 import utils.*;
 
 public class BinaryTree<E> extends Tree<E> {
@@ -18,13 +21,13 @@ public class BinaryTree<E> extends Tree<E> {
      */
     public  void push(E element){
 
-        if(super.root_ == null){
+        if(super.root == null){
 
            this.createRoot(element);
         }
         else {
 
-            boolean rslt = super.insertStrategy_.insert(super.root_, null, element, new IPredicate<TreeNode<E>>() {
+            boolean rslt = super.treeInsertStrategy.insert(super.root, null, element, new IPredicate<TreeNode<E>>() {
                 @Override
                 public boolean satisfies(TreeNode<E> data) {
                     return (data == null);
@@ -32,7 +35,7 @@ public class BinaryTree<E> extends Tree<E> {
             });
 
             if(rslt) {
-                super.nNodes_++;
+                super.nNodes++;
             }
         }
 
@@ -45,8 +48,8 @@ public class BinaryTree<E> extends Tree<E> {
     protected void createRoot(E element){
 
             TreeNodeCreator<E> creator = new TreeNodeCreator<>();
-            super.root_  = creator.create(element, null, 0, 2);
-            super.nNodes_++;
+            super.root = creator.create(element, null, 0, 2);
+            super.nNodes++;
     }
 
 
