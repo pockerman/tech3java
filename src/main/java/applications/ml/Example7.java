@@ -58,7 +58,7 @@ public class Example7 {
         IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(denseMatrix, labels, gdSolver);
 
         System.out.println(result);
-        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));
+        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope 1: "+hypothesis.getCoeff(1) + " slope 2"+hypothesis.getCoeff(2));
 
     }
 }

@@ -34,7 +34,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
         double rlst = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
-            Vector row = data.row(rowIdx);
+            Vector row = data.getRow(rowIdx);
             double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
             diff *= diff;
             rlst += diff;
@@ -53,7 +53,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
-            Vector row = data.row(rowIdx);
+            Vector row = data.getRow(rowIdx);
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 

@@ -14,6 +14,29 @@ import maths.functions.IVectorRealFunction;
  */
 public class SSEVectorFunction implements IVectorErrorRealFunction {
 
+    /**
+     * Compute the SSE error over the two vectors
+     */
+    static public double error(Vector y, Vector yhat){
+
+        if(y.size() != yhat.size()){
+            throw new IllegalArgumentException("Invalid size of vectors ");
+        }
+
+        double rlst = 0.0;
+
+        for(int i=0; i<y.size(); ++i){
+
+            double diff = y.get(i) - yhat.get(i);
+            diff *= diff;
+            rlst += diff;
+        }
+        return rlst;
+    }
+
+    /**
+     * Constructor
+     */
     public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
 
         if(hypothesis == null){
@@ -35,12 +58,13 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
         double rlst = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
-            Vector row = data.row(rowIdx);
+
+            Vector row = data.getRow(rowIdx);
             double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
             diff *= diff;
             rlst += diff;
         }
-        return rlst/data.m();
+        return rlst;
     }
 
     /**
@@ -54,7 +78,7 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
-            Vector row = data.row(rowIdx);
+            Vector row = data.getRow(rowIdx);
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 
