@@ -119,6 +119,9 @@ public class DenseMatrix {
         this.data.get(i).set(value);
     }
 
+    /**
+     * Set the c-th column from the DoubleColumn data
+     */
     public final void setColumn(int c, DoubleColumn col){
 
         if(col.size() != this.m()){
@@ -136,6 +139,9 @@ public class DenseMatrix {
         }
     }
 
+    /**
+     * Set the c-th column from the List data
+     */
     public final void setColumn(int c, List<Double> col){
 
         if(col.size() != this.m()){
@@ -171,7 +177,7 @@ public class DenseMatrix {
         return columnVals;
     }
 
-    public final Vector row(int r){
+    public final Vector getRow(int r){
 
         if( r >= m() || r < 0 ){
             throw new IllegalArgumentException("Invalid row index");

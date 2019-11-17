@@ -38,7 +38,7 @@ public class SSEVectorFunctionTest {
 
         double testError = 0.0;
         for(int rowIdx=0; rowIdx<dataSet.m(); ++rowIdx){
-            Vector row = dataSet.row(rowIdx);
+            Vector row = dataSet.getRow(rowIdx);
             double diff = labels.get(rowIdx) - hypothesis.evaluate(row);
             diff *= diff;
             testError += diff;

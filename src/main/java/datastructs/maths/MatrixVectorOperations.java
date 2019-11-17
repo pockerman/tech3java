@@ -18,7 +18,7 @@ public class MatrixVectorOperations {
         Vector rslt = new Vector(mat.m());
 
         for(int r=0; r<mat.m(); ++r){
-            Vector row = mat.row(r);
+            Vector row = mat.getRow(r);
             rslt.set(r, VectorOperations.dotProduct(row, x));
         }
 
