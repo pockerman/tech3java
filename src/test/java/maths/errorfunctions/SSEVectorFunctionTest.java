@@ -35,16 +35,8 @@ public class SSEVectorFunctionTest {
         DenseMatrix dataSet = new DenseMatrix(labels.size(), hypothesis.numCoeffs(), 1.0);
 
         double sseError = sseVectorFunction.evaluate(dataSet, labels);
-
-        double testError = 0.0;
-        for(int rowIdx=0; rowIdx<dataSet.m(); ++rowIdx){
-            Vector row = dataSet.getRow(rowIdx);
-            double diff = labels.get(rowIdx) - hypothesis.evaluate(row);
-            diff *= diff;
-            testError += diff;
-        }
-        
-        assertEquals(sseError, testError, CommonConstants.getTol());
+        double expected = 36.0;
+        assertEquals(sseError, expected, CommonConstants.getTol());
 
     }
 }
