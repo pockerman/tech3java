@@ -30,7 +30,7 @@ public class DefaultIterativeAlgorithmController implements IterativAlgorithmCon
         this.currentIterationIdx++;
         return true;
     }
-    
+
     /**
      * Returns the current iteration index
      */
