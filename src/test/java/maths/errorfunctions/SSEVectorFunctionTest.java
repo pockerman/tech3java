@@ -43,8 +43,7 @@ public class SSEVectorFunctionTest {
             diff *= diff;
             testError += diff;
         }
-
-        testError /= dataSet.m();
+        
         assertEquals(sseError, testError, CommonConstants.getTol());
 
     }
