@@ -88,7 +88,7 @@ public class ListUtils {
         Thread sum = new Thread(sumTask);
         sum.start();
 
-        SumSqrTask<List<Double>> sumSqrTask = new SumSqrTask(data);
+        SumSqrTask<List<Double>> sumSqrTask = new SumSqrTask(data, barrier);
         Thread sumSqr = new Thread(sumSqrTask);
         sumSqr.start();
 
