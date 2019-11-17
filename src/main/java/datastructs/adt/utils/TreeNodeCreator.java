@@ -1,4 +1,6 @@
-package utils;
+package datastructs.adt.utils;
+
+import datastructs.adt.utils.TreeNode;
 
 public class TreeNodeCreator<E> {
 

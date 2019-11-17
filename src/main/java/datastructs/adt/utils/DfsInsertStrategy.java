@@ -1,6 +1,7 @@
-package utils;
+package datastructs.adt.utils;
 
 
+import utils.*;
 
 public class DfsInsertStrategy<E> implements ITreeInsertStrategy<E> {
 

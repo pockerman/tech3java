@@ -19,8 +19,9 @@ public class AllDataStructsTestsRunner {
         ArrayQueueTestRunner.run(args);
         SingleLinkedListTestRunner.run(args);
         BinaryTreeTestRunner.run(args);
+        AVLTreeTestRunner.run(args);
         MatrixDataSetTestRunner.run(args);
-
+        RingBufferTestRunner.run(args);
     }
 
     public static void main(String[] args) {

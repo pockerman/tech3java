@@ -1,4 +1,4 @@
-package utils;
+package datastructs.adt.utils;
 
 import java.util.ArrayList;
 

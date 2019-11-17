@@ -1,4 +1,6 @@
-package utils;
+package datastructs.adt.utils;
+
+import utils.IPredicate;
 
 /**
  * Insertion strategy for trees
