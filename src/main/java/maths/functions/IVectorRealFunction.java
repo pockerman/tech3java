@@ -1,18 +1,10 @@
-package maths;
+package maths.functions;
 
 import datastructs.maths.Vector;
 
 public interface IVectorRealFunction<VectorType> extends IRealFunction<VectorType> {
 
-    /**
-     * Returns the number of coefficients
-     */
-    int numCoeffs();
 
-    /**
-     * Returns the coefficients of the vector function
-     */
-    Vector getCoeffs();
 
     /**
      * Returns the gradients with respect to the coefficients at the given data point
@@ -20,12 +12,19 @@ public interface IVectorRealFunction<VectorType> extends IRealFunction<VectorTyp
     Vector gradidents(Vector data);
 
     /**
-     * Returns the gradient with respect to the i-th coeff
+     * Compute the gradients with respect to the coefficients
+     */
+    Vector coeffGradients(Vector data);
+
+    /**
+     * Returns the gradient
      */
     double gradient(int i, Vector data);
 
     /**
-     * Set the coefficients of the function
+     * Returns the gradient with respect to the i-th coeff
      */
-    void setCoeffs(double[] coeffs);
+    double coeffGradient(int i, Vector data);
+
+
 }

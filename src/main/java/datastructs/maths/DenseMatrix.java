@@ -55,6 +55,10 @@ public class DenseMatrix {
         }
     }
 
+    /**
+     * Given the number of columns to include and the column indices
+     * create a submatrix that has all the rows and columns specified
+     */
     public final double[][] getSubMatrix(int numColsToInclude, int... includeCols){
 
         double[][] subMatix = new double[this.m()][numColsToInclude];
@@ -72,25 +76,28 @@ public class DenseMatrix {
     }
 
     /**
-     * Returns the diagonal of the matrix
-     * @return
+     * Given the number of columns to include and the column indices
+     * create a submatrix that has all the rows and columns specified
      */
-    public final Vector diagonal(){
+    public final void duplicateColumn(int column){
 
-        /*if(m() != n()){
-            throw new IllegalCallerException("Diagonal can only be computed for square matrices");
-        }*/
+        Vector col = getColumn(column);
 
-        Vector diag = new Vector(m(), 0.0);
+        for(int i=0; i<this.m(); ++i){
 
-        for(int i=0; i < m(); ++i){
+            Vector vec = this.data.get(i);
+            vec.resize(vec.size() + 1);
 
-            diag.set(i, this.data.get(i).get(i));
+            vec.set(vec.size()-1, col.get(i));
         }
-
-        return diag;
     }
 
+    /**
+     * Set the (i,j) entry of the matrix
+     * @param i
+     * @param j
+     * @param value
+     */
     public final void set(int i, int j, double value){
 
         if( i >= m() || i < 0 ){
@@ -144,6 +151,24 @@ public class DenseMatrix {
                 }
             }
         }
+    }
+
+    /**
+     * Returns a copy of the values of the column-th column
+     */
+    public final Vector getColumn(int column){
+
+        if(column <0 || column >= this.n()){
+            throw new IllegalArgumentException("Invalid column index: "+column+" should be in [0,"+this.n()+")");
+        }
+
+        Vector columnVals = new Vector(this.m(), 0.0);
+
+        for(int i=0; i<this.m(); ++i){
+            columnVals.set(i, this.data.get(i).get(column));
+        }
+
+        return columnVals;
     }
 
     public final Vector row(int r){

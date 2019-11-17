@@ -1,11 +1,12 @@
 package applications.ml;
 
-import algorithms.IterativeAlgorithmResult;
+import algorithms.utils.DefaultIterativeAlgorithmController;
+import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.LinearVectorPolynomial;
+import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import tech.tablesaw.api.DoubleColumn;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 /** Category: Machine Learning
- * ID: Example5
+ * ID: Example6
  * Description: Batch Gradient Descent with two features
  * Taken From:
  * Details:
@@ -72,13 +73,11 @@ public class Example6 {
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(2);
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
-        gdInput.numIterations = 10000;
         gdInput.eta=0.01;
-        gdInput.tolerance=1.0e-8;
         gdInput.errF = new MSEVectorFunction(hypothesis);
+        gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
-
         IterativeAlgorithmResult result = gdSolver.optimize(dataSet.first, dataSet.second, hypothesis);
 
         System.out.println(" ");

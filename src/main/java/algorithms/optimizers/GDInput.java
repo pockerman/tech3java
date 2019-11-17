@@ -1,12 +1,18 @@
 package algorithms.optimizers;
 
-import algorithms.AlgorithmInput;
-import maths.IVectorErrorRealFunction;
+import algorithms.utils.IterativAlgorithmController;
+import maths.errorfunctions.IVectorErrorRealFunction;
 
 /**
  * Input class for Gradient Descent algorithm
  */
-public class GDInput extends AlgorithmInput {
+public class GDInput{
+
+    /**
+     * Flag indicating if information messages should be printed
+     * as the algorithm executes
+     */
+    public boolean showIterations = true;
 
     /**
      * The learning rate used
@@ -23,4 +29,8 @@ public class GDInput extends AlgorithmInput {
      */
     public IVectorErrorRealFunction errF;
 
+    /**
+     * The class that controls the iterations of the algorithm
+     */
+    public IterativAlgorithmController iterationContorller;
 }

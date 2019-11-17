@@ -22,6 +22,18 @@ This is my  Java playground...
 - <a href="#">Example 5</a>: 1D Linear Regression
 - <a href="#">Example 7</a>: Almost sure convergence 
 
+### Machine Learning
+
+- <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
+- <a href="src/main/java/applications/ml/Example2.java">Example 2</a>: Using ```LinearRegressor``` class
+- <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Using Batch Gradient Descent with only one feature
+- <a href="src/main/java/applications/ml/Example6.java">Example 6</a>: Batch Gradient Descent with two features
+- <a href="src/main/java/applications/ml/Example7.java">Example 7</a>: Using ```NonLinearRegressor``` class 
+
+### Reinforcement Learning
+
+- <a href="src/main/java/applications/rl/Example1.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
+
 
 ### Estimation
 
@@ -34,15 +46,8 @@ This is my  Java playground...
 
 ### Control
 
-### Machine Learning
 
-- <a href="src/main/java/applications/ml/Example1.java">Example 1</a>: Classification with vanilla KNN algorithm
-- <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Using Batch Gradient Descent with only one feature
-- <a href="src/main/java/applications/ml/Example6.java">Example 6</a>: Batch Gradient Descent with two features 
 
-### Reinforcement Learning
-
-- <a href="src/main/java/applications/rl/Example1.java">Example 1</a>: Iterative Policy Evaluation applied on GridWorld
 
 ### Java Threads
 
