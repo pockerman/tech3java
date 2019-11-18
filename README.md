@@ -82,6 +82,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example18.java">Example 18</a>: Reverse single linked list in place
 - <a href="src/main/java/applications/algorithms/Example19.java">Example 19</a>: Find the binary representation of an integer
 - <a href="src/main/java/applications/algorithms/Example20.java">Example 20</a>: Given an array and a value remove all instances of that value in place and return the new array length
+- <a href="src/main/java/applications/algorithms/Example20.java">Example 21</a>: Merge two sorted linked lists
 
 ## Useful Links
 
