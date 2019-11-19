@@ -1,8 +1,6 @@
 package datastructs.maths;
 
-import utils.ListUtils;
-
-import static java.lang.StrictMath.sqrt;
+import utils.ListMaths;
 
 /**
  * Common operations on Vector
@@ -76,7 +74,7 @@ public class VectorOperations {
      * Computes the L1 norm of the vector
      */
     public static double l1Norm(final Vector v1){
-        return ListUtils.absSum(v1.getRawData());
+        return ListMaths.absSum(v1.getRawData());
     }
 
     /**
