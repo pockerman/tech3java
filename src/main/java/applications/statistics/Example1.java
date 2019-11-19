@@ -12,7 +12,7 @@ import maths.errorfunctions.SSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
 import ml.LinearRegressor;
 import tech.tablesaw.api.Table;
-import utils.ListUtils;
+import utils.ListMaths;
 import utils.TableDataSetLoader;
 
 import java.io.File;
@@ -56,7 +56,7 @@ public class Example1 {
 
         // let's see the max error over the dateset
         Vector errors = regressor.getErrors(denseMatrix, labels);
-        double maxError = ListUtils.max(errors.getRawData());
+        double maxError = ListMaths.max(errors.getRawData());
 
         System.out.println("Maximum error over dataset: "+maxError);
 
@@ -71,7 +71,7 @@ public class Example1 {
         System.out.println("Estimate of error variance: "+sseError/ (yhat.size()-2));
 
         // interval estimation
-        double Sxx = ListUtils.sxx(denseMatrix.getColumn(1).getRawData());
+        double Sxx = ListMaths.sxx(denseMatrix.getColumn(1).getRawData());
 
         System.out.println("Estimate of Sxx: "+Sxx);
 

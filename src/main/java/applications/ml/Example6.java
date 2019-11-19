@@ -33,13 +33,13 @@ public class Example6 {
         Table dataSet = TableDataSetLoader.loadDataSet(file);
 
         DoubleColumn y = dataSet.doubleColumn("Electricity Usage");
-        ListUtils.normalize(y);
+        ListMaths.normalize(y);
         Vector labels = new Vector(y);
 
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
-        ListUtils.normalize(reducedDataSet.doubleColumn(0));
+        ListMaths.normalize(reducedDataSet.doubleColumn(0));
         List<Double> coolingCol = ParseUtils.parseAsDouble(reducedDataSet.column(1));
-        ListUtils.normalize(coolingCol);
+        ListMaths.normalize(coolingCol);
 
         DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 3, 1.0);
         denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));

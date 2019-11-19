@@ -9,7 +9,7 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * Utilities for all classes that implement the List interface
  */
-public class ListUtils {
+public class ListMaths {
 
 
     /**
@@ -122,8 +122,8 @@ public class ListUtils {
      */
     public static void normalize(List<Double> data){
 
-       double min = ListUtils.min(data);
-       double max = ListUtils.max(data);
+       double min = ListMaths.min(data);
+       double max = ListMaths.max(data);
 
        for(int i=0; i<data.size(); ++i){
            double x = data.get(i);
@@ -137,12 +137,16 @@ public class ListUtils {
      */
     public static void normalize(DoubleColumn data){
 
-        double min = ListUtils.min(data.asList());
-        double max = ListUtils.max(data.asList());
+        double min = ListMaths.min(data.asList());
+        double max = ListMaths.max(data.asList());
 
         for(int i=0; i<data.size(); ++i){
             double x = data.get(i);
             data.set(i, (x-min)/(max - min));
         }
     }
+
+
+
+
 }
