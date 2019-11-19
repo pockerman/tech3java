@@ -1,5 +1,8 @@
 package datastructs.adt;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple implementation of unbounded single linked list
  */
@@ -258,6 +261,23 @@ public class SingleLinkedList<T> {
         }
 
         return null;
+    }
+
+    /**
+     * Return the items of the list as a List
+     */
+    public List<T> getAsList(){
+
+        List<T> list = new ArrayList<>();
+
+        Node current = head_.next;
+
+        while( current != null){
+            list.add(current.getData());
+            current = current.next;
+        }
+
+        return list;
     }
 
 
