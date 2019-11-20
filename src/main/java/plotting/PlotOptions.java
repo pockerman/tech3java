@@ -4,6 +4,6 @@ public class PlotOptions {
 
     public String plotTitle;
     public double smoothing;
-    public String xAxisName;
-    public String yAxisName;
+    public final String xAxisName = "X-Axis";
+    public final String yAxisName = "Y-Axis";
 }

@@ -11,6 +11,8 @@ import maths.errorfunctions.MSEVectorFunction;
 import maths.errorfunctions.SSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
 import ml.LinearRegressor;
+import plotting.PlotOptions;
+import plotting.PlotScatter;
 import tech.tablesaw.api.Table;
 import utils.ListMaths;
 import utils.TableDataSetLoader;
@@ -31,6 +33,11 @@ public class Example1 {
 
         // load the data
         Table dataSet = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/car_plant.csv"));
+
+        // let's plot the dataset
+        PlotOptions options = new PlotOptions();
+        options.plotTitle = "Production vs Electricity Usage";
+        PlotScatter.plot(options, dataSet, "Production", "Electricity Usage");
 
         Vector labels = new Vector(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
@@ -67,13 +74,31 @@ public class Example1 {
         Vector yhat = regressor.predict(denseMatrix);
 
         double sseError = SSEVectorFunction.error(labels, yhat);
-
-        System.out.println("Estimate of error variance: "+sseError/ (yhat.size()-2));
+        double sigma2_hat = sseError/ (yhat.size()-2);
+        System.out.println("Estimate of error variance: "+ sigma2_hat);
 
         // interval estimation
         double Sxx = ListMaths.sxx(denseMatrix.getColumn(1).getRawData());
-
         System.out.println("Estimate of Sxx: "+Sxx);
+
+        // standard error for the slope
+        double se_slope = Math.sqrt(sigma2_hat)/Math.sqrt(Sxx);
+        System.out.println("Standard error for the slope: "+se_slope);
+
+        // t-statistic
+        double t = hypothesis.getCoeff(1)/se_slope;
+        System.out.println("t-statistic: "+t);
+
+        //The two-sided p-value is calculated as
+        //p-value = 2 × P(X > 6.37) approx 0
+        //where the random variable X has a t-distribution with 10 degrees of freedom. This low p-value
+        //indicates that the null hypothesis is not plausible and so the slope parameter is known to be
+        //nonzero. In other words, it has been established that the distribution of electricity usage does
+        //depend on the level of production.
+
+        //The proportion of the total variability in the dependent variable y that is accounted for by
+        //the regression line is
+
 
     }
 }
