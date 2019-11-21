@@ -3,7 +3,7 @@ package applications.algorithms;
 import datastructs.adt.SingleLinkedList;
 
 /** Category: Algorithms
- * ID: Example21
+ * ID: Example23
  * Description: You're given the pointer to the head node of a sorted linked list, where the data in the nodes is in ascending order.
  *              Delete as few nodes as possible so that the list does not contain any value more than once.
  *
