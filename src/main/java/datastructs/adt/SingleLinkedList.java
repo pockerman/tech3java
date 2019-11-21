@@ -42,6 +42,12 @@ public class SingleLinkedList<T> {
         return head_.next;
     }
 
+    /**
+     * Returns the tail node of the list
+     */
+    public final Node tail(){
+        return this.tail_;
+    }
 
     /**
      * Removes the front node from the list and
@@ -206,12 +212,10 @@ public class SingleLinkedList<T> {
               break;
             }
 
-
             previous = current;
             current = current.next;
             counter++;
         }
-
 
     }
 
