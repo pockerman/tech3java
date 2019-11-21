@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CyclicBarrier;
 
-public abstract class TaskBase<T> implements Callable<Double>, Runnable{
+public abstract class TaskBase<T> implements Callable<T>, Runnable{
 
     /**
      * Constructor
@@ -20,6 +20,15 @@ public abstract class TaskBase<T> implements Callable<Double>, Runnable{
     protected TaskBase(){
         this.barrier = null;
         this.finished = false;
+    }
+
+
+    @Override
+    public  T call(){
+
+        this.run();
+        return this.result;
+
     }
 
     public void waitOnBarrier(){
@@ -44,6 +53,11 @@ public abstract class TaskBase<T> implements Callable<Double>, Runnable{
         return this.finished;
     }
 
+    public T getResult(){
+        return result;
+    }
+
     protected CyclicBarrier barrier;
     protected boolean finished;
+    protected T result;
 }
