@@ -85,6 +85,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example21.java">Example 21</a>: Merge two sorted linked lists
 - <a href="src/main/java/applications/algorithms/Example22.java">Example 22</a>: Print the value of a node in as singly linked list by counting backwards.
 - <a href="src/main/java/applications/algorithms/Example23.java">Example 23</a>: Delete duplicate elements in a sorted singly linked list
+- <a href="src/main/java/applications/algorithms/Example24.java">Example 24</a>: Detect cycle in a single linked list
 
 ## Useful Links
 
