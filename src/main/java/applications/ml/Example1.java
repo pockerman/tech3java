@@ -2,7 +2,7 @@ package applications.ml;
 
 import datastructs.adt.MatrixDataSet;
 import datastructs.adt.RowDataSet;
-import maths.EuclideanRowSetCalculator;
+import maths.EuclideanVectorCalculator;
 import ml.KNNClassifier;
 import utils.ClassificationVoter;
 
@@ -26,11 +26,11 @@ public class Example1 {
         dataSet.addColumns("X", "Y");
 
         KNNClassifier<MatrixDataSet<Double>,
-                EuclideanRowSetCalculator<Double>,
+                EuclideanVectorCalculator<Double>,
                 ClassificationVoter> classifier = new KNNClassifier<MatrixDataSet<Double>,
-                EuclideanRowSetCalculator<Double>, ClassificationVoter>(2, false);
+                EuclideanVectorCalculator<Double>, ClassificationVoter>(2, false);
 
-        classifier.setDistanceCalculator(new EuclideanRowSetCalculator<Double>());
+        classifier.setDistanceCalculator(new EuclideanVectorCalculator<Double>());
         classifier.setMajorityVoter(new ClassificationVoter());
 
 

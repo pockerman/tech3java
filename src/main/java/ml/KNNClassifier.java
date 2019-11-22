@@ -1,10 +1,8 @@
 package ml;
 
 import maths.DistanceCalculator;
-import parallel.partitioners.IPartitionePolicy;
-import parallel.tasks.TaskBase;
 import utils.ClassificationVoter;
-import datastructs.adt.IDataSetWrapper;
+import datastructs.interfaces.IDataSetWrapper;
 import utils.Pair;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package ml;
+package ml.regression;
 
 import datastructs.maths.DenseMatrix;
 import maths.functions.NonLinearVectorPolynomial;

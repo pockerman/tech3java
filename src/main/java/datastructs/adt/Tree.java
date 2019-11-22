@@ -3,6 +3,7 @@ package datastructs.adt;
 
 import datastructs.adt.utils.ITreeInsertStrategy;
 import datastructs.adt.utils.TreeNode;
+import datastructs.interfaces.IAdt;
 
 /**
  * Base class for trees

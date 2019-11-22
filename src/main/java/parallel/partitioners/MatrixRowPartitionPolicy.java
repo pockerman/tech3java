@@ -2,8 +2,14 @@ package parallel.partitioners;
 
 import java.util.List;
 
-public class MatrixRowPartitionPolicy implements IPartitionePolicy {
+public class MatrixRowPartitionPolicy implements IPartitionPolicy {
 
+    /**
+     * Constructor
+     */
+    public MatrixRowPartitionPolicy(List<List<Integer>> partitions){
+        this.partitions = partitions;
+    }
 
     /**
      * Set the partitions

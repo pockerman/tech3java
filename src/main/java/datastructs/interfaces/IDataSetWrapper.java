@@ -1,6 +1,6 @@
-package datastructs.adt;
+package datastructs.interfaces;
 
-import parallel.partitioners.IPartitionePolicy;
+import parallel.partitioners.IPartitionPolicy;
 
 public interface IDataSetWrapper<DataSetTyp> {
 
@@ -24,6 +24,6 @@ public interface IDataSetWrapper<DataSetTyp> {
     /**
      * Return the i-th partition of the dataset
      */
-    default IPartitionePolicy getPartitionPolicy(){return null;}
+    default IPartitionPolicy getPartitionPolicy(){return null;}
 
 }

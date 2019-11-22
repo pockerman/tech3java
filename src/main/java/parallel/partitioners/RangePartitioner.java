@@ -6,7 +6,7 @@ import java.util.List;
 public class RangePartitioner {
 
 
-    public static  List<List<Integer>> rangePartitioner(int start, int end, int nParts){
+    public static  List<List<Integer>> partition(int start, int end, int nParts){
 
         List<List<Integer>> partitions = new ArrayList<>();
 
@@ -37,6 +37,10 @@ public class RangePartitioner {
         }
 
         // collect what is left
+
+        while(partStart < end){
+            partitions.get(nParts - 1).add(partStart++);
+        }
 
         return partitions;
     }

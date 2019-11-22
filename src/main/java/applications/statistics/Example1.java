@@ -10,7 +10,7 @@ import datastructs.maths.Vector;
 import maths.errorfunctions.MSEVectorFunction;
 import maths.errorfunctions.SSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
-import ml.LinearRegressor;
+import ml.regression.LinearRegressor;
 import plotting.PlotOptions;
 import plotting.PlotScatter;
 import tech.tablesaw.api.Table;

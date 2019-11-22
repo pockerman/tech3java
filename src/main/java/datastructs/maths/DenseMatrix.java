@@ -1,6 +1,7 @@
 package datastructs.maths;
 
-import datastructs.adt.IDataSetWrapper;
+import datastructs.interfaces.IDataSetWrapper;
+import parallel.partitioners.IPartitionPolicy;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -17,7 +18,6 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
      * Constructor
      */
     public DenseMatrix(){
-
     }
 
     /**
@@ -248,5 +248,21 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
         }
     }
 
+    /**
+     * Set the partition policy for this matrix
+     */
+    public void setPartitionePolicy(IPartitionPolicy policy){
+        this.partitionePolicy = policy;
+    }
+
+    /**
+     * Returns the partiton policy
+     */
+    @Override
+    public IPartitionPolicy getPartitionPolicy(){
+        return this.partitionePolicy;
+    }
+
     private ArrayList<Vector> data = null;
+    IPartitionPolicy partitionePolicy = null;
 }

@@ -9,7 +9,7 @@ import datastructs.maths.Vector;
 import maths.errorfunctions.MSEVectorFunction;
 import maths.functions.NonLinearVectorPolynomial;
 import maths.functions.ScalarMonomial;
-import ml.NonLinearRegressor;
+import ml.regression.NonLinearRegressor;
 import tech.tablesaw.api.Table;
 import utils.TableDataSetLoader;
 

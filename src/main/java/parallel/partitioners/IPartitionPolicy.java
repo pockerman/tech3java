@@ -2,7 +2,7 @@ package parallel.partitioners;
 
 import java.util.List;
 
-public interface IPartitionePolicy {
+public interface IPartitionPolicy {
 
     /**
      * Returns the indices associted with the i-th partition

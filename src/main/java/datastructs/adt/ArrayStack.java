@@ -1,5 +1,7 @@
 package datastructs.adt;
 
+import datastructs.interfaces.IBoundedAdt;
+
 import java.util.ArrayList;
 
 /**
