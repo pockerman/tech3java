@@ -30,6 +30,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Using Batch Gradient Descent with only one feature
 - <a href="src/main/java/applications/ml/Example6.java">Example 6</a>: Batch Gradient Descent with two features
 - <a href="src/main/java/applications/ml/Example7.java">Example 7</a>: Using ```NonLinearRegressor``` class 
+- <a href="src/main/java/applications/ml/Example8.java">Example 8</a>: Using ```ThreadedKNNClassifier``` class 
 
 ### Reinforcement Learning
 
