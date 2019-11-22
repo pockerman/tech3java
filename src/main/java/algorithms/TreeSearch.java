@@ -1,7 +1,7 @@
 package algorithms;
 
 import datastructs.adt.utils.TreeNode;
-import utils.IPredicate;
+import utils.predicates.IPredicate;
 
 /**
  * Implements common tree search methods
