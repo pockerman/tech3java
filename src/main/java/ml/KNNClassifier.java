@@ -9,6 +9,7 @@ import utils.Pair;
 
 import java.util.*;
 
+
 /**
  * KNNClassifier performs classification using the KNN algorithm
  */
@@ -63,6 +64,7 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
         }
     }
 
+
     /**
      * Predict the class of the given data point
      */
@@ -106,81 +108,26 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
     }
 
 
-    public class KNNTask<PointType> extends TaskBase<List<Integer>>
-    {
-
-        public KNNTask(){
-            
-        }
-
-        @Override
-        public void run(){
-
-            // loop over the items in the dataset and compute distances
-            // we don't want to loop over all rows but only to the
-            // rows attached to the task. This is implicitly known
-            // by the partitioning of the data set
-            IPartitionePolicy partitionePolicy = this.dataSet.getPartitionPolicy();
-            List<Integer> rows = partitionePolicy.getParition(this.taskId);
-
-            for (int i = 0; i < rows.size(); i++) {
-
-                this.majority.addItem(rows.get(i), this.distanceCalculator.calculate(this.dataSet.getRow(rows.get(i)), point));
-            }
-
-            this.finished = true;
-
-            if(this.barrier != null){
-                this.waitOnBarrier();
-            }
-        }
-
-        /**
-         * The id of the task
-         */
-        int taskId;
-
-        /**
-         * The point type the task is working on
-         */
-        PointType point;
-
-        /**
-         * The dataset the task is working on
-         */
-        private DataSetType dataSet;
-
-        /**
-         * How to get the majority set
-         */
-        private VoterType majority;
-
-        /**
-         * The distance used
-         */
-        private DistanceType distanceCalculator;
-
-    }
 
     /**
      * Number of neighbors to consider
      */
-    private int k;
+    protected int k;
 
     /**
      * flag indicating whether the dataset should be fully copied
      */
-    boolean copyDataset;
+    protected boolean copyDataset;
 
     /**
      * The dataset
      */
-    DataSetType dataSet;
+    protected DataSetType dataSet;
 
     /**
      * The labels
      */
-    List labels;
+    protected List labels;
 
     /**
      * The distance used
