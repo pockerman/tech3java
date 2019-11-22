@@ -2,11 +2,11 @@ package ml;
 
 import maths.DistanceCalculator;
 import utils.ClassificationVoter;
-import utils.IDataSetWrapper;
-import utils.IVoter;
+import datastructs.interfaces.IDataSetWrapper;
 import utils.Pair;
 
 import java.util.*;
+
 
 /**
  * KNNClassifier performs classification using the KNN algorithm
@@ -62,6 +62,7 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
         }
     }
 
+
     /**
      * Predict the class of the given data point
      */
@@ -77,9 +78,14 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
 
         // loop over the items in the dataset and compute distances
         for (int i = 0; i < this.dataSet.nRows(); i++) {
-
             this.majorityVoter.addItem(i, this.distanceCalculator.calculate(this.dataSet.getRow(i), point));
         }
+
+
+        return this.getTopResult(); //maxEntry.getKey();
+    }
+
+    protected int getTopResult(){
 
         // get the top k results
         List<Pair<Integer, Double>> results = this.majorityVoter.getResult(this.k);
@@ -100,29 +106,31 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
 
         Map.Entry<Integer, Integer> maxEntry = Collections.max(idxMap.entrySet(),
                 (Map.Entry<Integer, Integer> e1, Map.Entry<Integer, Integer> e2) -> e1.getValue()
-                .compareTo(e2.getValue()));
+                        .compareTo(e2.getValue()));
+
         return maxEntry.getKey();
     }
+
 
     /**
      * Number of neighbors to consider
      */
-    private int k;
+    protected int k;
 
     /**
      * flag indicating whether the dataset should be fully copied
      */
-    boolean copyDataset;
+    protected boolean copyDataset;
 
     /**
      * The dataset
      */
-    DataSetType dataSet;
+    protected DataSetType dataSet;
 
     /**
      * The labels
      */
-    List labels;
+    protected List labels;
 
     /**
      * The distance used

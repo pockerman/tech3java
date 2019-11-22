@@ -1,8 +1,6 @@
-package ml;
+package ml.regression;
 
-import algorithms.optimizers.ISupervisedOptimizer;
 import datastructs.maths.DenseMatrix;
-import datastructs.maths.Vector;
 import maths.functions.LinearVectorPolynomial;
 
 /**

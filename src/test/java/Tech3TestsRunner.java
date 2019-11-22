@@ -1,5 +1,6 @@
 import datastructs.AllDataStructsTestsRunner;
 import maths.AllMathsTestRunner;
+import parallel.partitioners.RangePartitionerTestRunner;
 import utils.ListUtilsTestRunner;
 
 public class Tech3TestsRunner {
@@ -9,5 +10,6 @@ public class Tech3TestsRunner {
         AllDataStructsTestsRunner.run(args);
         AllMathsTestRunner.run(args);
         ListUtilsTestRunner.run(args);
+        RangePartitionerTestRunner.run(args);
     }
 }

@@ -14,12 +14,12 @@ public class PlotLine {
     public static void plotLine(PlotOptions options, DoubleColumn x, DoubleColumn y){
 
         Table table = Table.create(x, y);
-        Plot.show(LinePlot.create(options.plotTitle, table, options.xAxisName, options.yAxisName));
+        Plot.show(LinePlot.create(options.plotTitle, table, x.name(), y.name()));
     }
 
     public static Figure buildPlot(PlotOptions options, DoubleColumn x, DoubleColumn y){
 
         Table table = Table.create(x, y);
-        return LinePlot.create(options.plotTitle, table, options.xAxisName, options.yAxisName);
+        return LinePlot.create(options.plotTitle, table, x.name(), y.name());
     }
 }

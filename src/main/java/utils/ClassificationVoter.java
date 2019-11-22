@@ -23,6 +23,16 @@ public class ClassificationVoter implements IVoter<Integer, Double, List<Pair<In
         this.addItem(item, (Double) criterionType);
     }
 
+    /**
+     * Add a list of items T, U should be castable to Integer and Double respectively
+     */
+    public <T, U> void addItems(List<Pair<T, U>> items){
+
+        for (int i = 0; i < items.size(); i++) {
+            this.values.add((Pair<Integer, Double>)items.get(i));
+        }
+    }
+
     @Override
     public List<Pair<Integer, Double>> getResult(int max){
 

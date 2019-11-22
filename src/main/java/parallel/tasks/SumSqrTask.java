@@ -21,14 +21,6 @@ public class SumSqrTask<ContainerType extends List> extends TaskBase<Double> {
     }
 
     @Override
-    public  Double call(){
-
-        this.run();
-        return this.result;
-
-    }
-
-    @Override
     public void run(){
 
         for (Object item: this.data) {
@@ -47,7 +39,7 @@ public class SumSqrTask<ContainerType extends List> extends TaskBase<Double> {
         return this.result;
     }
 
-    private Double result;
+    //private Double result;
     private List data;
 
 }

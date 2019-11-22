@@ -1,4 +1,4 @@
-package datastructs.adt;
+package datastructs.interfaces;
 
 /**
  * Interface for Abstract Data Types

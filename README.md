@@ -16,7 +16,7 @@ This is my  Java playground...
 ### Statistics
 
 - <a href="#">Example 1</a>: Goodness of fit for linear regression
-- <a href="#">Example 2</a>: Compute basic statistics using NumPy
+- <a href="#">Example 2</a>: Compute basic statistics
 - <a href="#">Example 3</a>: Compute the mean, standard deviation and correlation of two variables
 - <a href="#">Example 4</a>: Vanilla bootstrap for the mean
 - <a href="#">Example 5</a>: Vanilla bootstrap for skewness
@@ -30,6 +30,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/ml/Example5.java">Example 5</a>: Using Batch Gradient Descent with only one feature
 - <a href="src/main/java/applications/ml/Example6.java">Example 6</a>: Batch Gradient Descent with two features
 - <a href="src/main/java/applications/ml/Example7.java">Example 7</a>: Using ```NonLinearRegressor``` class 
+- <a href="src/main/java/applications/ml/Example8.java">Example 8</a>: Using ```ThreadedKNNClassifier``` class 
 
 ### Reinforcement Learning
 

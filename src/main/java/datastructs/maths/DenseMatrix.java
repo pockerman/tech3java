@@ -1,5 +1,7 @@
 package datastructs.maths;
 
+import datastructs.interfaces.IDataSetWrapper;
+import parallel.partitioners.IPartitionPolicy;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -10,21 +12,50 @@ import java.util.List;
 /**
  * Represents a dense matrix
  */
-public class DenseMatrix {
+public class DenseMatrix implements IDataSetWrapper<Vector> {
 
+    /**
+     * Constructor
+     */
     public DenseMatrix(){
-
     }
 
+    /**
+     * Constructor
+     */
     public DenseMatrix(int m, int n, double val){
 
         this.create(m ,n, val);
     }
 
     /**
+     * Copy constructors
+     */
+    public DenseMatrix( final DenseMatrix other){
+        this.initializeFrom(other);
+    }
+
+    /**
+     * Copy this matrix
+     */
+    @Override
+    public IDataSetWrapper<Vector> copy(){
+
+        return new DenseMatrix(this);
+    }
+
+    /**
      * Rerturns the number of rows
      */
     public final int m(){return this.data.size();}
+
+    /**
+     * How many rows the dataset has
+     */
+    @Override
+    public int nRows(){
+        return this.m();
+    }
 
     /**
      * Returns the number of columns
@@ -52,6 +83,25 @@ public class DenseMatrix {
             Vector vecRow = new Vector(row.columnCount());
             vecRow.set(row);
             this.set(rowCounter++, vecRow);
+        }
+    }
+
+    /**
+     * Initialize the matrix from the given DenseMatrix
+     */
+    public void initializeFrom(final DenseMatrix other){
+
+        if(other == null){
+            throw new IllegalArgumentException("Input DenseMatrix should not be null");
+        }
+
+        this.create(other.m(), other.n(), 0.0);
+        for (int rowIdx = 0; rowIdx < other.m(); rowIdx++) {
+
+
+            Vector vecRow = new Vector(other.n());
+            vecRow.set(other.getRow(rowIdx));
+            this.set(rowIdx, vecRow);
         }
     }
 
@@ -94,9 +144,6 @@ public class DenseMatrix {
 
     /**
      * Set the (i,j) entry of the matrix
-     * @param i
-     * @param j
-     * @param value
      */
     public final void set(int i, int j, double value){
 
@@ -201,5 +248,21 @@ public class DenseMatrix {
         }
     }
 
+    /**
+     * Set the partition policy for this matrix
+     */
+    public void setPartitionePolicy(IPartitionPolicy policy){
+        this.partitionePolicy = policy;
+    }
+
+    /**
+     * Returns the partiton policy
+     */
+    @Override
+    public IPartitionPolicy getPartitionPolicy(){
+        return this.partitionePolicy;
+    }
+
     private ArrayList<Vector> data = null;
+    IPartitionPolicy partitionePolicy = null;
 }

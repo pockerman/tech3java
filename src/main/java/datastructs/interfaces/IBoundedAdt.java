@@ -1,4 +1,6 @@
-package datastructs.adt;
+package datastructs.interfaces;
+
+import datastructs.interfaces.IAdt;
 
 public interface IBoundedAdt<E> extends IAdt<E> {
 

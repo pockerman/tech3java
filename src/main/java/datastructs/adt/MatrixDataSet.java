@@ -1,6 +1,6 @@
 package datastructs.adt;
 
-import utils.IDataSetWrapper;
+import datastructs.interfaces.IDataSetWrapper;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ import java.util.*;
  * the columns for the dataset
  */
 public class MatrixDataSet<T> implements Iterable<RowDataSet<T>>,
-                                         IDataSetWrapper<RowDataSet<T>>
+        IDataSetWrapper<RowDataSet<T>>
 {
 
     public MatrixDataSet(String name){

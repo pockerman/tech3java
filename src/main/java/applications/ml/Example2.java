@@ -8,9 +8,8 @@ import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.errorfunctions.MSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
-import ml.LinearRegressor;
+import ml.regression.LinearRegressor;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.io.csv.CsvReadOptions;
 import utils.TableDataSetLoader;
 
 import java.io.File;

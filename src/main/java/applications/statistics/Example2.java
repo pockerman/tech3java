@@ -16,7 +16,7 @@ import java.util.Properties;
 
 /** Category: Statistics
  * ID: Example2
- * Description: Scatter plot with Python's matplotlib
+ * Description: Scatter plot
  * Taken From:
  * Details:
  * TODO
@@ -35,8 +35,6 @@ public class Example2 {
 
         PlotOptions options = new PlotOptions();
         options.plotTitle = "Sepal Length vs Width";
-        options.xAxisName = "Sepal Length (cm)";
-        options.yAxisName = "Sepal Width (cm)";
 
         Figure scatter = PlotScatter.buildPlot(options, sepalLength, sepalWidth);
 
@@ -47,8 +45,7 @@ public class Example2 {
 
         PlotOptions petalOptions = new PlotOptions();
         petalOptions.plotTitle = "Petal Length vs Width";
-        petalOptions.xAxisName = "Petal Length (cm)";
-        petalOptions.yAxisName = "Petal Width (cm)";
+
 
         Figure line = PlotLine.buildPlot(petalOptions, x, y);
 

@@ -1,6 +1,7 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import datastructs.interfaces.IVector;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -12,7 +13,7 @@ import java.util.List;
  * Implements a Vector class in the mathematical sense
  */
 
-public class Vector {
+public class Vector implements IVector<Double> {
 
 
     /**
@@ -23,6 +24,8 @@ public class Vector {
         this.data = new ArrayList<Double>(10);
     }
 
+    /**
+
 
     /**
      * Creates a vector of given size with entries initialized to val
@@ -30,6 +33,17 @@ public class Vector {
     public Vector(int size, double val){
 
         create(size, val);
+    }
+
+    /**
+     * Creat a vector from the given double values
+     */
+    public Vector(Double... data){
+        this.data = new ArrayList<>();
+
+        for(double val: data){
+            this.data.add(val);
+        }
     }
 
 
@@ -49,16 +63,28 @@ public class Vector {
         this.set(data);
     }
 
-
+    /**
+     * Create from the given Table and the given column name
+     */
     public Vector(Table table, String columnName){
         this(table.doubleColumn(columnName));
     }
 
+    /**
+     * Create a vector from the given DoubleColumn
+     */
     public Vector(DoubleColumn column){
         this.create(column.size(), 0.0);
         this.set(column);
     }
 
+    /**
+     * Returns true if the vector is empty
+     */
+    @Override
+    public boolean empty(){
+        return this.data.isEmpty();
+    }
 
     /**
       * Resize the vector
@@ -100,6 +126,17 @@ public class Vector {
         }
     }
 
+    /**
+     * Push a new element in the ADT. This should throw
+     */
+    @Override
+    public void push(Double element){
+    }
+
+    /**
+     * Returns the size of the vector
+     */
+    @Override
     public final int size(){
 
         if(data == null){
@@ -110,6 +147,9 @@ public class Vector {
     }
 
 
+    /**
+     * Zero all the entries in the dataset
+     */
     public final void zero(){
 
         if(this.data == null){
@@ -131,6 +171,7 @@ public class Vector {
     /**
      * Returns the i-th entry of the Vector
      */
+    @Override
     public final Double get(int i){
         return this.data.get(i);
     }
@@ -222,8 +263,6 @@ public class Vector {
         }
     }
 
-
-
     /**
      * operation +=
      */
@@ -248,7 +287,6 @@ public class Vector {
 
     /**
      * Returns the raw data structure that holds the elements of the Vector
-     * @return
      */
     public final ArrayList<Double> getRawData(){return this.data;}
 
@@ -267,5 +305,15 @@ public class Vector {
         }
     }
 
+    /**
+     * Returns true if the given value is contained in the vector
+     */
+    public boolean contains(double val){
+        return this.data.contains(val);
+    }
+
+    /**
+     * The vector data
+     */
     private ArrayList<Double> data = null;
 }

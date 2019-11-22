@@ -11,13 +11,18 @@ public class PlotScatter {
     public static void plot(PlotOptions options, DoubleColumn x, DoubleColumn y){
 
         Table table = Table.create(x, y);
-        Plot.show(ScatterPlot.create(options.plotTitle, table, options.xAxisName, options.yAxisName));
+        Plot.show(ScatterPlot.create(options.plotTitle, table, x.name(), y.name()));
+    }
+
+    public static void plot(PlotOptions options,Table table, String xAxis, String yAxis){
+
+        Plot.show(ScatterPlot.create(options.plotTitle, table, xAxis, yAxis));
     }
 
     public static Figure buildPlot(PlotOptions options, DoubleColumn x, DoubleColumn y){
 
         Table table = Table.create(x, y);
-        return ScatterPlot.create(options.plotTitle, table, options.xAxisName, options.yAxisName);
+        return ScatterPlot.create(options.plotTitle, table, x.name(), y.name());
     }
 
 }
