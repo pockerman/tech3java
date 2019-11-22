@@ -6,12 +6,10 @@ import parallel.partitioners.IPartitionePolicy;
 import parallel.tasks.TaskBase;
 import utils.ClassificationVoter;
 import utils.Pair;
+import utils.PairBuilder;
 
 import java.util.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class ThreadedKNNClassifier<DataSetType extends IDataSetWrapper,
                                    DistanceType extends DistanceCalculator,
@@ -23,11 +21,11 @@ public class ThreadedKNNClassifier<DataSetType extends IDataSetWrapper,
     public ThreadedKNNClassifier(int k, boolean copyDataset, ExecutorService executorService){
         super(k, copyDataset);
         this.executorService = executorService;
-
     }
 
     /**
-     * Predict the class of the given data point
+     * Predict the class of the given data point. This class blocks until all
+     * computations are completed
      */
 
     @Override
@@ -41,35 +39,67 @@ public class ThreadedKNNClassifier<DataSetType extends IDataSetWrapper,
             throw new IllegalStateException("Distance calculator has not been set");
         }
 
+        if(this.dataSet.getPartitionPolicy().numPartitions() == 0){
+            throw new IllegalStateException("Dataset does not have partitions set");
+        }
+
         if(this.tasks.size() != this.dataSet.getPartitionPolicy().numPartitions()) {
 
             // generate tasks as many as the partitions of the dataset
             this.tasks = new ArrayList<>(this.dataSet.getPartitionPolicy().numPartitions());
         }
 
-        List<Future<Integer>> futures = new ArrayList<>();
+        CountDownLatch countDownLatch = new CountDownLatch(this.tasks.size());
 
         // let's create the tasks and add them to the List
         for (int i = 0; i < this.dataSet.getPartitionPolicy().numPartitions(); i++) {
-
-            this.tasks.add(new KNNTask<PointType>());
-            futures.add( this.executorService.submit((Callable<Integer>)tasks.get(i)));
+            this.tasks.add(new KNNTask<PointType>(i, this.dataSet, this.distanceCalculator, countDownLatch));
         }
 
-        CompletableFuture.allOf(futures.get(0), futures.get(0) );
+        // the main thread waits here
+        try {
+            countDownLatch.await();
+        }
+        catch(InterruptedException e){
+        }
+
+        // all tasks have finished let's collect the distances
+        for (int t = 0; t < this.tasks.size(); t++) {
+
+            List<Pair<Integer, Object>> taskResult = ((KNNTask<PointType>)this.tasks.get(t)).getResult();
+            this.majorityVoter.addItems(taskResult);
+        }
+
+        return this.getTopResult();
     }
 
+    /**
+     * The object responsible for executing the KNN
+     */
     private ExecutorService executorService;
+
+    /**
+     * Private list that holds the tasks to submit
+     */
+    private List<KNNTask> tasks;
 
     /**
      * The class that represents the task to submit to the executor
      *
      */
-    private class KNNTask<PointType> extends TaskBase<List<Integer>>
+    private class KNNTask<PointType> extends TaskBase<List<Pair<Integer, Object>>>
     {
 
-        public KNNTask(){
+        /**
+         * Constructor
+         */
+        public KNNTask(int taskId, DataSetType dataSet, DistanceType distanceCalculator, CountDownLatch countDownLatch){
 
+            this.setTaskId(taskId);
+            this.setResult(new ArrayList<Pair<Integer, Object>>());
+            this.dataSet = dataSet;
+            this.distanceCalculator = distanceCalculator;
+            this.countDownLatch = countDownLatch;
         }
 
         @Override
@@ -80,24 +110,19 @@ public class ThreadedKNNClassifier<DataSetType extends IDataSetWrapper,
             // rows attached to the task. This is implicitly known
             // by the partitioning of the data set
             IPartitionePolicy partitionePolicy = this.dataSet.getPartitionPolicy();
-            List<Integer> rows = partitionePolicy.getParition(this.taskId);
+            List<Integer> rows = partitionePolicy.getParition(this.getTaskId());
+            List<Pair<Integer, Object>> result = this.getResult();
 
             for (int i = 0; i < rows.size(); i++) {
 
-                this.majority.addItem(rows.get(i), this.distanceCalculator.calculate(this.dataSet.getRow(rows.get(i)), point));
+                result.add(PairBuilder.makePair(rows.get(i),
+                            this.distanceCalculator.calculate(this.dataSet.getRow(rows.get(i)), point)));
             }
 
-            this.finished = true;
-
-            if(this.barrier != null){
-                this.waitOnBarrier();
-            }
+            this.setFinished( true );
+            this.countDownLatch.countDown();
         }
 
-        /**
-         * The id of the task
-         */
-        int taskId;
 
         /**
          * The point type the task is working on
@@ -110,21 +135,14 @@ public class ThreadedKNNClassifier<DataSetType extends IDataSetWrapper,
         private DataSetType dataSet;
 
         /**
-         * How to get the majority set
-         */
-        private VoterType majority;
-
-        /**
          * The distance used
          */
         private DistanceType distanceCalculator;
 
+        /**
+         * Each task counts down this latch when finished
+         */
+        CountDownLatch countDownLatch;
     }
-
-
-    /**
-     * Private list that holds the tasks to submit
-     */
-    List<KNNTask> tasks;
 
 }
