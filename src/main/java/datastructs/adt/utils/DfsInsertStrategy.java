@@ -2,6 +2,7 @@ package datastructs.adt.utils;
 
 
 import utils.*;
+import utils.predicates.IPredicate;
 
 public class DfsInsertStrategy<E> implements ITreeInsertStrategy<E> {
 

@@ -1,6 +1,6 @@
 package datastructs.adt.utils;
 
-import utils.IPredicate;
+import utils.predicates.IPredicate;
 
 import java.util.Comparator;
 
@@ -27,12 +27,25 @@ public class BSTInsertStratergy<E> implements ITreeInsertStrategy<E> {
 
         if(comparator.compare(data, parent.getData()) == 1){
 
-            parent.setChild(1 , new TreeNode<>(data, parent, 2));
-            return true;
+            if(insertPosPredicate.satisfies(parent.getChild(1))){
+                parent.setChild(1 , new TreeNode<>(data, parent, 2));
+                return true;
+            }
+            else{
+                return insert(root, parent.getChild(1), data, insertPosPredicate);
+            }
+
         }
         else if(comparator.compare(data, parent.getData() ) == -1){
-            parent.setChild(0 , new TreeNode<>(data, parent, 2));
-            return true;
+
+
+            if(insertPosPredicate.satisfies(parent.getChild(0))) {
+                parent.setChild(0, new TreeNode<>(data, parent, 2));
+                return true;
+            }
+            else{
+                return insert(root, parent.getChild(0), data, insertPosPredicate);
+            }
         }
 
         return false;

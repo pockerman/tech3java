@@ -29,7 +29,6 @@ public class AVLTreeTest {
      * Expected Output: AVL property should be restored with single rotatio
      */
     @Test
-    @Ignore
     public void testSingleRotation(){
 
         AVLTree<Integer> tree = new AVLTree<Integer>(AVLTreeTest.getComparator(), new AVLTreeBalancer());
