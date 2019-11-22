@@ -3,7 +3,8 @@ package datastructs.adt;
 import datastructs.adt.utils.ITreeInsertStrategy;
 import datastructs.adt.utils.TreeNode;
 import datastructs.adt.utils.TreeNodeCreator;
-import utils.*;
+import utils.predicates.IPredicate;
+import utils.predicates.IsNull;
 
 public class BinaryTree<E> extends Tree<E> {
 
@@ -27,12 +28,7 @@ public class BinaryTree<E> extends Tree<E> {
         }
         else {
 
-            boolean rslt = super.treeInsertStrategy.insert(super.root, null, element, new IPredicate<TreeNode<E>>() {
-                @Override
-                public boolean satisfies(TreeNode<E> data) {
-                    return (data == null);
-                }
-            });
+            boolean rslt = super.treeInsertStrategy.insert(super.root, null, element, new IsNull<TreeNode<E>>());
 
             if(rslt) {
                 super.nNodes++;

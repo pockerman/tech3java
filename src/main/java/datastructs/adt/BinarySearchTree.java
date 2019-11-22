@@ -1,6 +1,8 @@
 package datastructs.adt;
 
 import datastructs.adt.utils.BSTInsertStratergy;
+import datastructs.adt.utils.TreeNode;
+import utils.predicates.IsNull;
 
 import java.util.Comparator;
 
@@ -10,7 +12,7 @@ import java.util.Comparator;
 public class BinarySearchTree<E> extends BinaryTree<E> {
 
     /**
-     * Constructor
+     * Constructor. Create a BST by using Breadth First Search strategy
      */
     BinarySearchTree(Comparator<E> comparator){
         super(new BSTInsertStratergy(comparator));
@@ -29,7 +31,7 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
         }
         else {
 
-            boolean rslt = super.getInsertStrategy().insert(super.root, super.root, element, null);
+            boolean rslt = super.getInsertStrategy().insert(super.root, super.root, element, new IsNull<TreeNode<E>>());
 
             if(rslt) {
                 super.nNodes++;
