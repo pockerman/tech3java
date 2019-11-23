@@ -1,8 +1,8 @@
-package ml;
+package ml.classifiers;
 
 import maths.DistanceCalculator;
 import utils.ClassificationVoter;
-import datastructs.interfaces.IDataSetWrapper;
+import datastructs.interfaces.I2DDataSet;
 import utils.Pair;
 
 import java.util.*;
@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * KNNClassifier performs classification using the KNN algorithm
  */
-public class KNNClassifier<DataSetType extends IDataSetWrapper,
+public class KNNClassifier<DataSetType extends I2DDataSet,
                            DistanceType extends DistanceCalculator,
                            VoterType extends ClassificationVoter> {
 
@@ -77,7 +77,7 @@ public class KNNClassifier<DataSetType extends IDataSetWrapper,
         }
 
         // loop over the items in the dataset and compute distances
-        for (int i = 0; i < this.dataSet.nRows(); i++) {
+        for (int i = 0; i < this.dataSet.m(); i++) {
             this.majorityVoter.addItem(i, this.distanceCalculator.calculate(this.dataSet.getRow(i), point));
         }
 

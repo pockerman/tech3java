@@ -1,18 +1,17 @@
 package datastructs.maths;
 
-import datastructs.interfaces.IDataSetWrapper;
+import datastructs.interfaces.I2DDataSet;
 import parallel.partitioners.IPartitionPolicy;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a dense matrix
  */
-public class DenseMatrix implements IDataSetWrapper<Vector> {
+public class DenseMatrix implements I2DDataSet<Vector> {
 
     /**
      * Constructor
@@ -29,6 +28,13 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
     }
 
     /**
+     * Constructor
+     */
+    public DenseMatrix(Table data){
+        this.initializeFrom(data);
+    }
+
+    /**
      * Copy constructors
      */
     public DenseMatrix( final DenseMatrix other){
@@ -39,27 +45,32 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
      * Copy this matrix
      */
     @Override
-    public IDataSetWrapper<Vector> copy(){
+    public I2DDataSet<Vector> copy(){
 
         return new DenseMatrix(this);
     }
 
     /**
-     * Rerturns the number of rows
+     * Create a new matrix
      */
-    public final int m(){return this.data.size();}
+    @Override
+    public I2DDataSet<Vector> create(int m, int n){
+
+        DenseMatrix matrix = new DenseMatrix();
+        matrix.create(m, n, 0.0);
+        return matrix;
+    }
 
     /**
      * How many rows the dataset has
      */
     @Override
-    public int nRows(){
-        return this.m();
-    }
+    public final int m(){return this.data.size();}
 
     /**
-     * Returns the number of columns
+     * How many columns the dataset has
      */
+    @Override
     public final int n(){return this.data.get(0).size();}
 
     /**
@@ -158,12 +169,28 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
         this.data.get(i).set(j, value);
     }
 
+    /**
+     * Set the i-th row
+     */
     public final void set(int i, Vector value){
 
         if( i >= m() || i < 0 ){
             throw new IllegalArgumentException("Invalid row index");
         }
+
+        if(value.size() != this.n()){
+            throw new IllegalArgumentException("Invalid number of columns");
+        }
+
         this.data.get(i).set(value);
+    }
+
+    /**
+     * Set the i-th row
+     */
+    public final void set(int i, Double... value){
+
+       this.set(i, new Vector(value));
     }
 
     /**
@@ -249,9 +276,26 @@ public class DenseMatrix implements IDataSetWrapper<Vector> {
     }
 
     /**
+     * Exchange the i-th row with the j-th row
+     */
+    @Override
+    public void excahngeRows(int i, int k){
+
+        if( (i>=this.m() || k>=this.m()) || (i < 0 || k < 0)){
+            throw new IllegalArgumentException("Invalid row index given");
+        }
+
+        // exchange
+        Vector tmp = this.data.get(i);
+        Vector next = this.data.get(k);
+        this.data.set(i, next);
+        this.data.set(k, tmp);
+    }
+
+    /**
      * Set the partition policy for this matrix
      */
-    public void setPartitionePolicy(IPartitionPolicy policy){
+    public void setPartitionPolicy(IPartitionPolicy policy){
         this.partitionePolicy = policy;
     }
 

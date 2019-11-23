@@ -46,7 +46,6 @@ public class Vector implements IVector<Double> {
         }
     }
 
-
     /**
      * Creates a vector of given size with entries initialized to 0.0
      */
@@ -87,8 +86,17 @@ public class Vector implements IVector<Double> {
     }
 
     /**
+     * Build a new instance of this class
+     */
+    @Override
+    public IVector<Double> create(int size){
+        return new Vector(size, 0.0);
+    }
+
+    /**
       * Resize the vector
      */
+    @Override
     public final void resize(int size){
 
         if(data == null){
@@ -124,6 +132,21 @@ public class Vector implements IVector<Double> {
 
             this.data = newVec;
         }
+    }
+
+    /**
+     * Exchange the i-th entry with the j-th
+     */
+    @Override
+    public void excahnge(int i, int k){
+
+        if( (i>=this.size() || k>=this.size()) || (i < 0 || k < 0)){
+            throw new IllegalArgumentException("Invalid entry index given");
+        }
+
+        Double tmp = this.data.get(i);
+        this.data.set(i, this.data.get(k));
+        this.data.set(k, tmp);
     }
 
     /**
@@ -174,6 +197,14 @@ public class Vector implements IVector<Double> {
     @Override
     public final Double get(int i){
         return this.data.get(i);
+    }
+
+    /**
+     * Set the i-th entry to val
+     */
+    @Override
+    public final void set(int i, Double val){
+        this.set(i, val.doubleValue());
     }
 
     /**
