@@ -3,7 +3,7 @@ package applications.ml;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.EuclideanVectorCalculator;
-import ml.ThreadedKNNClassifier;
+import ml.classifiers.ThreadedKNNClassifier;
 import parallel.partitioners.MatrixRowPartitionPolicy;
 import parallel.partitioners.RangePartitioner;
 import tech.tablesaw.api.Table;
@@ -68,7 +68,7 @@ public class Example8 {
         List<List<Integer>> partitions = RangePartitioner.partition(0, dataSet.m(), 4);
 
         MatrixRowPartitionPolicy partitionPolicy = new MatrixRowPartitionPolicy(partitions);
-        dataSet.setPartitionePolicy(partitionPolicy);
+        dataSet.setPartitionPolicy(partitionPolicy);
 
         return PairBuilder.makePair(dataSet, labels);
     }
