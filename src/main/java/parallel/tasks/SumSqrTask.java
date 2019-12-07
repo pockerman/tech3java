@@ -10,14 +10,12 @@ public class SumSqrTask<ContainerType extends List> extends TaskBase<Double> {
         super();
         this.data = data;
         this.result = 0.0;
-
     }
 
     public SumSqrTask(final List data, CyclicBarrier barrier){
         super(barrier);
         this.data = data;
         this.result = 0.0;
-
     }
 
     @Override
@@ -35,8 +33,15 @@ public class SumSqrTask<ContainerType extends List> extends TaskBase<Double> {
         }
     }
 
+    /**
+     * Returns the result computed by the task
+     */
     public Double getResult(){
         return this.result;
+    }
+
+    protected List getData(){
+        return  this.data;
     }
 
     //private Double result;

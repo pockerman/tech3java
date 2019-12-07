@@ -96,8 +96,19 @@ public class Example1 {
         //nonzero. In other words, it has been established that the distribution of electricity usage does
         //depend on the level of production.
 
-        //The proportion of the total variability in the dependent variable y that is accounted for by
-        //the regression line is
+        // The proportion of the total variability in the dependent variable y that is accounted for by
+        // the regression line is given by the coefficient of determination.
+        // This coefficient takes a value between 0 and 1, and the closer it is to one the smaller is the
+        // sum of squares for error SSE in relation to
+        // the sum of squares for regression SSR. Thus, larger values of R^2 tend to indicate that the data
+        // points are closer to the fitted regression line. Nevertheless, a low
+        // value of R^2 should not necessarily be interpreted as implying that the fitted regression line is
+        // not appropriate or is not useful. A fitted regression line may be accurate and informative even
+        // though a small value of R^2 is obtained because of a large error variance sigma62.
+        double sst = ListMaths.sse(labels.getRawData());
+        double r_sqr =  1.0- sseError/sst;
+
+        System.out.println("Coefficient of determination: "+r_sqr);
 
 
     }
