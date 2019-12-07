@@ -7,12 +7,7 @@ import maths.functions.IVectorRealFunction;
 
 public class RegressorBase<DataSetType extends DenseMatrix, HypothesisType extends IVectorRealFunction<Vector>> {
 
-    /**
-     * Protected constructor.
-     */
-    protected RegressorBase(HypothesisType hypothesis){
-        this.hypothesisType = hypothesis;
-    }
+
 
     /**
      * Train the regressor on the given dataset
@@ -62,6 +57,13 @@ public class RegressorBase<DataSetType extends DenseMatrix, HypothesisType exten
         }
 
         return errs;
+    }
+
+    /**
+     * Protected constructor.
+     */
+    protected RegressorBase(HypothesisType hypothesis){
+        this.hypothesisType = hypothesis;
     }
 
 
