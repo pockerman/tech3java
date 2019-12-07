@@ -1,4 +1,5 @@
 package utils;
+import parallel.tasks.SumSqrDiffTask;
 import parallel.tasks.SumSqrTask;
 import parallel.tasks.SumTask;
 import tech.tablesaw.api.DoubleColumn;
@@ -99,6 +100,23 @@ public class ListMaths {
         return sumSqrTask.getResult() - (1./data.size())*(sumTask.getResult()*sumTask.getResult());
     }
 
+
+    /**
+     * Sum Squared Regression or SSR = \Sum (data[i] - \bar(data))^2
+     *
+     * if data is an approximation coming from a model then this is the
+     * SSR or Sum Squared Regression. If data is an observation then this
+     * will be  the SST or Sum Squared Total
+     */
+    public static double sse(final List<Double> data){
+
+        double mean = ListMaths.sum(data)/data.size();
+
+        SumSqrDiffTask<List<Double>> task = new SumSqrDiffTask<>(data, mean);
+        task.run();
+
+        return task.getResult();
+    }
 
     /**
      * Compute the sum of the absolute values of the List elements
