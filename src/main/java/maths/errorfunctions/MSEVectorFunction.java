@@ -1,5 +1,6 @@
 package maths.errorfunctions;
 
+import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
@@ -25,7 +26,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
      * @return
      */
     @Override
-    public double evaluate(DenseMatrix data, Vector labels){
+    public <DataSetType extends I2DDataSet> double evaluate(DataSetType data, Vector labels){
 
         if(data.m() != labels.size()){
             throw new IllegalArgumentException("Invalid number of data points and labels vector size");
@@ -34,7 +35,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
         double rlst = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
-            Vector row = data.getRow(rowIdx);
+            Vector row = (Vector) data.getRow(rowIdx);
             double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
             diff *= diff;
             rlst += diff;
@@ -46,14 +47,14 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
      * Returns the gradients on the given data
      */
     @Override
-    public Vector gradients(DenseMatrix data, Vector labels){
+    public <DataSetType extends I2DDataSet> Vector gradients(DataSetType data, Vector labels){
 
 
         Vector gradients = new Vector(this.hypothesis.numCoeffs(), 0.0);
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
-            Vector row = data.getRow(rowIdx);
+            Vector row = (Vector) data.getRow(rowIdx);
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 

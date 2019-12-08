@@ -1,47 +1,20 @@
 package maths.errorfunctions;
 
-
+import base.CommonConstants;
 import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 
-/**
- * The Sum Square Error or SSE is defined as
- * SSE =  Sum_{i = 1}^N (y_i - \hat{y}_i)^2
- *
- * The \hat{y} value is modeled after the IVectorRealFunction passed
- * to the object when instantiated
- */
-public class SSEVectorFunction implements IVectorErrorRealFunction {
-
-    /**
-     * Compute the SSE error over the two vectors
-     */
-    static public double error(Vector y, Vector yhat){
-
-        if(y.size() != yhat.size()){
-            throw new IllegalArgumentException("Invalid size of vectors ");
-        }
-
-        double rlst = 0.0;
-
-        for(int i=0; i<y.size(); ++i){
-
-            double diff = y.get(i) - yhat.get(i);
-            diff *= diff;
-            rlst += diff;
-        }
-        return rlst;
-    }
+public class LogisticMSEVectorFunction implements IVectorErrorRealFunction {
 
     /**
      * Constructor
      */
-    public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
+    public LogisticMSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
 
         if(hypothesis == null){
-            throw new IllegalArgumentException("Hypothesis gunction cannot be null");
+            throw new IllegalArgumentException("Hypothesis function cannot be null");
         }
         this.hypothesis = hypothesis;
     }
@@ -56,16 +29,43 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
             throw new IllegalArgumentException("Invalid number of data points and labels vector size");
         }
 
-        double rlst = 0.0;
+        double result = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
             Vector row = (Vector) data.getRow(rowIdx);
-            double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
-            diff *= diff;
-            rlst += diff;
+            double y = labels.get(rowIdx);
+
+            double hypothesisValue = this.hypothesis.evaluate(row);
+
+            //h is close to one
+            if(Math.abs(hypothesisValue)  - 1.0 < CommonConstants.getTol()){
+
+                //we plug a large error contribution if y is anything than one
+                if( y != 1.){
+                    result += 1.0;
+                }
+            }
+            else if(Math.abs(hypothesisValue) < CommonConstants.getTol()){
+
+                // std::cout<<" log_h infinity"<<std::endl;
+                //hval is zero. we only get contribution
+                //if the label is not zero as well
+                if( y > CommonConstants.getTol()){
+                    result += 1.0;
+                }
+            }
+            else{
+
+                //do it normally
+                //calculate the logarithms and check if they are
+                //infinite or nana
+                double log_one_minus_h = Math.log(1. - hypothesisValue);
+                double log_h = Math.log(hypothesisValue);
+                result += y*log_h +(1.-y)*log_one_minus_h;
+            }
         }
-        return rlst;
+        return -result/data.m();
     }
 
     /**
@@ -92,6 +92,8 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
 
         return gradients;
     }
+
+
 
     private IVectorRealFunction<Vector> hypothesis;
 }

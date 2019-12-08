@@ -32,6 +32,12 @@ public interface I2DDataSet<DataSetTyp> {
 
 
     /**
+     * Returns the submatrix representation
+     */
+    double[][] getSubMatrix(int numColsToInclude, int... includeCols);
+
+
+    /**
      * Set the row-th row  of the dataset
      */
     void set(int row, DataSetTyp item);
