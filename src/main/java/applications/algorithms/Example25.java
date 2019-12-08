@@ -5,11 +5,11 @@ import datastructs.adt.ArrayStack;
 import java.util.Scanner;
 
 /** Category: Algorithms
- * ID: Example24
- * Description: Detect a cycle in a single linked list
+ * ID: Example25
+ * Description: Implement a simple text editor
  * Taken From: HackerRank Simple Text Editor
  * Details:
- *In this challenge, you must implement a simple text editor. Initially, your editor contains an empty string, .
+ * In this challenge, you must implement a simple text editor. Initially, your editor contains an empty string, .
  * You must perform operations of the following
  *
  * types:

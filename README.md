@@ -86,6 +86,8 @@ This is my  Java playground...
 - <a href="src/main/java/applications/algorithms/Example22.java">Example 22</a>: Print the value of a node in as singly linked list by counting backwards.
 - <a href="src/main/java/applications/algorithms/Example23.java">Example 23</a>: Delete duplicate elements in a sorted singly linked list
 - <a href="src/main/java/applications/algorithms/Example24.java">Example 24</a>: Detect cycle in a single linked list
+- <a href="src/main/java/applications/algorithms/Example25.java">Example 25</a>: Text editor with stack
+- <a href="src/main/java/applications/algorithms/Example26.java">Example 26</a>: Balanced brackets
 
 ## Useful Links
 
