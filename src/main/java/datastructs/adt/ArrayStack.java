@@ -88,6 +88,20 @@ public class ArrayStack<E> implements IBoundedAdt<E> {
     }
 
     /**
+     * Access the top element without poping it
+     */
+    public final E access_top(){
+
+        if(this.empty()){
+            throw new IllegalStateException("The stack is empty");
+        }
+
+        //return and decrement the head position
+        E item = this.stack_.get(this.head_pos_);
+        return item;
+    }
+
+    /**
      * Create the stack having the specified capacity
      */
     private final void create(int capacity){
