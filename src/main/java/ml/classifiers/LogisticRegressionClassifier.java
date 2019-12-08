@@ -7,13 +7,13 @@ import maths.functions.IVectorRealFunction;
 
 import java.util.List;
 
-public class LogisticRegression<DataSetType extends I2DDataSet,
+public class LogisticRegressionClassifier<DataSetType extends I2DDataSet,
                                 HypothesisType extends IVectorRealFunction<Vector>> extends ClassifierBase<DataSetType> {
 
     /**
      * Constructor.
      */
-    public LogisticRegression(HypothesisType hypothesis, ISupervisedOptimizer optimizer){
+    public LogisticRegressionClassifier(HypothesisType hypothesis, ISupervisedOptimizer optimizer){
         super();
         this.hypothesis = hypothesis;
         this.optimizer = optimizer;
@@ -23,7 +23,7 @@ public class LogisticRegression<DataSetType extends I2DDataSet,
      * Train the model using the provided dataset
      */
     @Override
-    public <OutputType> OutputType train(DataSetType dataSet, List<Integer> labels){
+    public <OutputType> OutputType train(final DataSetType dataSet, final Vector labels){
         return this.optimizer.optimize(dataSet, labels, this.hypothesis);
     }
 

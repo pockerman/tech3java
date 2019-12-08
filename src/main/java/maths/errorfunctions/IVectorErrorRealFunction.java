@@ -1,5 +1,6 @@
 package maths.errorfunctions;
 
+import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 
@@ -12,12 +13,12 @@ public interface IVectorErrorRealFunction {
      * @param labels
      * @return
      */
-    double evaluate(DenseMatrix data, Vector labels);
+    <DataSetType extends I2DDataSet> double evaluate(DataSetType data, Vector labels);
 
     /**
      * Returns the gradients on the given data
      */
-    Vector gradients(DenseMatrix data, Vector labels);
+    <DataSetType extends I2DDataSet> Vector gradients(DataSetType data, Vector labels);
 
 
 }

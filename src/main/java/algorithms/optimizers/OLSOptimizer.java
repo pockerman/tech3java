@@ -1,10 +1,14 @@
 package algorithms.optimizers;
 
 import algorithms.utils.IterativeAlgorithmResult;
+import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
+
+import java.util.List;
 
 /**
  * Ordinary Least Squares optimizer for a real vector function
@@ -14,7 +18,7 @@ public class OLSOptimizer implements ISupervisedOptimizer {
     /**
      * Optimize f on the given data
      */
-    public IterativeAlgorithmResult optimize(final DenseMatrix data, final Vector y, IVectorRealFunction f){
+    public <OutPutType, DataSetType extends I2DDataSet> OutPutType optimize(final DataSetType data, final Vector y, IVectorRealFunction f){
 
         IterativeAlgorithmResult reslt = new IterativeAlgorithmResult();
         reslt.numThreadsUsed = 1;
@@ -26,6 +30,14 @@ public class OLSOptimizer implements ISupervisedOptimizer {
         regression.newSampleData(y.toArrary(), x);
         double[] coeffs = regression.estimateRegressionParameters();
         f.setCoeffs(coeffs);
-        return reslt;
+        return (OutPutType) reslt;
     }
+
+    /**
+     * Optimize approximate function f on the given dataset and the
+     * given labels. Derived classes specify the output
+     */
+    /*public <OutPutType, DataSetType extends I2DDataSet> OutPutType optimize(final DataSetType data, final List<Integer> y, IVectorRealFunction f){
+        throw new NotImplementedException("This function has not been implemented");
+    }*/
 }

@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutorService;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 /** Category: Machine Learning
- * ID: Example1
+ * ID: Example8
  * Description: Classification with vanilla ParallelKNN algorithm
  * Taken From:
  * Details:
