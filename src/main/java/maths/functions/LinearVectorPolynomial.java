@@ -114,6 +114,7 @@ public class LinearVectorPolynomial implements IVectorRealFunction<Vector> {
     /**
      * Returns the coeff-th coefficient
      */
+    @Override
     public double getCoeff(int coeff){
         return this.coeffs.get(coeff);
     }
