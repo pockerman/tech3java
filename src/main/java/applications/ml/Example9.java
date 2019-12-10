@@ -7,32 +7,22 @@ import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
-import maths.EuclideanVectorCalculator;
 import maths.errorfunctions.LogisticMSEVectorFunction;
-import maths.errorfunctions.MSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
 import maths.functions.SigmoidFunction;
 import ml.classifiers.LogisticRegressionClassifier;
-import ml.classifiers.ThreadedKNNClassifier;
-import parallel.partitioners.MatrixRowPartitionPolicy;
-import parallel.partitioners.RangePartitioner;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
-import utils.ClassificationVoter;
 import utils.Pair;
 import utils.PairBuilder;
 import utils.TableDataSetLoader;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
 
-import static java.util.concurrent.Executors.newFixedThreadPool;
 
 /** Category: Machine Learning
- * ID: Example
+ * ID: Example9
  * Description: Classification with vanilla LogisticRegression
  * Taken From:
  * Details:
@@ -101,8 +91,12 @@ public class Example9 {
 
         System.out.println(" ");
         System.out.println(result);
-        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope1: "+hypothesis.getCoeff(1)+" slope2: "+hypothesis.getCoeff(2));
+        System.out.println("Intercept: "+hypothesis.getCoeff(0)+
+                           " slope1: "+hypothesis.getCoeff(1) +
+                           " slope2: "+hypothesis.getCoeff(2) +
+                           " slope3: "+hypothesis.getCoeff(3));
 
+        // use 1.0 to account for the intercept term
         Vector point = new Vector(1.0, 5.7,2.8,4.1,1.3);
         Integer classIdx = classifier.predict(point);
 
