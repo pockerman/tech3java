@@ -15,6 +15,11 @@ public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
     Vector getCoeffs();
 
     /**
+     * Returns the i-th coefficient
+     */
+    double getCoeff(int i);
+
+    /**
      * Set the coefficients of the function
      */
     void setCoeffs(double[] coeffs);

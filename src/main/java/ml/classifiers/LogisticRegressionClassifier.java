@@ -32,6 +32,12 @@ public class LogisticRegressionClassifier<DataSetType extends I2DDataSet,
      */
     @Override
     public <PointType> Integer  predict(PointType point){
+        Vector vec = (Vector) point;
+        double hypothesisVal = this.hypothesis.evaluate(vec);
+
+        if(hypothesisVal >= 0.5){
+            return 1;
+        }
         return 0;
     }
 

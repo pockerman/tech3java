@@ -51,6 +51,15 @@ public class ScalarMonomial implements IScalarRealFunction {
         this.setCoeff(coeffs[0]);
     }
 
+    @Override
+    public double getCoeff(int i){
+        if( i!=0 ){
+            throw new IllegalArgumentException("A Scalar monomial has only one coefficient");
+        }
+
+        return this.a;
+    }
+
     /**
      * Returns the gradient with respect to the i-th coeff
      */

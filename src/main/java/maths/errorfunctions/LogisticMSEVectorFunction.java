@@ -39,7 +39,7 @@ public class LogisticMSEVectorFunction implements IVectorErrorRealFunction {
             double hypothesisValue = this.hypothesis.evaluate(row);
 
             //h is close to one
-            if(Math.abs(hypothesisValue)  - 1.0 < CommonConstants.getTol()){
+            if(Math.abs(hypothesisValue - 1.0) < CommonConstants.getTol()){
 
                 //we plug a large error contribution if y is anything than one
                 if( y != 1.){

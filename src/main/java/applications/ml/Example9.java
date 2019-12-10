@@ -11,6 +11,7 @@ import maths.EuclideanVectorCalculator;
 import maths.errorfunctions.LogisticMSEVectorFunction;
 import maths.errorfunctions.MSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
+import maths.functions.SigmoidFunction;
 import ml.classifiers.LogisticRegressionClassifier;
 import ml.classifiers.ThreadedKNNClassifier;
 import parallel.partitioners.MatrixRowPartitionPolicy;
@@ -42,7 +43,7 @@ public class Example9 {
     public static Pair<DenseMatrix, Vector> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
-        Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/iris_data.csv"));
+        Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/iris_dataset_reduced.csv"));
 
         Column species  = dataSetTable.column("species");
 
@@ -60,10 +61,6 @@ public class Example9 {
 
                 labels.set(i, 1);
             }
-            else if(label.equals("Iris-virginica")){
-
-                labels.set(i, 2);
-            }
             else{
                 throw new IllegalArgumentException("Unknown class");
             }
@@ -75,7 +72,6 @@ public class Example9 {
         dataSet.setColumn(2, reducedDataSet.doubleColumn(1));
         dataSet.setColumn(3, reducedDataSet.doubleColumn(2));
         dataSet.setColumn(4, reducedDataSet.doubleColumn(3));
-        //dataSet.initializeFrom(reducedDataSet);
         return PairBuilder.makePair(dataSet, labels);
     }
 
@@ -86,12 +82,13 @@ public class Example9 {
         System.out.println("Number of rows: "+data.first.m());
         System.out.println("Number of labels: "+data.second.size());
 
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(4);
+        SigmoidFunction hypothesis = new SigmoidFunction(new LinearVectorPolynomial(4));
+
         GDInput gdInput = new GDInput();
         gdInput.showIterations = true;
-        gdInput.eta=0.01;
+        gdInput.eta = 0.01;
         gdInput.errF = new LogisticMSEVectorFunction(hypothesis);
-        gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
+        gdInput.iterationContorller = new DefaultIterativeAlgorithmController(100000,1.0e-8);
 
         // the optimizer
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
@@ -106,7 +103,7 @@ public class Example9 {
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope1: "+hypothesis.getCoeff(1)+" slope2: "+hypothesis.getCoeff(2));
 
-        Vector point = new Vector(5.9,3.0,5.1,1.8);
+        Vector point = new Vector(1.0, 5.7,2.8,4.1,1.3);
         Integer classIdx = classifier.predict(point);
 
         System.out.println("Point "+ point +" has class index "+ classIdx);
