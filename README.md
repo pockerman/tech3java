@@ -15,6 +15,10 @@ This is my  Java playground...
 
 ### Statistics
 
+- <a href="src/main/java/applications/statistics/Example1.java">Example 1</a>: Vanilla bootstrap for the mean
+- <a href="src/main/java/applications/statistics/Example2.java">Example 2</a>: Vanilla bootstrap for skewness
+- <a href="src/main/java/applications/statistics/Example3.java">Example 3</a>: Simulate the standard error for the mean is ```1/sqrt(n)```
+
 - <a href="#">Example 1</a>: Goodness of fit for linear regression
 - <a href="#">Example 2</a>: Compute basic statistics
 - <a href="#">Example 3</a>: Compute the mean, standard deviation and correlation of two variables
