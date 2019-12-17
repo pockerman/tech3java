@@ -24,4 +24,15 @@ public class ListUtils {
 
         return result;
     }
+
+    public static  <T> double[] toDoubleArray(final List<T> list){
+
+        double[] array = new double[list.size()];
+
+        for(int i=0; i<list.size(); ++i){
+            array[i] = ((Double)list.get(i)).doubleValue();
+        }
+
+        return array;
+    }
 }
