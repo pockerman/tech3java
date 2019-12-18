@@ -56,9 +56,9 @@ public class DenseMatrix implements I2DDataSet<Vector> {
     @Override
     public I2DDataSet<Vector> create(int m, int n){
 
-        DenseMatrix matrix = new DenseMatrix();
-        matrix.create(m, n, 0.0);
-        return matrix;
+        //DenseMatrix matrix = new DenseMatrix();
+        this.create(m, n, 0.0);
+        return this;
     }
 
     /**

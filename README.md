@@ -15,12 +15,14 @@ This is my  Java playground...
 
 ### Statistics
 
-- <a href="#">Example 1</a>: Goodness of fit for linear regression
-- <a href="#">Example 2</a>: Compute basic statistics
-- <a href="#">Example 3</a>: Compute the mean, standard deviation and correlation of two variables
-- <a href="#">Example 4</a>: Vanilla bootstrap for the mean
-- <a href="#">Example 5</a>: Vanilla bootstrap for skewness
-- <a href="#">Example 6</a>: Almost sure convergence
+- <a href="src/main/java/applications/statistics/Example1.java">Example 1</a>: Goodness of fit of regression line
+- <a href="src/main/java/applications/statistics/Example2.java">Example 2</a>: Basic scatter plot
+- <a href="src/main/java/applications/statistics/Example3.java">Example 3</a>: Simulate the standard error for the mean is ```1/sqrt(n)```
+- <a href="#">Example 4</a>: Compute basic statistics
+- <a href="#">Example 5</a>: Compute the mean, standard deviation and correlation of two variables
+- <a href="#">Example 6</a>: Vanilla bootstrap for the mean
+- <a href="#">Example 7</a>: Vanilla bootstrap for skewness
+- <a href="#">Example 8</a>: Almost sure convergence
  
 
 ### Machine Learning
