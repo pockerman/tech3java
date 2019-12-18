@@ -1,6 +1,5 @@
 package applications.statistics;
 
-import org.python.util.PythonInterpreter;
 import plotting.PlotLine;
 import plotting.PlotOptions;
 import plotting.PlotScatter;
@@ -12,7 +11,6 @@ import utils.TableDataSetLoader;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
 
 /** Category: Statistics
  * ID: Example2
@@ -46,12 +44,10 @@ public class Example2 {
         PlotOptions petalOptions = new PlotOptions();
         petalOptions.plotTitle = "Petal Length vs Width";
 
-
         Figure line = PlotLine.buildPlot(petalOptions, x, y);
 
         Plot.show(scatter);
         Plot.show(line);
-
 
     }
 }
