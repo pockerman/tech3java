@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 /** Category: Machine Learning
- * ID: Example1
+ * ID: Example2
  * Description: Using LinearRegressor class
  * Taken From:
  * Details:

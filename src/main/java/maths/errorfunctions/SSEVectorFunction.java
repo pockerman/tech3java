@@ -4,6 +4,7 @@ package maths.errorfunctions;
 import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
+import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
 
 /**
@@ -41,9 +42,20 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
     public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
 
         if(hypothesis == null){
-            throw new IllegalArgumentException("Hypothesis gunction cannot be null");
+            throw new IllegalArgumentException("Hypothesis function cannot be null");
         }
         this.hypothesis = hypothesis;
+    }
+    /**
+      * Constructor
+     */
+    public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis, IRegularizerFunction regularizerFunction){
+
+        if(hypothesis == null){
+            throw new IllegalArgumentException("Hypothesis function cannot be null");
+        }
+        this.hypothesis = hypothesis;
+        this.regularizerFunction = regularizerFunction;
     }
 
     /**
@@ -56,16 +68,21 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
             throw new IllegalArgumentException("Invalid number of data points and labels vector size");
         }
 
-        double rlst = 0.0;
+        double result = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
 
             Vector row = (Vector) data.getRow(rowIdx);
             double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
             diff *= diff;
-            rlst += diff;
+            result += diff;
         }
-        return rlst;
+
+        if(this.regularizerFunction != null){
+            result += this.regularizerFunction.evaluate(null);
+        }
+
+        return result;
     }
 
     /**
@@ -94,4 +111,5 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
     }
 
     private IVectorRealFunction<Vector> hypothesis;
+    private IRegularizerFunction regularizerFunction;
 }

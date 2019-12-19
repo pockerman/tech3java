@@ -34,6 +34,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/ml/Example7.java">Example 7</a>: Using ```NonLinearRegressor``` class 
 - <a href="src/main/java/applications/ml/Example8.java">Example 8</a>: Using ```ThreadedKNNClassifier``` class 
 - <a href="src/main/java/applications/ml/Example9.java">Example 9</a>: Classification with ```LogisticRegression``` class 
+- <a href="src/main/java/applications/ml/Example10.java">Example 10</a>: Linear regression with regularization ```LassoRegularizer``` and ```RidgeRegularizer```
 
 ### Reinforcement Learning
 
