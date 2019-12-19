@@ -45,6 +45,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
     /**
      * Set the coefficients of the Polynomial
      */
+    @Override
     public final void setCoeffs(Vector coeffs){
 
         this.setCoeffs(coeffs.toArrary());
@@ -147,6 +148,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
     /**
      * Returns the coeff-th coefficient
      */
+    @Override
     public double getCoeff(int coeff){
         return this.terms.get(coeff).getCoeffs().get(0);
     }

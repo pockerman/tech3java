@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /** Category: Machine Learning
  * ID: Example7
- * Description: Non linear Regression
+ * Description: Non-linear Regression
  * Taken From:
  * Details:
  * TODO

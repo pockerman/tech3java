@@ -3,6 +3,7 @@ package maths.errorfunctions;
 import datastructs.interfaces.I2DDataSet;
 import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
+import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
 
 /**
@@ -14,9 +15,22 @@ import maths.functions.IVectorRealFunction;
  */
 public class MSEVectorFunction implements IVectorErrorRealFunction {
 
+    /**
+     * Constructor
+     */
     public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
 
         this.hypothesis = hypothesis;
+        this.regularizerFunction = null;
+    }
+
+    /**
+     * Constructor
+     */
+    public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis, IRegularizerFunction regularizerFunction ){
+
+        this.hypothesis = hypothesis;
+        this.regularizerFunction = regularizerFunction;
     }
 
     /**
@@ -32,15 +46,22 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
             throw new IllegalArgumentException("Invalid number of data points and labels vector size");
         }
 
-        double rlst = 0.0;
+        double result = 0.0;
 
         for(int rowIdx=0; rowIdx<data.m(); ++rowIdx){
             Vector row = (Vector) data.getRow(rowIdx);
             double diff = labels.get(rowIdx) - this.hypothesis.evaluate(row);
             diff *= diff;
-            rlst += diff;
+            result += diff;
         }
-        return rlst/data.m();
+
+        result /= data.m();
+
+        if(regularizerFunction != null){
+            result += regularizerFunction.evaluate(null);
+        }
+
+        return result;
     }
 
     /**
@@ -69,4 +90,5 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
     }
 
     private IVectorRealFunction<Vector> hypothesis;
+    IRegularizerFunction regularizerFunction;
 }
