@@ -12,7 +12,7 @@ import maths.functions.LinearVectorPolynomial;
 
 import maths.functions.regularizers.LassoRegularizer;
 import maths.functions.regularizers.RidgeRegularizer;
-import ml.classifiers.LogisticRegressionClassifier;
+
 import ml.regression.LinearRegressor;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
