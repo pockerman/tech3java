@@ -297,7 +297,8 @@ public class Vector implements IVector<Double> {
     /**
      * operation +=
      */
-    public void add(int i, double value){
+    @Override
+    public void add(int i, Double value){
         double val = this.data.get(i);
         this.data.set(i , val + value);
     }

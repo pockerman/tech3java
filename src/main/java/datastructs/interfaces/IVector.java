@@ -21,6 +21,11 @@ public interface IVector<E> extends IAdt<E> {
     void set(int i, E data);
 
     /**
+     * Add the data to the i-th entry
+     */
+    void add(int i, E data);
+
+    /**
      * Returns the i-th element
      */
     E get(int i);
@@ -29,4 +34,5 @@ public interface IVector<E> extends IAdt<E> {
      * Exchange the i-th entry with the j-th
      */
     void excahnge(int i, int k);
+
 }

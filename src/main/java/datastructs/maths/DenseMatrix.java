@@ -1,6 +1,7 @@
 package datastructs.maths;
 
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 import parallel.partitioners.IPartitionPolicy;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
@@ -11,7 +12,7 @@ import java.util.*;
 /**
  * Represents a dense matrix
  */
-public class DenseMatrix implements I2DDataSet<Vector> {
+public class DenseMatrix implements I2DDataSet<IVector<Double>> {
 
     /**
      * Constructor
@@ -45,7 +46,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
      * Copy this matrix
      */
     @Override
-    public I2DDataSet<Vector> copy(){
+    public I2DDataSet<IVector> copy(){
 
         return new DenseMatrix(this);
     }
@@ -110,7 +111,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
         for (int rowIdx = 0; rowIdx < other.m(); rowIdx++) {
 
 
-            Vector vecRow = new Vector(other.n());
+            IVector vecRow = new Vector(other.n());
             vecRow.set(other.getRow(rowIdx));
             this.set(rowIdx, vecRow);
         }
@@ -142,11 +143,11 @@ public class DenseMatrix implements I2DDataSet<Vector> {
      */
     public final void duplicateColumn(int column){
 
-        Vector col = getColumn(column);
+        IVector col = getColumn(column);
 
         for(int i=0; i<this.m(); ++i){
 
-            Vector vec = this.data.get(i);
+            IVector vec = this.data.get(i);
             vec.resize(vec.size() + 1);
 
             vec.set(vec.size()-1, col.get(i));
@@ -172,7 +173,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
     /**
      * Set the i-th row
      */
-    public final void set(int i, Vector value){
+    public final void set(int i, IVector<Double> value){
 
         if( i >= m() || i < 0 ){
             throw new IllegalArgumentException("Invalid row index");
@@ -204,7 +205,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
 
         for(int i=0; i<this.m(); ++i){
 
-            Vector row =  this.data.get(i);
+            IVector row =  this.data.get(i);
             for(int j=0; j<this.n(); ++j){
                 if(j==c){
                     row.set(j, col.getDouble(i));
@@ -224,7 +225,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
 
         for(int i=0; i<this.m(); ++i){
 
-            Vector row =  this.data.get(i);
+            IVector row =  this.data.get(i);
             for(int j=0; j<this.n(); ++j){
                 if(j==c){
                     row.set(j, col.get(i));
@@ -236,13 +237,13 @@ public class DenseMatrix implements I2DDataSet<Vector> {
     /**
      * Returns a copy of the values of the column-th column
      */
-    public final Vector getColumn(int column){
+    public final IVector<Double> getColumn(int column){
 
         if(column <0 || column >= this.n()){
             throw new IllegalArgumentException("Invalid column index: "+column+" should be in [0,"+this.n()+")");
         }
 
-        Vector columnVals = new Vector(this.m(), 0.0);
+        IVector<Double> columnVals = new Vector(this.m(), 0.0);
 
         for(int i=0; i<this.m(); ++i){
             columnVals.set(i, this.data.get(i).get(column));
@@ -251,7 +252,7 @@ public class DenseMatrix implements I2DDataSet<Vector> {
         return columnVals;
     }
 
-    public final Vector getRow(int r){
+    public final IVector<Double> getRow(int r){
 
         if( r >= m() || r < 0 ){
             throw new IllegalArgumentException("Invalid row index");
@@ -266,11 +267,11 @@ public class DenseMatrix implements I2DDataSet<Vector> {
             throw new IllegalArgumentException("Cannot create a matrix with zero rows or columns");
         }
 
-        this.data = new ArrayList<Vector>(m);
+        this.data = new ArrayList<IVector<Double>>(m);
 
         for(int i=0; i<m; ++i){
 
-            Vector row = new Vector(n, val);
+            IVector<Double> row = new Vector(n, val);
             this.data.add(row);
         }
     }
@@ -286,8 +287,8 @@ public class DenseMatrix implements I2DDataSet<Vector> {
         }
 
         // exchange
-        Vector tmp = this.data.get(i);
-        Vector next = this.data.get(k);
+        IVector tmp = this.data.get(i);
+        IVector next = this.data.get(k);
         this.data.set(i, next);
         this.data.set(k, tmp);
     }
@@ -307,6 +308,6 @@ public class DenseMatrix implements I2DDataSet<Vector> {
         return this.partitionePolicy;
     }
 
-    private ArrayList<Vector> data = null;
+    private ArrayList<IVector<Double>> data = null;
     IPartitionPolicy partitionePolicy = null;
 }

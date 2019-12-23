@@ -33,4 +33,28 @@ public class EuclideanVectorCalculator<T> implements DistanceCalculator<IVector<
         return Math.sqrt(rslt);
     }
 
+    /**
+     * Initialize the min distance
+     */
+    @Override
+    public Double minValue(){return Double.MIN_VALUE; }
+
+    /**
+     * Initialize the maximum distance
+     */
+    @Override
+    public Double maxValue(){ return Double.MAX_VALUE; }
+
+    /**
+     * Compare the two results
+     */
+    @Override
+    public Double compareMin(Double r1, Double r2){
+
+        if(r1 < r2)
+            return r1;
+
+        return r2;
+    }
+
 }

@@ -1,7 +1,6 @@
 package ml.clustering;
 
 import algorithms.utils.IterativAlgorithmController;
-import maths.errorfunctions.IVectorErrorRealFunction;
 
 public class KMeansInput {
 
@@ -10,6 +9,11 @@ public class KMeansInput {
      * as the algorithm executes
      */
     public boolean showIterations = true;
+
+    /**
+     * Number of clusters to consider
+     */
+    public int k;
 
 
     /**
