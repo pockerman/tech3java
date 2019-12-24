@@ -3,8 +3,7 @@ package applications.ml;
 import algorithms.utils.DefaultIterativeAlgorithmController;
 import base.CommonConstants;
 import datastructs.interfaces.IVector;
-import datastructs.maths.DenseMatrix;
-import datastructs.maths.Vector;
+import datastructs.maths.DenseMatrixSet;
 import maths.DistanceCalculator;
 import maths.EuclideanVectorCalculator;
 import maths.functions.generators.IRandomGenerator;
@@ -25,7 +24,7 @@ public class Example11 {
     public static void main(String[] args){
 
         //some synthetic data
-        DenseMatrix matrix = new DenseMatrix(6, 2, 0.0);
+        DenseMatrixSet matrix = new DenseMatrixSet(6, 2, 0.0);
         matrix.set(0, 1.0, 2.0);
         matrix.set(1, 1.0, 4.0);
         matrix.set(2, 1.0, 0.0);

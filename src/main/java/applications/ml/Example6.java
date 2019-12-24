@@ -4,7 +4,7 @@ import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Example6 {
 
-    public static Pair<DenseMatrix, Vector> loadNormalizedDataSet(File file)throws IOException{
+    public static Pair<DenseMatrixSet, Vector> loadNormalizedDataSet(File file)throws IOException{
 
         // load the data
         Table dataSet = TableDataSetLoader.loadDataSet(file);
@@ -41,20 +41,20 @@ public class Example6 {
         List<Double> coolingCol = ParseUtils.parseAsDouble(reducedDataSet.column(1));
         ListMaths.normalize(coolingCol);
 
-        DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 3, 1.0);
-        denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
-        denseMatrix.setColumn(2, coolingCol);
+        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(reducedDataSet.rowCount(), 3, 1.0);
+        denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
+        denseMatrixSet.setColumn(2, coolingCol);
 
-        return PairBuilder.makePair(denseMatrix, labels);
+        return PairBuilder.makePair(denseMatrixSet, labels);
 
     }
 
-    public static void apacheOLS(DenseMatrix denseMatrix, Vector labels)throws IOException{
+    public static void apacheOLS(DenseMatrixSet denseMatrixSet, Vector labels)throws IOException{
 
         // the object that will do the fitting for us
         OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
 
-        double[][] x = denseMatrix.getSubMatrix(2, 1, 2);
+        double[][] x = denseMatrixSet.getSubMatrix(2, 1, 2);
         regression.newSampleData(labels.toArrary(), x);
         double[] coeffs = regression.estimateRegressionParameters();
         System.out.println("Apache OLS: ");
@@ -64,7 +64,7 @@ public class Example6 {
 
     public static void main(String[] args)throws IOException {
 
-        Pair<DenseMatrix, Vector> dataSet = Example6.loadNormalizedDataSet(new File("src/main/resources/datasets/car_plant_multi.csv"));
+        Pair<DenseMatrixSet, Vector> dataSet = Example6.loadNormalizedDataSet(new File("src/main/resources/datasets/car_plant_multi.csv"));
 
         System.out.println(" ");
         // compute with Apache OLS for reference

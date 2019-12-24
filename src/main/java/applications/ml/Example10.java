@@ -4,7 +4,7 @@ import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 
 import maths.errorfunctions.MSEVectorFunction;
@@ -33,7 +33,7 @@ import java.io.IOException;
  */
 public class Example10 {
 
-    public static Pair<DenseMatrix, Vector> createDataSet() throws IOException, IllegalArgumentException {
+    public static Pair<DenseMatrixSet, Vector> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
         Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/X_Y_Sinusoid_Data.csv"));
@@ -43,12 +43,12 @@ public class Example10 {
         Vector labels = new Vector(y);
 
         Table reducedDataSet = dataSetTable.removeColumns("y").first(dataSetTable.rowCount());
-        DenseMatrix dataSet = new DenseMatrix(reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
+        DenseMatrixSet dataSet = new DenseMatrixSet(reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
         dataSet.setColumn(1, reducedDataSet.doubleColumn(0));
         return PairBuilder.makePair(dataSet, labels);
     }
 
-    public static void linearRegression(DenseMatrix data, Vector labels){
+    public static void linearRegression(DenseMatrixSet data, Vector labels){
 
         System.out.println("Doing LinearRegression");
 
@@ -64,7 +64,7 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrix> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
 
         // train the model
         IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
@@ -76,7 +76,7 @@ public class Example10 {
 
     }
 
-    public static void ridgeRegression(DenseMatrix data, Vector labels){
+    public static void ridgeRegression(DenseMatrixSet data, Vector labels){
 
         System.out.println("Doing Ridge LinearRegression");
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
@@ -92,7 +92,7 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrix> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
 
         // train the model
         IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
@@ -104,7 +104,7 @@ public class Example10 {
 
     }
 
-    public static void lassoRegression(DenseMatrix data, Vector labels){
+    public static void lassoRegression(DenseMatrixSet data, Vector labels){
 
         System.out.println("Doing Lasso LinearRegression");
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
@@ -120,7 +120,7 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrix> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
 
         // train the model
         IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
@@ -135,7 +135,7 @@ public class Example10 {
 
     public static void main(String[] args) throws IOException, IllegalArgumentException{
 
-        Pair<DenseMatrix, Vector> data = Example10.createDataSet();
+        Pair<DenseMatrixSet, Vector> data = Example10.createDataSet();
 
         System.out.println("Number of rows: "+data.first.m());
         System.out.println("Number of labels: "+data.second.size());

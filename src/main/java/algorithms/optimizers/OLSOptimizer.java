@@ -2,13 +2,9 @@ package algorithms.optimizers;
 
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
-
-import java.util.List;
 
 /**
  * Ordinary Least Squares optimizer for a real vector function

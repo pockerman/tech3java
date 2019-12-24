@@ -2,11 +2,8 @@ package algorithms.optimizers;
 
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
-
-import java.util.List;
 
 public class BatchGradientDescent implements ISupervisedOptimizer {
 

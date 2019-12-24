@@ -17,7 +17,7 @@ public class KMeans<PointType, DistanceType>{
         public PointType centroid;
         public List<Integer> points;
 
-        public <DataSetTp extends I2DDataSet<PointType> void calculateCentorid(DataSetTp dataSet){
+        public <DataSetTp extends I2DDataSet<PointType>> void calculateCentorid(DataSetTp dataSet){
 
             for(int i=0; i<points.size(); ++i){
                 centroid.add(i, dataSet.getRow(this.points.get(i)));

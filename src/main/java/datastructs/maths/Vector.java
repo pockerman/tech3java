@@ -1,7 +1,9 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import datastructs.interfaces.IRowBuilder;
 import datastructs.interfaces.IVector;
+import datastructs.utils.RowType;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -23,8 +25,6 @@ public class Vector implements IVector<Double> {
 
         this.data = new ArrayList<Double>(10);
     }
-
-    /**
 
 
     /**
@@ -92,6 +92,17 @@ public class Vector implements IVector<Double> {
     public IVector<Double> create(int size){
         return new Vector(size, 0.0);
     }
+
+    /**
+     * Build a new instance of this class
+     */
+    @Override
+    public IVector<Double> create( Double... value){
+        return new Vector(value);
+    }
+
+    @Override
+    public IVector<Double> create(){return new Vector();}
 
     /**
       * Resize the vector
@@ -222,7 +233,8 @@ public class Vector implements IVector<Double> {
     /**
      * Set the  entries to val
      */
-    public final void set(Vector values){
+    @Override
+    public final void set(IVector<Double> values){
 
         if(values.size() != this.size()){
             throw  new IllegalArgumentException("Invalid Vector size: "+ values.size() + " != " + this.size());
@@ -323,7 +335,7 @@ public class Vector implements IVector<Double> {
     public final ArrayList<Double> getRawData(){return this.data;}
 
 
-    private final void create(int size, double val){
+    private final void create(int size, Double val){
 
         if(size == 0){
             throw new IllegalArgumentException("Cannot create a vector with zero size");

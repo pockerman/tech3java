@@ -1,11 +1,11 @@
 package ml.regression;
 
 import algorithms.optimizers.ISupervisedOptimizer;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 
-public class RegressorBase<DataSetType extends DenseMatrix, HypothesisType extends IVectorRealFunction<Vector>> {
+public class RegressorBase<DataSetType extends DenseMatrixSet, HypothesisType extends IVectorRealFunction<Vector>> {
 
 
 

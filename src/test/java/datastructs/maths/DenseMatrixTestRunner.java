@@ -11,7 +11,7 @@ public class DenseMatrixTestRunner {
         System.out.println("============================");
         System.out.println("Start executing DenseMatrixTest tests");
 
-        Result result = JUnitCore.runClasses(DenseMatrixTest.class);
+        Result result = JUnitCore.runClasses(DenseMatrixSetTest.class);
 
         if( !result.wasSuccessful()) {
             for (Failure failure : result.getFailures()) {

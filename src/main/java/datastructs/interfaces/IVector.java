@@ -1,19 +1,29 @@
 package datastructs.interfaces;
 
-/**
- * General interafce for vector-like data structures
- */
-public interface IVector<E> extends IAdt<E> {
+import tech.tablesaw.api.Row;
 
-    /**
-     * Build a new instance of this class
-     */
-    IVector create(int size);
+/**
+ * General interface for vector-like data structures
+ */
+public interface IVector<E> extends IAdt<E>, IRowBuilder<IVector<E>> {
+
 
     /**
      * Resize the vector
      */
     void resize(int size);
+
+
+    /**
+     * Set the data from the other IVector
+     */
+    void set(IVector<E> other);
+
+
+    /**
+     * Set the data from Row
+     */
+    void set(Row row);
 
     /**
      * Set the i-th entry

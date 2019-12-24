@@ -1,7 +1,6 @@
 package maths.errorfunctions;
 
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;

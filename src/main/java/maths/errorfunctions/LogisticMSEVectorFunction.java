@@ -2,7 +2,6 @@ package maths.errorfunctions;
 
 import base.CommonConstants;
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 

@@ -1,6 +1,6 @@
 package applications.ml;
 
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 import maths.EuclideanVectorCalculator;
 import ml.classifiers.ThreadedKNNClassifier;
@@ -30,7 +30,7 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
  */
 public class Example8 {
 
-    public static Pair<DenseMatrix, List<Integer>> createDataSet() throws IOException, IllegalArgumentException {
+    public static Pair<DenseMatrixSet, List<Integer>> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
         Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/iris_data.csv"));
@@ -61,7 +61,7 @@ public class Example8 {
         }
 
         Table reducedDataSet = dataSetTable.removeColumns("species").first(dataSetTable.rowCount());
-        DenseMatrix dataSet = new DenseMatrix();
+        DenseMatrixSet dataSet = new DenseMatrixSet();
         dataSet.initializeFrom(reducedDataSet);
 
         // partition the data set
@@ -75,14 +75,14 @@ public class Example8 {
 
     public static void main(String[] args) throws IOException, IllegalArgumentException{
 
-        Pair<DenseMatrix, List<Integer>> data = Example8.createDataSet();
+        Pair<DenseMatrixSet, List<Integer>> data = Example8.createDataSet();
         ExecutorService executorService = newFixedThreadPool(4);
 
         System.out.println("Number of rows: "+data.first.m());
         System.out.println("Number of labels: "+data.second.size());
 
 
-        ThreadedKNNClassifier<DenseMatrix, EuclideanVectorCalculator<Double>,
+        ThreadedKNNClassifier<DenseMatrixSet, EuclideanVectorCalculator<Double>,
                               ClassificationVoter> classifier = new ThreadedKNNClassifier<>(3, false, executorService);
 
         classifier.setDistanceCalculator(new EuclideanVectorCalculator<Double>());

@@ -1,11 +1,8 @@
 package algorithms.optimizers;
 
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
-
-import java.util.List;
 
 public interface ISupervisedOptimizer {
 

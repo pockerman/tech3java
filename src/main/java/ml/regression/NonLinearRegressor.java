@@ -1,10 +1,10 @@
 package ml.regression;
 
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import maths.functions.NonLinearVectorPolynomial;
 import maths.functions.ScalarMonomial;
 
-public class NonLinearRegressor<DataSetType extends DenseMatrix > extends RegressorBase<DataSetType, NonLinearVectorPolynomial > {
+public class NonLinearRegressor<DataSetType extends DenseMatrixSet> extends RegressorBase<DataSetType, NonLinearVectorPolynomial > {
 
     /**
      * Constructor

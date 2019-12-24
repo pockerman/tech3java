@@ -8,7 +8,7 @@ public class MatrixVectorOperations {
     /**
      * Computes y = M*x
      */
-    public static  final Vector dot(DenseMatrix mat, Vector x){
+    public static  final Vector dot(DenseMatrixSet mat, Vector x){
 
         if(mat.n() != x.size()){
             throw new IllegalStateException("Matrix columns "+mat.n()+" and vector " +

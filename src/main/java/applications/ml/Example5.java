@@ -5,7 +5,7 @@ import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
@@ -34,8 +34,8 @@ public class Example5 {
         Vector labels = new Vector(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
 
-        DenseMatrix denseMatrix = new DenseMatrix(reducedDataSet.rowCount(), 2, 1.0);
-        denseMatrix.setColumn(1, reducedDataSet.doubleColumn(0));
+        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(reducedDataSet.rowCount(), 2, 1.0);
+        denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
 
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
 
@@ -46,7 +46,7 @@ public class Example5 {
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
-        IterativeAlgorithmResult result = gdSolver.optimize(denseMatrix, labels, hypothesis);
+        IterativeAlgorithmResult result = gdSolver.optimize(denseMatrixSet, labels, hypothesis);
 
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));
