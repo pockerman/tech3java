@@ -46,7 +46,7 @@ public class DenseMatrix implements I2DDataSet<IVector<Double>> {
      * Copy this matrix
      */
     @Override
-    public I2DDataSet<IVector> copy(){
+    public I2DDataSet<IVector<Double>> copy(){
 
         return new DenseMatrix(this);
     }
@@ -55,7 +55,7 @@ public class DenseMatrix implements I2DDataSet<IVector<Double>> {
      * Create a new matrix
      */
     @Override
-    public I2DDataSet<Vector> create(int m, int n){
+    public I2DDataSet<IVector<Double>> create(int m, int n){
 
         //DenseMatrix matrix = new DenseMatrix();
         this.create(m, n, 0.0);
