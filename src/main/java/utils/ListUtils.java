@@ -67,24 +67,24 @@ public class ListUtils {
 
         int small = start - 1;
 
-        for(int i = start; i<=end; ++i){
+        for(int i = start; i<=end; ++i) {
 
-            if(comparator.compare(list.get(i), list.get(end)) < 0){
-                
+            if (comparator.compare(list.get(i), list.get(end)) < 0) {
+
                 ++small;
 
-                if( i != small){
+                if (i != small) {
                     ListUtils.swap(list, small, i);
                 }
             }
-
-            ++small;
-
-            if( small != end){
-
-                ListUtils.swap(list, small, i);
-            }
         }
+
+        ++small;
+
+        if( small != end){
+            ListUtils.swap(list, small, end);
+        }
+
         return small;
     }
 }
