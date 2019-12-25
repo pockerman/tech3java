@@ -9,11 +9,11 @@ import java.util.Map;
 public class RowBuilder {
 
 
-    private static Map<Class<?>, IRowBuilder<?>> elementBuilder = new HashMap<>();
+    private static Map<RowType.Type, IRowBuilder<?>> elementBuilder = new HashMap<>();
 
     static
     {
-        elementBuilder.put(Vector.class, new VectorBuilder());
+        elementBuilder.put(RowType.Type.VECTOR, new VectorBuilder());
     }
 
     <Row> Row build(RowType.Type type){
