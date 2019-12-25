@@ -30,6 +30,11 @@ public class DenseMatrixSet<T> implements I2DDataSet<IVector<T>> {
     public DenseMatrixSet(RowType.Type rowType, RowBuilder builder, int m, int n, T val){
         this(rowType, builder);
         this.createInternal(m ,n);
+        for(int i=0; i<this.m(); ++i){
+            for(int j=0; j<n(); ++j){
+                this.set(i, j, val);
+            }
+        }
     }
 
     /**
