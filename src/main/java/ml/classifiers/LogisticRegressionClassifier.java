@@ -2,13 +2,14 @@ package ml.classifiers;
 
 import algorithms.optimizers.ISupervisedOptimizer;
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 
 import java.util.List;
 
-public class LogisticRegressionClassifier<DataSetType extends I2DDataSet,
-                                HypothesisType extends IVectorRealFunction<Vector>> extends ClassifierBase<DataSetType> {
+public class LogisticRegressionClassifier<DataSetType extends I2DDataSet<IVector<Double>>,
+                                HypothesisType extends IVectorRealFunction<IVector<Double>>> extends ClassifierBase<DataSetType> {
 
     /**
      * Constructor.

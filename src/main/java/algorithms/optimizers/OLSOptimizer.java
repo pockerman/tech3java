@@ -2,9 +2,12 @@ package algorithms.optimizers;
 
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
+import utils.ArrayUtils;
+import utils.ListUtils;
 
 /**
  * Ordinary Least Squares optimizer for a real vector function
@@ -14,7 +17,7 @@ public class OLSOptimizer implements ISupervisedOptimizer {
     /**
      * Optimize f on the given data
      */
-    public <OutPutType, DataSetType extends I2DDataSet> OutPutType optimize(final DataSetType data, final Vector y, IVectorRealFunction f){
+    public <OutPutType, DataSetType extends I2DDataSet<IVector<Double>>> OutPutType optimize(final DataSetType data, final Vector y, IVectorRealFunction f){
 
         IterativeAlgorithmResult reslt = new IterativeAlgorithmResult();
         reslt.numThreadsUsed = 1;
@@ -22,8 +25,12 @@ public class OLSOptimizer implements ISupervisedOptimizer {
         // the object that will do the fitting for us
         OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
 
-        double[][] x = data.getSubMatrix(2, 1, 2);
-        regression.newSampleData(y.toArrary(), x);
+        int numColsToInclude = 2;
+        Double[][] x = new Double[data.m()][numColsToInclude];
+        data.getSubMatrix(x, numColsToInclude, 1, 2);
+
+        double[] yArray = ListUtils.toDoubleArray(y.getRawData());
+        regression.newSampleData(yArray, ArrayUtils.toArray(x));
         double[] coeffs = regression.estimateRegressionParameters();
         f.setCoeffs(coeffs);
         return (OutPutType) reslt;

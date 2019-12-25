@@ -2,10 +2,29 @@ package datastructs.interfaces;
 
 import tech.tablesaw.api.Row;
 
+import java.util.List;
+
 /**
  * General interface for vector-like data structures
  */
-public interface IVector<E> extends IAdt<E>, IRowBuilder<IVector<E>> {
+public interface IVector<E> extends IAdt<E>  /*IRowBuilder<IVector<E>>*/ {
+
+
+    /**
+     * Build a new instance of this class
+     */
+    IVector<E> create(int size);
+
+
+    /**
+     * Build a new instance of this class
+     */
+    IVector<E> create( E... value);
+
+    /**
+     * Create a default vector
+     */
+    IVector<E> create();
 
 
     /**
@@ -44,5 +63,18 @@ public interface IVector<E> extends IAdt<E>, IRowBuilder<IVector<E>> {
      * Exchange the i-th entry with the j-th
      */
     void excahnge(int i, int k);
+
+
+    /**
+     * Get the elements of the vector as an array
+     * @return
+     */
+    E[] toArray();
+
+
+    /**
+     * get the raw data
+     */
+    List<E> getRawData();
 
 }

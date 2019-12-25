@@ -1,21 +1,22 @@
 package maths.functions;
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 
-public class SigmoidFunction implements IVectorRealFunction<Vector> {
+public class SigmoidFunction implements IVectorRealFunction<IVector<Double>> {
 
 
     /**
      * Constructor
      * @param function
      */
-    public SigmoidFunction(IVectorRealFunction<Vector> function){
+    public SigmoidFunction(IVectorRealFunction<IVector<Double>> function){
 
         this.function = function;
     }
 
     @Override
-    public Double evaluate(Vector input){
+    public Double evaluate(IVector<Double> input){
 
         Double value = this.function.evaluate(input);
         double expV = Math.exp(-value);
@@ -26,7 +27,15 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * Set the coefficients of the function
      */
     @Override
-    public final void setCoeffs(double[] coeffs){
+    public final void setCoeffs(Double[] coeffs){
+        this.function.setCoeffs(coeffs);
+    }
+
+    /**
+     * Set the coefficients of the function
+     */
+    @Override
+    public void setCoeffs(double[] coeffs){
         this.function.setCoeffs(coeffs);
     }
 
@@ -34,7 +43,7 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * Returns the coefficients of the vector function
      */
     @Override
-    public final Vector getCoeffs(){
+    public final IVector<Double> getCoeffs(){
         return this.function.getCoeffs();
     }
 
@@ -55,7 +64,7 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * Returns the gradients with respect to the coefficients at the given data point
      */
     @Override
-    public Vector gradidents(Vector data){
+    public Vector gradidents(IVector<Double> data){
         Vector rslt = new Vector(data);
         rslt.set(0, 1.0);
         return rslt;
@@ -67,7 +76,7 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * if i != 0 this function returns 0.0
      */
     @Override
-    public double gradient(int i, Vector data){
+    public double gradient(int i, IVector<Double> data){
 
         if(i != 0){
             return 0.0;
@@ -82,7 +91,7 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * Returns the gradient with respect to the i-th coeff
      */
     @Override
-    public double coeffGradient(int i, Vector data){
+    public double coeffGradient(int i, IVector<Double> data){
 
         double z = this.function.evaluate(data);
         double expZ = Math.exp(-z);
@@ -93,7 +102,7 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
      * Compute the gradients with respect to the coefficients
      */
     @Override
-    public Vector coeffGradients(Vector data){
+    public Vector coeffGradients(IVector<Double> data){
         Vector grads = new Vector(this.function.numCoeffs(), 0.0);
 
         for (int i = 0; i < grads.size(); i++) {
@@ -104,5 +113,5 @@ public class SigmoidFunction implements IVectorRealFunction<Vector> {
     }
 
 
-    private IVectorRealFunction<Vector> function;
+    private IVectorRealFunction<IVector<Double>> function;
 }

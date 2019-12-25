@@ -1,6 +1,7 @@
 package maths.functions.generators;
 
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface IRandomGenerator<PointType> {
 
-    <DataSetTp extends I2DDataSet<PointType>> List<PointType> generate(DataSetTp dataSet, int n);
+    <DataSetTp extends I2DDataSet<IVector<PointType>>>  List<IVector<PointType>> generate(DataSetTp dataSet, int n);
 }

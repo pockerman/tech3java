@@ -6,7 +6,9 @@ import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
 import tech.tablesaw.api.Table;
@@ -34,7 +36,7 @@ public class Example5 {
         Vector labels = new Vector(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
 
-        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(reducedDataSet.rowCount(), 2, 1.0);
+        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 2, 1.0);
         denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
 
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);

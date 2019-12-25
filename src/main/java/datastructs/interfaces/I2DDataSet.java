@@ -2,7 +2,7 @@ package datastructs.interfaces;
 
 import parallel.partitioners.IPartitionPolicy;
 
-public interface I2DDataSet<DataSetTyp> {
+public interface I2DDataSet<RowType> {
 
     /**
      * Copy from the given IDataSetWrapper
@@ -28,19 +28,19 @@ public interface I2DDataSet<DataSetTyp> {
     /**
      * Returns the i-th row of the dataset
      */
-    DataSetTyp getRow(int i);
+    RowType getRow(int i);
 
 
     /**
      * Returns the submatrix representation
      */
-    double[][] getSubMatrix(int numColsToInclude, int... includeCols);
+    <E> void getSubMatrix(E[][] elements, int numColsToInclude, int... includeCols);
 
 
     /**
      * Set the row-th row  of the dataset
      */
-    void set(int row, DataSetTyp item);
+    void set(int row, RowType item);
 
     /**
      * Exchange the i-th row with the j-th row

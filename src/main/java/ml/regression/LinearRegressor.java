@@ -6,7 +6,7 @@ import maths.functions.LinearVectorPolynomial;
 /**
  * Linear regression modelling
  */
-public class LinearRegressor<DataSetType extends DenseMatrixSet> extends RegressorBase<DataSetType, LinearVectorPolynomial> {
+public class LinearRegressor<DataSetType extends DenseMatrixSet<Double>> extends RegressorBase<DataSetType, LinearVectorPolynomial> {
 
     /**
      * Constructor

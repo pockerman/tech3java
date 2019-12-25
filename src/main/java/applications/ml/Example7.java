@@ -5,7 +5,9 @@ import algorithms.optimizers.GDInput;
 import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.errorfunctions.MSEVectorFunction;
 import maths.functions.NonLinearVectorPolynomial;
 import maths.functions.ScalarMonomial;
@@ -33,7 +35,7 @@ public class Example7 {
         Vector labels = new Vector(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
 
-        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(reducedDataSet.rowCount(), 2, 1.0);
+        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 2, 1.0);
         denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
         denseMatrixSet.duplicateColumn(1);
 

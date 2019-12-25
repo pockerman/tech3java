@@ -126,20 +126,18 @@ public class DenseMatrixSet<T> implements I2DDataSet<IVector<T>> {
      * Given the number of columns to include and the column indices
      * create a submatrix that has all the rows and columns specified
      */
-    public final T[][] getSubMatrix(int numColsToInclude, int... includeCols){
+    @Override
+    public final <E> void getSubMatrix(E[][] subMatix, int numColsToInclude, int... includeCols){
 
-        T[][] subMatix = new T[this.m()][numColsToInclude];
+        //T[][] subMatix = new T[this.m()][numColsToInclude];
 
         for(int i=0; i<this.m(); ++i){
 
             int colCounter=0;
             for( int col:includeCols){
-                subMatix[i][colCounter++] = this.data.get(i).get(col);
+                subMatix[i][colCounter++] = (E) this.data.get(i).get(col);
             }
-
         }
-
-        return subMatix;
     }
 
     /**

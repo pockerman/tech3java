@@ -1,4 +1,7 @@
 package maths;
+
+import java.util.Comparator;
+
 /**
   *  Some path finding algorithms like A* use heuristic functions
   *  in order to work. Often this heuristic may simply be the distance
@@ -29,4 +32,12 @@ public interface DistanceCalculator<PointType, ResultType> {
      * Compare the two results
      */
     ResultType compareMin(ResultType r1, ResultType r2);
+
+    /**
+     * Returns
+     * -1 if r1 < r2
+     * 0  if r1 == r2
+     * 1 if  r1 > r2
+     */
+    int compare(ResultType r1, ResultType r2);
 }

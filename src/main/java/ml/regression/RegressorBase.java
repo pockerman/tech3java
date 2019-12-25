@@ -1,11 +1,12 @@
 package ml.regression;
 
 import algorithms.optimizers.ISupervisedOptimizer;
+import datastructs.interfaces.IVector;
 import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 
-public class RegressorBase<DataSetType extends DenseMatrixSet, HypothesisType extends IVectorRealFunction<Vector>> {
+public class RegressorBase<DataSetType extends DenseMatrixSet<Double>, HypothesisType extends IVectorRealFunction<IVector<Double>>> {
 
 
 
@@ -51,7 +52,7 @@ public class RegressorBase<DataSetType extends DenseMatrixSet, HypothesisType ex
 
         for(int row = 0; row<dataSet.m(); ++row){
 
-            Vector r = dataSet.getRow(row);
+            IVector<Double> r = dataSet.getRow(row);
             double error = y.get(row) - this.hypothesisType.evaluate(r);
             errs.set(row , error);
         }

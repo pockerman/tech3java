@@ -5,7 +5,9 @@ import algorithms.utils.IterativeAlgorithmResult;
 import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
@@ -41,7 +43,7 @@ public class Example6 {
         List<Double> coolingCol = ParseUtils.parseAsDouble(reducedDataSet.column(1));
         ListMaths.normalize(coolingCol);
 
-        DenseMatrixSet denseMatrixSet = new DenseMatrixSet(reducedDataSet.rowCount(), 3, 1.0);
+        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 3, 1.0);
         denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
         denseMatrixSet.setColumn(2, coolingCol);
 
@@ -54,8 +56,9 @@ public class Example6 {
         // the object that will do the fitting for us
         OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
 
-        double[][] x = denseMatrixSet.getSubMatrix(2, 1, 2);
-        regression.newSampleData(labels.toArrary(), x);
+        Double[][] x = new Double[denseMatrixSet.m()][2];
+        denseMatrixSet.getSubMatrix(x, 2, 1, 2);
+        regression.newSampleData(ListUtils.toDoubleArray(labels.getRawData()), ArrayUtils.toArray(x));
         double[] coeffs = regression.estimateRegressionParameters();
         System.out.println("Apache OLS: ");
         System.out.println("Intercept: "+coeffs[0]+" slope1: "+coeffs[1]+" slope2: "+coeffs[2]);
@@ -78,7 +81,7 @@ public class Example6 {
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(10000,1.0e-8);
 
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
-        IterativeAlgorithmResult result = gdSolver.optimize(dataSet.first, dataSet.second, hypothesis);
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) gdSolver.optimize(dataSet.first, dataSet.second, hypothesis);
 
         System.out.println(" ");
         System.out.println(result);

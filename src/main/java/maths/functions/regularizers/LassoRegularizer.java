@@ -1,5 +1,6 @@
 package maths.functions.regularizers;
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
@@ -9,7 +10,7 @@ public class LassoRegularizer implements IRegularizerFunction {
     /**
      * Constructor.
      */
-    public LassoRegularizer(double lambda, int startCoeffs, IVectorRealFunction<Vector > hypothesis){
+    public LassoRegularizer(double lambda, int startCoeffs, IVectorRealFunction<IVector<Double> > hypothesis){
 
         this.startCoeffs = startCoeffs;
         this.lambda = lambda;
@@ -22,7 +23,7 @@ public class LassoRegularizer implements IRegularizerFunction {
     @Override
     public Double evaluate(Void input){
 
-        Vector coeffs = hypothesis.getCoeffs();
+        IVector<Double> coeffs = hypothesis.getCoeffs();
 
         if(coeffs == null){
             throw new IllegalStateException("Hypothesis coefficients are null");
@@ -42,5 +43,5 @@ public class LassoRegularizer implements IRegularizerFunction {
 
     int startCoeffs;
     double lambda;
-    maths.functions.IVectorRealFunction<Vector> hypothesis;
+    maths.functions.IVectorRealFunction<IVector<Double>> hypothesis;
 }

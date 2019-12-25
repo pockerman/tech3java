@@ -57,4 +57,24 @@ public class EuclideanVectorCalculator<T> implements DistanceCalculator<IVector<
         return r2;
     }
 
+
+    /**
+     * Returns
+     * -1 if r1 < r2
+     * 0  if r1 == r2
+     * 1 if  r1 > r2
+     */
+    @Override
+    public int compare(Double r1, Double r2){
+
+        if(r1 < r2){
+            return -1;
+        }
+        else if(r1 > r2){
+            return 1;
+        }
+
+        return 0;
+    }
+
 }

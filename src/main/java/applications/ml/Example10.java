@@ -5,9 +5,12 @@ import algorithms.optimizers.GDInput;
 import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
 
+import datastructs.utils.RowType;
 import maths.errorfunctions.MSEVectorFunction;
+import maths.functions.IVectorRealFunction;
 import maths.functions.LinearVectorPolynomial;
 
 import maths.functions.regularizers.LassoRegularizer;
@@ -43,7 +46,7 @@ public class Example10 {
         Vector labels = new Vector(y);
 
         Table reducedDataSet = dataSetTable.removeColumns("y").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet(reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
+        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
         dataSet.setColumn(1, reducedDataSet.doubleColumn(0));
         return PairBuilder.makePair(dataSet, labels);
     }
@@ -64,10 +67,10 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);
@@ -92,10 +95,10 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);
@@ -120,10 +123,10 @@ public class Example10 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = regressor.train(data, labels, gdSolver);
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);

@@ -4,7 +4,7 @@ import datastructs.maths.DenseMatrixSet;
 import maths.functions.NonLinearVectorPolynomial;
 import maths.functions.ScalarMonomial;
 
-public class NonLinearRegressor<DataSetType extends DenseMatrixSet> extends RegressorBase<DataSetType, NonLinearVectorPolynomial > {
+public class NonLinearRegressor<DataSetType extends DenseMatrixSet<Double>> extends RegressorBase<DataSetType, NonLinearVectorPolynomial > {
 
     /**
      * Constructor

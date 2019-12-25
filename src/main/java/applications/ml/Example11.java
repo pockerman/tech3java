@@ -4,6 +4,8 @@ import algorithms.utils.DefaultIterativeAlgorithmController;
 import base.CommonConstants;
 import datastructs.interfaces.IVector;
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
+import datastructs.utils.RowType;
 import maths.DistanceCalculator;
 import maths.EuclideanVectorCalculator;
 import maths.functions.generators.IRandomGenerator;
@@ -24,7 +26,7 @@ public class Example11 {
     public static void main(String[] args){
 
         //some synthetic data
-        DenseMatrixSet matrix = new DenseMatrixSet(6, 2, 0.0);
+        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), 6, 2, 0.0);
         matrix.set(0, 1.0, 2.0);
         matrix.set(1, 1.0, 4.0);
         matrix.set(2, 1.0, 0.0);
@@ -36,7 +38,7 @@ public class Example11 {
         input.k = 2;
         input.iterationContorller = new DefaultIterativeAlgorithmController(10, CommonConstants.getTol());
 
-        KMeans<IVector, Double> kmeans = new KMeans<>(input);
+        KMeans<Double, Double> kmeans = new KMeans<>(input);
 
         DistanceCalculator<IVector<Double>, Double> similarity = new EuclideanVectorCalculator<Double>();
         IRandomGenerator randomGenerator = new UniformRandomGenerator();

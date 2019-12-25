@@ -35,8 +35,9 @@ public class Vector implements IVector<Double> {
         create(size, val);
     }
 
+
     /**
-     * Creat a vector from the given double values
+     * Create a vector from the given double values
      */
     public Vector(Double... data){
         this.data = new ArrayList<>();
@@ -57,7 +58,7 @@ public class Vector implements IVector<Double> {
     /**
      * Create a vector from another vector i.e. copy constructor
      */
-    public Vector(Vector data){
+    public Vector(IVector<Double> data){
         this(data.size(), 0.0);
         this.set(data);
     }
@@ -272,16 +273,26 @@ public class Vector implements IVector<Double> {
     /**
      * Set the data from a simple array
      */
-    public final void set(double[] data){
+    public final void set(Double[] data){
 
         for (int i = 0; i < data.length ; i++) {
             this.set(i, data[i]);
         }
     }
 
-    public double[] toArrary(){
+    /**
+     * Set the coefficients of the function
+     */
+    public void set(double[] data){
+        for (int i = 0; i < data.length ; i++) {
+            this.set(i, data[i]);
+        }
+    }
 
-        double[] arrData = new double[this.data.size()];
+    @Override
+    public Double[] toArray(){
+
+        Double[] arrData = new Double[this.data.size()];
 
         for(int i=0; i<this.data.size(); ++i){
             arrData[i] = this.data.get(i);
@@ -329,11 +340,6 @@ public class Vector implements IVector<Double> {
         this.scale(1.0/length);
     }
 
-    /**
-     * Returns the raw data structure that holds the elements of the Vector
-     */
-    public final ArrayList<Double> getRawData(){return this.data;}
-
 
     private final void create(int size, Double val){
 
@@ -354,6 +360,14 @@ public class Vector implements IVector<Double> {
      */
     public boolean contains(double val){
         return this.data.contains(val);
+    }
+
+    /**
+     * get the raw data
+     */
+    @Override
+    public List<Double> getRawData(){
+        return data;
     }
 
     /**

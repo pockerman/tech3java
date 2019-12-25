@@ -47,6 +47,15 @@ public class ScalarMonomial implements IScalarRealFunction {
      * Set the coefficients of the function
      */
     @Override
+    public void setCoeffs(Double[] coeffs){
+        this.setCoeff(coeffs[0]);
+    }
+
+
+    /**
+     * Set the coefficients of the function
+     */
+    @Override
     public void setCoeffs(double[] coeffs){
         this.setCoeff(coeffs[0]);
     }

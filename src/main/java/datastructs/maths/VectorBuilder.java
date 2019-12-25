@@ -14,12 +14,18 @@ public class VectorBuilder implements IRowBuilder<Vector> {
     /**
      * Create a row of type RowType
      */
-    RowType create(int n);
+    @Override
+    public Vector create(int n){
+        return new Vector(n, 0.0);
+    }
 
     /**
      * Create a row of type RowType
      */
-    <T> RowType create(T... vals);
+    @Override
+    public <T> Vector create(T... vals){
+        return new Vector((Double[])(vals));
+    }
 
 
 }

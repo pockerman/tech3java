@@ -1,8 +1,8 @@
 package maths.functions;
 
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
-import datastructs.maths.VectorOperations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * the term and the order this term has
  */
 
-public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
+public class NonLinearVectorPolynomial implements IVectorRealFunction<IVector<Double>> {
 
     /**
      * Constructor
@@ -29,7 +29,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
 
 
     @Override
-    public Double evaluate(Vector input){
+    public Double evaluate(IVector<Double> input){
 
         if(input.size() != this.terms.size()){
             throw new IllegalArgumentException("Invalid number of coeffs. "+input.size()+" should be "+this.terms.size());
@@ -46,16 +46,31 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
      * Set the coefficients of the Polynomial
      */
     @Override
-    public final void setCoeffs(Vector coeffs){
+    public final void setCoeffs(IVector<Double> coeffs){
 
-        this.setCoeffs(coeffs.toArrary());
+        this.setCoeffs(coeffs.toArray());
     }
 
     /**
      * Set the coefficients of the function
      */
     @Override
-    public final void setCoeffs(double[] coeffs){
+    public final void setCoeffs(Double[] coeffs){
+
+        if(coeffs.length != this.terms.size()){
+            throw new IllegalArgumentException("Invalid number of coeffs. "+coeffs.length+" should be "+this.terms.size());
+        }
+
+        for (int i = 0; i < this.terms.size() ; i++) {
+            this.terms.get(i).setCoeff(coeffs[i]);
+        }
+    }
+
+    /**
+     * Set the coefficients of the function
+     */
+    @Override
+    public void setCoeffs(double[] coeffs){
 
         if(coeffs.length != this.terms.size()){
             throw new IllegalArgumentException("Invalid number of coeffs. "+coeffs.length+" should be "+this.terms.size());
@@ -94,7 +109,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
      * Returns the gradients with respect to the coefficients at the given data point
      */
     @Override
-    public Vector gradidents(Vector data){
+    public Vector gradidents(IVector<Double> data){
 
         if(data.size() != this.terms.size()){
             throw new IllegalArgumentException("Invalid data size "+data.size()+" should be equal to: "+this.terms.size());
@@ -114,7 +129,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
      * Compute the gradients with respect to the coefficients
      */
     @Override
-    public Vector coeffGradients(Vector data){
+    public Vector coeffGradients(IVector<Double> data){
 
         Vector grads = new Vector(this.terms.size(), 0.0);
 
@@ -129,7 +144,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
      * Returns the gradient with respect to the i-th coeff
      */
     @Override
-    public double coeffGradient(int i, Vector data){
+    public double coeffGradient(int i, IVector<Double> data){
 
         return this.terms.get(i).coeffGradient(data.get(i));
     }
@@ -139,7 +154,7 @@ public class NonLinearVectorPolynomial implements IVectorRealFunction<Vector> {
      * Returns the gradient with respect to the i-th coeff
      */
     @Override
-    public double gradient(int i, Vector data){
+    public double gradient(int i, IVector<Double> data){
 
         return this.terms.get(i).gradient(data.get(i));
     }

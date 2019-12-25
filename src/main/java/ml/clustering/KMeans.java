@@ -11,16 +11,16 @@ import java.util.List;
 
 public class KMeans<PointType, DistanceType>{
 
-    public class Cluster<PointType>
+    public class Cluster
     {
         public int id;
-        public PointType centroid;
+        public IVector<PointType> centroid;
         public List<Integer> points;
 
-        public <DataSetTp extends I2DDataSet<PointType>> void calculateCentorid(DataSetTp dataSet){
+        public <DataSetTp extends I2DDataSet<IVector<PointType>>> void calculateCentorid(DataSetTp dataSet){
 
             for(int i=0; i<points.size(); ++i){
-                centroid.add(i, dataSet.getRow(this.points.get(i)));
+                //centroid.add(i, dataSet.getRow(this.points.get(i)));
             }
         }
     }
@@ -33,14 +33,14 @@ public class KMeans<PointType, DistanceType>{
         this.input = input;
     }
 
-    public <DataSetType extends I2DDataSet<PointType>,
-            SimilarityType extends DistanceCalculator<PointType, DistanceType>,
+    public <DataSetType extends I2DDataSet<IVector<PointType>>,
+            SimilarityType extends DistanceCalculator<IVector<PointType>, DistanceType>,
             RandomGeneratorType extends IRandomGenerator<PointType>>
     IterativeAlgorithmResult  cluster(final DataSetType data,
                                             final SimilarityType similarity, final RandomGeneratorType centroidGenerator){
 
         // assign the random centroids
-        List<PointType> centroidsOld = centroidGenerator.generate(data, this.input.k);
+        List<IVector<PointType>> centroidsOld = centroidGenerator.generate(data, this.input.k);
 
         while(this.input.iterationContorller.continueIterations()){
 
@@ -84,15 +84,15 @@ public class KMeans<PointType, DistanceType>{
         return result;
     }
 
-    private <PointType> void clusterPoint(int pointId, PointType point, final SimilarityType similarity){
+    private <SimilarityType extends DistanceCalculator<IVector<PointType>, DistanceType>> void clusterPoint(int pointId, IVector<PointType> point, final SimilarityType similarity){
 
-        double dist = Double.MAX_VALUE;
+        DistanceType dist = similarity.maxValue();
         int clusterIdx = -1;
         for(int c=0; c<clusters.size(); ++c){
 
-            double distance = similarity.calculate(point, clusters.get(c).centroid);
+            DistanceType distance = similarity.calculate(point, clusters.get(c).centroid);
 
-            if(distance < dist){
+            if(similarity.compare(distance , dist) == -1){
                 distance = dist;
                 clusterIdx = c;
             }

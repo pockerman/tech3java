@@ -1,18 +1,19 @@
 package maths.functions.generators;
 
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 
 import java.util.*;
 
-public class UniformRandomGenerator implements IRandomGenerator {
+public class UniformRandomGenerator<T> implements IRandomGenerator<T> {
 
     @Override
-    public <DataSetTp extends I2DDataSet> List<Object> generate(DataSetTp dataSet, int n){
+    public <DataSetTp extends I2DDataSet<IVector<T>>> List<IVector<T>> generate(DataSetTp dataSet, int n){
 
         int min = 0;
         int max = dataSet.m();
         Random random = new Random();
-        List<Object> result = new ArrayList<>();
+        List<IVector<T>> result = new ArrayList<>();
         Set<Integer> touched = new HashSet<>();
 
         for(int r=0; r<n; ++r){

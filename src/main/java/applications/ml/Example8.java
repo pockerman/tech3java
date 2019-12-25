@@ -1,7 +1,9 @@
 package applications.ml;
 
 import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.EuclideanVectorCalculator;
 import ml.classifiers.ThreadedKNNClassifier;
 import parallel.partitioners.MatrixRowPartitionPolicy;
@@ -61,7 +63,7 @@ public class Example8 {
         }
 
         Table reducedDataSet = dataSetTable.removeColumns("species").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet();
+        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
         dataSet.initializeFrom(reducedDataSet);
 
         // partition the data set

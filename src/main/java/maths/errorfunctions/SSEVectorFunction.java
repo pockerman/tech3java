@@ -2,6 +2,7 @@ package maths.errorfunctions;
 
 
 import datastructs.interfaces.I2DDataSet;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
@@ -38,7 +39,7 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
     /**
      * Constructor
      */
-    public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
+    public SSEVectorFunction(IVectorRealFunction<IVector<Double>> hypothesis ){
 
         if(hypothesis == null){
             throw new IllegalArgumentException("Hypothesis function cannot be null");
@@ -48,7 +49,7 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
     /**
       * Constructor
      */
-    public SSEVectorFunction(IVectorRealFunction<Vector> hypothesis, IRegularizerFunction regularizerFunction){
+    public SSEVectorFunction(IVectorRealFunction<IVector<Double>> hypothesis, IRegularizerFunction regularizerFunction){
 
         if(hypothesis == null){
             throw new IllegalArgumentException("Hypothesis function cannot be null");
@@ -99,7 +100,7 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 
-            Vector hypothesisGrads = this.hypothesis.coeffGradients(row);
+            IVector<Double> hypothesisGrads = this.hypothesis.coeffGradients(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
                 gradients.add(coeff, -2.0*diff*hypothesisGrads.get(coeff));
@@ -109,6 +110,6 @@ public class SSEVectorFunction implements IVectorErrorRealFunction {
         return gradients;
     }
 
-    private IVectorRealFunction<Vector> hypothesis;
+    private IVectorRealFunction<IVector<Double>> hypothesis;
     private IRegularizerFunction regularizerFunction;
 }
