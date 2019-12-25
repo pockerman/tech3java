@@ -1,7 +1,7 @@
 package maths.errorfunctions;
 
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
@@ -18,7 +18,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
     /**
      * Constructor
      */
-    public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
+    public MSEVectorFunction(IVectorRealFunction<IVector<Double>> hypothesis ){
 
         this.hypothesis = hypothesis;
         this.regularizerFunction = null;
@@ -27,7 +27,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
     /**
      * Constructor
      */
-    public MSEVectorFunction(IVectorRealFunction<Vector> hypothesis, IRegularizerFunction regularizerFunction ){
+    public MSEVectorFunction(IVectorRealFunction<IVector<Double>> hypothesis, IRegularizerFunction regularizerFunction ){
 
         this.hypothesis = hypothesis;
         this.regularizerFunction = regularizerFunction;
@@ -79,7 +79,7 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 
-            Vector hypothesisGrads = this.hypothesis.coeffGradients(row);
+            IVector<Double> hypothesisGrads = this.hypothesis.coeffGradients(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
                 gradients.add(coeff, (-2.0/data.m())*diff*hypothesisGrads.get(coeff));
@@ -89,6 +89,6 @@ public class MSEVectorFunction implements IVectorErrorRealFunction {
         return gradients;
     }
 
-    private IVectorRealFunction<Vector> hypothesis;
+    private IVectorRealFunction<IVector<Double>> hypothesis;
     IRegularizerFunction regularizerFunction;
 }

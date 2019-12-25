@@ -2,7 +2,7 @@ package maths.errorfunctions;
 
 import base.CommonConstants;
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
 
@@ -15,7 +15,7 @@ public class LogisticSSEVectorFunction implements IVectorErrorRealFunction {
     /**
      * Constructor
      */
-    public LogisticSSEVectorFunction(IVectorRealFunction<Vector> hypothesis ){
+    public LogisticSSEVectorFunction(IVectorRealFunction<IVector<Double>> hypothesis ){
 
         if(hypothesis == null){
             throw new IllegalArgumentException("Hypothesis function cannot be null");
@@ -87,7 +87,7 @@ public class LogisticSSEVectorFunction implements IVectorErrorRealFunction {
 
             double diff = (labels.get(rowIdx) - this.hypothesis.evaluate(row));
 
-            Vector hypothesisGrads = this.hypothesis.coeffGradients(row);
+            IVector<Double> hypothesisGrads = this.hypothesis.coeffGradients(row);
 
             for(int coeff=0; coeff<this.hypothesis.numCoeffs(); ++coeff){
                 gradients.add(coeff, -2.0*diff*hypothesisGrads.get(coeff));
@@ -99,5 +99,5 @@ public class LogisticSSEVectorFunction implements IVectorErrorRealFunction {
 
 
 
-    private IVectorRealFunction<Vector> hypothesis;
+    private IVectorRealFunction<IVector<Double>> hypothesis;
 }

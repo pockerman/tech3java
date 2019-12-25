@@ -1,9 +1,9 @@
 package applications.ml;
 
-import datastructs.adt.MatrixDataSet;
-import datastructs.adt.RowDataSet;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.EuclideanVectorCalculator;
 import ml.classifiers.KNNClassifier;
 import utils.ClassificationVoter;
@@ -24,7 +24,7 @@ public class Example1 {
 
     public static void main(String[] args){
 
-        DenseMatrix dataSet = new DenseMatrix();
+        DenseMatrixSet<Double> dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
         dataSet.create(12, 2);
         dataSet.set(0, 1.0, 3.0);
         dataSet.set(1, 1.5, 2.0);
@@ -50,9 +50,9 @@ public class Example1 {
         }
 
 
-        KNNClassifier<DenseMatrix,
+        KNNClassifier<DenseMatrixSet,
                 EuclideanVectorCalculator<Double>,
-                ClassificationVoter> classifier = new KNNClassifier<DenseMatrix,
+                ClassificationVoter> classifier = new KNNClassifier<DenseMatrixSet,
                 EuclideanVectorCalculator<Double>, ClassificationVoter>(2, false);
 
         classifier.setDistanceCalculator(new EuclideanVectorCalculator<Double>());

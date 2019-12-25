@@ -2,11 +2,9 @@ package algorithms.optimizers;
 
 import algorithms.utils.IterativeAlgorithmResult;
 import datastructs.interfaces.I2DDataSet;
-import datastructs.maths.DenseMatrix;
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IVectorRealFunction;
-
-import java.util.List;
 
 public class BatchGradientDescent implements ISupervisedOptimizer {
 
@@ -69,13 +67,13 @@ public class BatchGradientDescent implements ISupervisedOptimizer {
      * given labels. Derived classes specify the output
      */
     @Override
-    public <OutPutType, DataSetType extends I2DDataSet> OutPutType  optimize(final DataSetType data, final Vector y, IVectorRealFunction f){
+    public <OutPutType, DataSetType extends I2DDataSet<IVector<Double>>> OutPutType  optimize(final DataSetType data, final Vector y, IVectorRealFunction f){
 
         // compute the value of f with the current weights
         double jOld = this.input.errF.evaluate(data, y);
         double jCurr = 0.0;
 
-        Vector coeffs = f.getCoeffs();
+        IVector<Double> coeffs = f.getCoeffs();
 
         while(this.input.iterationContorller.continueIterations()){
 

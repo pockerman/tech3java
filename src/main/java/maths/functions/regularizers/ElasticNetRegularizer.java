@@ -1,5 +1,6 @@
 package maths.functions.regularizers;
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
@@ -9,7 +10,7 @@ public class ElasticNetRegularizer implements IRegularizerFunction {
     /**
      * Constructor.
      */
-    public ElasticNetRegularizer(double lambda1, double lambda2, int startCoeffs, IVectorRealFunction<Vector> hypothesis){
+    public ElasticNetRegularizer(double lambda1, double lambda2, int startCoeffs, IVectorRealFunction<IVector<Double>> hypothesis){
 
         this.startCoeffs = startCoeffs;
         this.lambda1 = lambda1;
@@ -23,7 +24,7 @@ public class ElasticNetRegularizer implements IRegularizerFunction {
     @Override
     public Double evaluate(Void input){
 
-        Vector coeffs = hypothesis.getCoeffs();
+        IVector<Double> coeffs = hypothesis.getCoeffs();
 
         if(coeffs == null){
             throw new IllegalStateException("Hypothesis coefficients are null");
@@ -45,5 +46,5 @@ public class ElasticNetRegularizer implements IRegularizerFunction {
     int startCoeffs;
     double lambda1;
     double lambda2;
-    maths.functions.IVectorRealFunction<Vector> hypothesis;
+    maths.functions.IVectorRealFunction<IVector<Double>> hypothesis;
 }

@@ -1,5 +1,6 @@
 package maths.functions.regularizers;
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 import maths.functions.IRegularizerFunction;
 import maths.functions.IVectorRealFunction;
@@ -9,7 +10,7 @@ public class RidgeRegularizer implements IRegularizerFunction {
     /**
      * Constructor.
      */
-    public RidgeRegularizer(double lambda, int start_coeffs, IVectorRealFunction<Vector> hypothesis){
+    public RidgeRegularizer(double lambda, int start_coeffs, IVectorRealFunction<IVector<Double>> hypothesis){
 
         this.start_coeffs = start_coeffs;
         this.lambda = lambda;
@@ -23,7 +24,7 @@ public class RidgeRegularizer implements IRegularizerFunction {
     public Double evaluate(Void input){
 
 
-        Vector coeffs = hypothesis.getCoeffs();
+        IVector<Double> coeffs = hypothesis.getCoeffs();
 
         if(coeffs == null){
             throw new IllegalStateException("Hypothesis coefficients are null");
@@ -44,5 +45,5 @@ public class RidgeRegularizer implements IRegularizerFunction {
 
     int start_coeffs;
     double lambda;
-    IVectorRealFunction<Vector> hypothesis;
+    IVectorRealFunction<IVector<Double>> hypothesis;
 }

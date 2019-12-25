@@ -1,8 +1,10 @@
 package maths.errorfunctions;
 
 import base.CommonConstants;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.functions.LinearVectorPolynomial;
 import org.junit.Test;
 
@@ -32,7 +34,7 @@ public class SSEVectorFunctionTest {
 
         SSEVectorFunction sseVectorFunction = new SSEVectorFunction(hypothesis);
         Vector labels = new Vector(4, 1.0);
-        DenseMatrix dataSet = new DenseMatrix(labels.size(), hypothesis.numCoeffs(), 1.0);
+        DenseMatrixSet<Double> dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), labels.size(), hypothesis.numCoeffs(), 1.0);
 
         double sseError = sseVectorFunction.evaluate(dataSet, labels);
         double expected = 36.0;

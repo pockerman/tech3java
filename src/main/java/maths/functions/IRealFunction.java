@@ -1,5 +1,6 @@
 package maths.functions;
 
+import datastructs.interfaces.IVector;
 import datastructs.maths.Vector;
 
 public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
@@ -12,7 +13,7 @@ public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
     /**
      * Returns the coefficients of the vector function
      */
-    Vector getCoeffs();
+    IVector<Double> getCoeffs();
 
     /**
      * Returns the i-th coefficient
@@ -22,11 +23,17 @@ public interface IRealFunction<InputType> extends IFunction<InputType, Double> {
     /**
      * Set the coefficients of the function
      */
+    void setCoeffs(Double[] coeffs);
+
+
+    /**
+     * Set the coefficients of the function
+     */
     void setCoeffs(double[] coeffs);
 
     /**
      * Set the coefficents of the function
      */
-    default void setCoeffs(Vector coeffs){this.setCoeffs(coeffs.toArrary());}
+    default void setCoeffs(IVector<Double> coeffs){this.setCoeffs(coeffs.toArray());}
 
 }

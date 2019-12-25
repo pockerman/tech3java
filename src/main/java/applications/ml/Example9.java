@@ -5,8 +5,10 @@ import algorithms.optimizers.BatchGradientDescent;
 import algorithms.optimizers.GDInput;
 import algorithms.utils.DefaultIterativeAlgorithmController;
 import algorithms.utils.IterativeAlgorithmResult;
-import datastructs.maths.DenseMatrix;
+import datastructs.maths.DenseMatrixSet;
+import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
+import datastructs.utils.RowType;
 import maths.errorfunctions.LogisticMSEVectorFunction;
 import maths.functions.LinearVectorPolynomial;
 import maths.functions.SigmoidFunction;
@@ -30,7 +32,7 @@ import java.io.IOException;
  */
 public class Example9 {
 
-    public static Pair<DenseMatrix, Vector> createDataSet() throws IOException, IllegalArgumentException {
+    public static Pair<DenseMatrixSet, Vector> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
         Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/iris_dataset_reduced.csv"));
@@ -57,7 +59,7 @@ public class Example9 {
         }
 
         Table reducedDataSet = dataSetTable.removeColumns("species").first(dataSetTable.rowCount());
-        DenseMatrix dataSet = new DenseMatrix(reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
+        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
         dataSet.setColumn(1, reducedDataSet.doubleColumn(0));
         dataSet.setColumn(2, reducedDataSet.doubleColumn(1));
         dataSet.setColumn(3, reducedDataSet.doubleColumn(2));
@@ -67,7 +69,7 @@ public class Example9 {
 
     public static void main(String[] args) throws IOException, IllegalArgumentException{
 
-        Pair<DenseMatrix, Vector> data = Example9.createDataSet();
+        Pair<DenseMatrixSet, Vector> data = Example9.createDataSet();
 
         System.out.println("Number of rows: "+data.first.m());
         System.out.println("Number of labels: "+data.second.size());
@@ -84,10 +86,10 @@ public class Example9 {
         BatchGradientDescent gdSolver = new BatchGradientDescent(gdInput);
 
         // the classifier
-        LogisticRegressionClassifier<DenseMatrix, LinearVectorPolynomial> classifier = new LogisticRegressionClassifier(hypothesis, gdSolver );
+        LogisticRegressionClassifier<DenseMatrixSet<Double>, LinearVectorPolynomial> classifier = new LogisticRegressionClassifier(hypothesis, gdSolver );
 
         // train the model
-        IterativeAlgorithmResult result = classifier.train(data.first, data.second);
+        IterativeAlgorithmResult result = (IterativeAlgorithmResult) classifier.train(data.first, data.second);
 
         System.out.println(" ");
         System.out.println(result);

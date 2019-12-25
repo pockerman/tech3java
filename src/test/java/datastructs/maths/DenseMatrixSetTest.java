@@ -1,5 +1,6 @@
 package datastructs.maths;
 
+import datastructs.utils.RowType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Unit tests for DenseMatrix class
  */
-public class DenseMatrixTest {
+public class DenseMatrixSetTest {
 
     /**
      * Test Scenario: The application attempts to duplicate a column in the matrix
@@ -16,7 +17,7 @@ public class DenseMatrixTest {
     @Test
     public void testDuplicateColumn(){
 
-        DenseMatrix matrix = new DenseMatrix(3, 3, 1.0);
+        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), 3, 3, 1.0);
         matrix.duplicateColumn(2);
 
         assertEquals("Invalid column size", matrix.n(), 4);

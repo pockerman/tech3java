@@ -1,7 +1,9 @@
 package datastructs.maths;
 
 import base.CommonConstants;
+import datastructs.interfaces.IRowBuilder;
 import datastructs.interfaces.IVector;
+import datastructs.utils.RowType;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -24,8 +26,6 @@ public class Vector implements IVector<Double> {
         this.data = new ArrayList<Double>(10);
     }
 
-    /**
-
 
     /**
      * Creates a vector of given size with entries initialized to val
@@ -35,8 +35,9 @@ public class Vector implements IVector<Double> {
         create(size, val);
     }
 
+
     /**
-     * Creat a vector from the given double values
+     * Create a vector from the given double values
      */
     public Vector(Double... data){
         this.data = new ArrayList<>();
@@ -57,7 +58,7 @@ public class Vector implements IVector<Double> {
     /**
      * Create a vector from another vector i.e. copy constructor
      */
-    public Vector(Vector data){
+    public Vector(IVector<Double> data){
         this(data.size(), 0.0);
         this.set(data);
     }
@@ -92,6 +93,17 @@ public class Vector implements IVector<Double> {
     public IVector<Double> create(int size){
         return new Vector(size, 0.0);
     }
+
+    /**
+     * Build a new instance of this class
+     */
+    @Override
+    public IVector<Double> create( Double... value){
+        return new Vector(value);
+    }
+
+    @Override
+    public IVector<Double> create(){return new Vector();}
 
     /**
       * Resize the vector
@@ -222,7 +234,8 @@ public class Vector implements IVector<Double> {
     /**
      * Set the  entries to val
      */
-    public final void set(Vector values){
+    @Override
+    public final void set(IVector<Double> values){
 
         if(values.size() != this.size()){
             throw  new IllegalArgumentException("Invalid Vector size: "+ values.size() + " != " + this.size());
@@ -260,16 +273,26 @@ public class Vector implements IVector<Double> {
     /**
      * Set the data from a simple array
      */
-    public final void set(double[] data){
+    public final void set(Double[] data){
 
         for (int i = 0; i < data.length ; i++) {
             this.set(i, data[i]);
         }
     }
 
-    public double[] toArrary(){
+    /**
+     * Set the coefficients of the function
+     */
+    public void set(double[] data){
+        for (int i = 0; i < data.length ; i++) {
+            this.set(i, data[i]);
+        }
+    }
 
-        double[] arrData = new double[this.data.size()];
+    @Override
+    public Double[] toArray(){
+
+        Double[] arrData = new Double[this.data.size()];
 
         for(int i=0; i<this.data.size(); ++i){
             arrData[i] = this.data.get(i);
@@ -297,7 +320,8 @@ public class Vector implements IVector<Double> {
     /**
      * operation +=
      */
-    public void add(int i, double value){
+    @Override
+    public void add(int i, Double value){
         double val = this.data.get(i);
         this.data.set(i , val + value);
     }
@@ -316,13 +340,8 @@ public class Vector implements IVector<Double> {
         this.scale(1.0/length);
     }
 
-    /**
-     * Returns the raw data structure that holds the elements of the Vector
-     */
-    public final ArrayList<Double> getRawData(){return this.data;}
 
-
-    private final void create(int size, double val){
+    private final void create(int size, Double val){
 
         if(size == 0){
             throw new IllegalArgumentException("Cannot create a vector with zero size");
@@ -341,6 +360,14 @@ public class Vector implements IVector<Double> {
      */
     public boolean contains(double val){
         return this.data.contains(val);
+    }
+
+    /**
+     * get the raw data
+     */
+    @Override
+    public List<Double> getRawData(){
+        return data;
     }
 
     /**
