@@ -4,7 +4,7 @@ import environments.MazeBuilder;
 import environments.MazeCell;
 import environments.MazeCellBuilder;
 import geometry.primitives.Point2D;
-import maths.EuclideanPoint2DCalculator;
+import maths.functions.distances.EuclideanPoint2DCalculator;
 import org.junit.Ignore;
 import org.junit.Test;
 

@@ -28,7 +28,7 @@ public class RowBuilder {
 
     <Row, T> Row build(RowType.Type type, T... vals){
 
-        return (Row) elementBuilder.get(type).create( vals);
+        return (Row) elementBuilder.get(type).create(vals);
     }
 
 }
