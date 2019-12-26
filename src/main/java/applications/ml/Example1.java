@@ -4,7 +4,7 @@ import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
 import datastructs.utils.RowType;
-import maths.EuclideanVectorCalculator;
+import maths.functions.distances.EuclideanVectorCalculator;
 import ml.classifiers.KNNClassifier;
 import utils.ClassificationVoter;
 
@@ -50,9 +50,9 @@ public class Example1 {
         }
 
 
-        KNNClassifier<DenseMatrixSet,
+        KNNClassifier<Double, DenseMatrixSet<Double>,
                 EuclideanVectorCalculator<Double>,
-                ClassificationVoter> classifier = new KNNClassifier<DenseMatrixSet,
+                ClassificationVoter> classifier = new KNNClassifier<Double, DenseMatrixSet<Double>,
                 EuclideanVectorCalculator<Double>, ClassificationVoter>(2, false);
 
         classifier.setDistanceCalculator(new EuclideanVectorCalculator<Double>());

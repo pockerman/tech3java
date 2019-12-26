@@ -1,14 +1,10 @@
-package maths;
-import geometry.primitives.Point2D;
-import utils.Pair;
+package maths.functions.distances;
 import algorithms.pathfinder.HeuristicFunction;
+import utils.Pair;
 
-/**
- * Euclidean distance calculation
- */
+public class ManhattanCalculator<PointType> implements DistanceCalculator<PointType, Double>,
+        HeuristicFunction<Pair<PointType, PointType>, Double> {
 
-public class EuclideanPoint2DCalculator<PointType extends Point2D> implements DistanceCalculator<PointType, Double>,
-                                                                       HeuristicFunction<Pair<PointType, PointType>, Double> {
 
     /**
      * Implement the HeuristicFunction interface contract
@@ -19,15 +15,12 @@ public class EuclideanPoint2DCalculator<PointType extends Point2D> implements Di
     }
 
     /**
-     * Returns the distance between the two points
+     * Returns the Manhatan distance between the two points
      * @param p1 the first  point
      * @param p2 the second point
      */
     public Double calculate(final PointType p1, final PointType p2){
-
-        double dx = p1.getI().doubleValue() - p2.getI().doubleValue();
-        double dy = p1.getJ().doubleValue() - p2.getJ().doubleValue();
-        return Math.sqrt(dx*dx+dy*dy);
+        return 0.0;
     }
 
     /**

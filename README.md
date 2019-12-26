@@ -36,6 +36,7 @@ This is my  Java playground...
 - <a href="src/main/java/applications/ml/Example9.java">Example 9</a>: Classification with ```LogisticRegression``` class 
 - <a href="src/main/java/applications/ml/Example10.java">Example 10</a>: Linear regression with regularization ```LassoRegularizer``` and ```RidgeRegularizer```
 - <a href="src/main/java/applications/ml/Example11.java">Example 11</a>: Clustering with ```KMeans```
+- <a href="src/main/java/applications/ml/Example12.java">Example 12</a>: Using the ```ConfusionMatrix``` class
 
 
 ### Reinforcement Learning

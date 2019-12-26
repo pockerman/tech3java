@@ -1,4 +1,4 @@
-package maths;
+package maths.functions.distances;
 
 import java.util.Comparator;
 

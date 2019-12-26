@@ -4,7 +4,7 @@ import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.RowBuilder;
 import datastructs.maths.Vector;
 import datastructs.utils.RowType;
-import maths.EuclideanVectorCalculator;
+import maths.functions.distances.EuclideanVectorCalculator;
 import ml.classifiers.ThreadedKNNClassifier;
 import parallel.partitioners.MatrixRowPartitionPolicy;
 import parallel.partitioners.RangePartitioner;
@@ -32,7 +32,7 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
  */
 public class Example8 {
 
-    public static Pair<DenseMatrixSet, List<Integer>> createDataSet() throws IOException, IllegalArgumentException {
+    public static Pair<DenseMatrixSet<Double>, List<Integer>> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
         Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/iris_data.csv"));
@@ -63,7 +63,7 @@ public class Example8 {
         }
 
         Table reducedDataSet = dataSetTable.removeColumns("species").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
+        DenseMatrixSet<Double> dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
         dataSet.initializeFrom(reducedDataSet);
 
         // partition the data set
@@ -77,14 +77,14 @@ public class Example8 {
 
     public static void main(String[] args) throws IOException, IllegalArgumentException{
 
-        Pair<DenseMatrixSet, List<Integer>> data = Example8.createDataSet();
+        Pair<DenseMatrixSet<Double>, List<Integer>> data = Example8.createDataSet();
         ExecutorService executorService = newFixedThreadPool(4);
 
         System.out.println("Number of rows: "+data.first.m());
         System.out.println("Number of labels: "+data.second.size());
 
 
-        ThreadedKNNClassifier<DenseMatrixSet, EuclideanVectorCalculator<Double>,
+        ThreadedKNNClassifier<Double, DenseMatrixSet<Double>, EuclideanVectorCalculator<Double>,
                               ClassificationVoter> classifier = new ThreadedKNNClassifier<>(3, false, executorService);
 
         classifier.setDistanceCalculator(new EuclideanVectorCalculator<Double>());

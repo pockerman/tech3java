@@ -2,7 +2,7 @@ package algorithms.pathfinder;
 import environments.Maze2D;
 import environments.MazeCell;
 import geometry.primitives.Point2D;
-import maths.DistanceCalculator;
+import maths.functions.distances.DistanceCalculator;
 
 import java.util.*;
 

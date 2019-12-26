@@ -1,6 +1,7 @@
 package ml.classifiers;
 
-import maths.DistanceCalculator;
+import datastructs.interfaces.IVector;
+import maths.functions.distances.DistanceCalculator;
 import utils.ClassificationVoter;
 import datastructs.interfaces.I2DDataSet;
 import utils.Pair;
@@ -11,7 +12,7 @@ import java.util.*;
 /**
  * KNNClassifier performs classification using the KNN algorithm
  */
-public class KNNClassifier<DataSetType extends I2DDataSet,
+public class KNNClassifier< DataType, DataSetType extends I2DDataSet<IVector<DataType>>,
                            DistanceType extends DistanceCalculator,
                            VoterType extends ClassificationVoter> {
 
@@ -50,7 +51,7 @@ public class KNNClassifier<DataSetType extends I2DDataSet,
     /**
      * Train the model using the provided dataset
      */
-    public void train(DataSetType dataSet, List labels){
+    public void train(DataSetType dataSet, List<Integer> labels){
 
         if(this.copyDataset){
             this.dataSet = (DataSetType) dataSet.copy();
@@ -130,7 +131,7 @@ public class KNNClassifier<DataSetType extends I2DDataSet,
     /**
      * The labels
      */
-    protected List labels;
+    protected List<Integer> labels;
 
     /**
      * The distance used

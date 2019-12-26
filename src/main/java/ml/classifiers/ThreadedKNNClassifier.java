@@ -1,7 +1,8 @@
 package ml.classifiers;
 
 import datastructs.interfaces.I2DDataSet;
-import maths.DistanceCalculator;
+import datastructs.interfaces.IVector;
+import maths.functions.distances.DistanceCalculator;
 import parallel.partitioners.IPartitionPolicy;
 import parallel.tasks.TaskBase;
 import utils.ClassificationVoter;
@@ -11,9 +12,9 @@ import utils.PairBuilder;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class ThreadedKNNClassifier<DataSetType extends I2DDataSet,
+public class ThreadedKNNClassifier<DataType, DataSetType extends I2DDataSet<IVector<DataType>>,
                                    DistanceType extends DistanceCalculator,
-                                   VoterType extends ClassificationVoter> extends KNNClassifier<DataSetType, DistanceType, VoterType> {
+                                   VoterType extends ClassificationVoter> extends KNNClassifier<DataType, DataSetType, DistanceType, VoterType> {
 
     /**
      * Constructor
