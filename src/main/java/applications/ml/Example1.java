@@ -24,7 +24,7 @@ public class Example1 {
 
     public static void main(String[] args){
 
-        DenseMatrixSet<Double> dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
+        DenseMatrixSet<Double> dataSet = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder());
         dataSet.create(12, 2);
         dataSet.set(0, 1.0, 3.0);
         dataSet.set(1, 1.5, 2.0);

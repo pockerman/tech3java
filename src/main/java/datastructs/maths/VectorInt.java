@@ -1,7 +1,6 @@
 package datastructs.maths;
 
 import base.CommonConstants;
-import datastructs.interfaces.IRowBuilder;
 import datastructs.interfaces.IVector;
 import datastructs.utils.RowType;
 import datastructs.utils.VectorStorage;
@@ -9,29 +8,23 @@ import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implements a Vector class in the mathematical sense
- */
-
-public class Vector implements IVector<Double> {
-
+public class VectorInt implements IVector<Integer> {
 
     /**
      * Creates an vector with initial capacity of 10
      */
-    public Vector(){
+    public VectorInt(){
 
-        this.data = new VectorStorage<>(10, 0.0);
+        this.data = new VectorStorage<>(10, 0);
     }
 
 
     /**
      * Creates a vector of given size with entries initialized to val
      */
-    public Vector(int size, double val){
+    public VectorInt(int size, int val){
 
         this.data = new VectorStorage<>(size, val);
     }
@@ -40,7 +33,7 @@ public class Vector implements IVector<Double> {
     /**
      * Create a vector from the given double values
      */
-    public Vector(Double... data){
+    public VectorInt(Integer... data){
         this.data = new VectorStorage<>(data);
 
     }
@@ -48,36 +41,36 @@ public class Vector implements IVector<Double> {
     /**
      * Creates a vector of given size with entries initialized to 0.0
      */
-    public Vector(int size){
-        this(size, 0.0);
+    public VectorInt(int size){
+        this(size, 0);
     }
 
 
     /**
      * Create a vector from another vector i.e. copy constructor
      */
-    public Vector(IVector<Double> data){
-        this(data.size(), 0.0);
+    public VectorInt(IVector<Integer> data){
+        this(data.size(), 0);
         this.set(data);
     }
 
     /**
      * Create from the given Table and the given column name
      */
-    public Vector(Table table, String columnName){
+    public VectorInt(Table table, String columnName){
         this(table.doubleColumn(columnName));
     }
 
     /**
      * Create a vector from the given DoubleColumn
      */
-    public Vector(DoubleColumn column){
-        this.data = new VectorStorage<>(column.size(), 0.0);
+    public VectorInt(DoubleColumn column){
+        this.data = new VectorStorage<>(column.size(), 0);
         this.set(column);
     }
 
     @Override
-    public final RowType.Type getType(){return RowType.Type.DOUBLE_VECTOR; }
+    public final RowType.Type getType(){return RowType.Type.INTEGER_VECTOR; }
 
     /**
      * Returns true if the vector is empty
@@ -91,29 +84,29 @@ public class Vector implements IVector<Double> {
      * Build a new instance of this class
      */
     @Override
-    public IVector<Double> create(int size){
-        return new Vector(size, 0.0);
+    public IVector<Integer> create(int size){
+        return new VectorInt(size, 0);
     }
 
     /**
      * Build a new instance of this class
      */
     @Override
-    public IVector<Double> create( Double... value){
-        return new Vector(value);
+    public IVector<Integer> create( Integer... value){
+        return new VectorInt(value);
     }
 
     @Override
-    public IVector<Double> create(){return new Vector();}
+    public IVector<Integer> create(){return new VectorInt();}
 
     /**
-      * Resize the vector
+     * Resize the vector
      */
     @Override
     public final void resize(int size){
 
         if(data == null){
-            this.data.create(size, 0.0);
+            this.data.create(size, 0);
         }
         else{
 
@@ -122,7 +115,7 @@ public class Vector implements IVector<Double> {
                 return;
             }
 
-            VectorStorage<Double> newVec = new VectorStorage<Double>(size, 0.0);
+            VectorStorage<Integer> newVec = new VectorStorage<Integer>(size, 0);
 
             if(size > data.size()){
 
@@ -148,7 +141,6 @@ public class Vector implements IVector<Double> {
      */
     @Override
     public void excahnge(int i, int k){
-
         this.data.excahnge(i, k);
     }
 
@@ -156,7 +148,7 @@ public class Vector implements IVector<Double> {
      * Push a new element in the ADT. This should throw
      */
     @Override
-    public void push(Double element){
+    public void push(Integer element){
     }
 
     /**
@@ -164,10 +156,6 @@ public class Vector implements IVector<Double> {
      */
     @Override
     public final int size(){
-
-        if(data == null){
-            return 0;
-        }
 
         return this.data.size();
     }
@@ -190,7 +178,7 @@ public class Vector implements IVector<Double> {
 
         for(int i=0; i<this.data.size(); ++i){
 
-            this.data.set(i, 0.0);
+            this.data.set(i, 0);
         }
     }
 
@@ -198,7 +186,7 @@ public class Vector implements IVector<Double> {
      * Returns the i-th entry of the Vector
      */
     @Override
-    public final Double get(int i){
+    public final Integer get(int i){
         return this.data.get(i);
     }
 
@@ -206,19 +194,14 @@ public class Vector implements IVector<Double> {
      * Set the i-th entry to val
      */
     @Override
-    public final void set(int i, Double val){
-        this.set(i, val.doubleValue());
+    public final void set(int i, Integer val){
+        this.data.set(i, val);
     }
 
     /**
      * Set the i-th entry to val
      */
-    public final void set(int i, double val){
-
-        if(i <0 || i>= data.size()){
-            throw  new IllegalArgumentException("Invalid index. index given not in [0, "+data.size()+")");
-        }
-
+    public final void set(int i, int val){
         this.data.set(i, val);
     }
 
@@ -226,7 +209,7 @@ public class Vector implements IVector<Double> {
      * Set the  entries to val
      */
     @Override
-    public final void set(IVector<Double> values){
+    public final void set(IVector<Integer> values){
 
         if(values.size() != this.size()){
             throw  new IllegalArgumentException("Invalid Vector size: "+ values.size() + " != " + this.size());
@@ -247,7 +230,7 @@ public class Vector implements IVector<Double> {
         }
 
         for (int i = 0; i < row.columnCount(); i++) {
-            this.set(i, row.getDouble(i));
+            this.set(i, row.getInt(i));
         }
     }
 
@@ -257,21 +240,21 @@ public class Vector implements IVector<Double> {
     public final void set(DoubleColumn column){
 
         for (int i = 0; i < column.size() ; i++) {
-            this.set(i, column.getDouble(i));
+            this.set(i, (int) column.getDouble(i));
         }
     }
 
     /**
      * Set the data from a simple array
      */
-    public final void set(Double[] data){
+    public final void set(Integer[] data){
         this.data.set(data);
     }
 
     /**
      * Set the coefficients of the function
      */
-    public void set(double[] data){
+    public void set(int[] data){
 
         for (int i = 0; i < data.length ; i++) {
             this.set(i, data[i]);
@@ -279,9 +262,9 @@ public class Vector implements IVector<Double> {
     }
 
     @Override
-    public Double[] toArray(){
+    public Integer[] toArray(){
 
-        Double[] arrData = new Double[this.data.size()];
+        Integer[] arrData = new Integer[this.data.size()];
 
         for(int i=0; i<this.data.size(); ++i){
             arrData[i] = this.data.get(i);
@@ -293,7 +276,7 @@ public class Vector implements IVector<Double> {
     /**
      * Scale the components of the vector with the given scalar
      */
-    public final void scale(double factor){
+    public final void scale(int factor){
 
         if(this.data.size() == 0){
 
@@ -310,8 +293,8 @@ public class Vector implements IVector<Double> {
      * operation +=
      */
     @Override
-    public void add(int i, Double value){
-        double val = this.data.get(i);
+    public void add(int i, Integer value){
+        int val = this.data.get(i);
         this.data.set(i , val + value);
     }
 
@@ -320,19 +303,20 @@ public class Vector implements IVector<Double> {
      */
     public final void normalize(){
 
-        double length = VectorOperations.l2Norm(this);
+        /*double length = VectorOperations.l2Norm(this);
 
         if(length - CommonConstants.getTol() < 0.0){
             throw new IllegalStateException("Zero length vector cannot be normalized");
         }
 
-        this.scale(1.0/length);
+        this.scale(1.0/length);*/
+
     }
 
     /**
      * Returns true if the given value is contained in the vector
      */
-    public boolean contains(double val){
+    public boolean contains(Integer val){
         return this.data.contains(val);
     }
 
@@ -340,12 +324,12 @@ public class Vector implements IVector<Double> {
      * get the raw data
      */
     @Override
-    public List<Double> getRawData(){
+    public List<Integer> getRawData(){
         return data.getRawData();
     }
 
     /**
      * The vector data
      */
-    VectorStorage<Double> data = null;
+    VectorStorage<Integer> data = null;
 }

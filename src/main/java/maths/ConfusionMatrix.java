@@ -21,7 +21,9 @@ public class ConfusionMatrix {
             throw new IllegalArgumentException("Classes should not be null");
         }
 
-        data_ = new DenseMatrixSet<>(RowType.Type.VECTOR, new RowBuilder(), names.size(), names.size(), -1);
+        this.names = names;
+
+        data_ = new DenseMatrixSet<>(RowType.Type.INTEGER_VECTOR, new RowBuilder(), names.size(), names.size(), -1);
 
         Map<Integer, List<Integer>> result = new HashMap<>();
 
@@ -53,9 +55,20 @@ public class ConfusionMatrix {
 
         StringBuilder builder = new StringBuilder();
 
+        builder.append(" | ");
         for(int i=0; i<this.names.size(); ++i){
-            builder.append(names.get(i)+ " ");
+            builder.append(names.get(i)+ " | ");
         }
+
+        builder.append("\n");
+        for(int i=0; i<this.names.size(); ++i){
+
+            for(int l=0; l<this.names.get(i).length(); ++l)
+            builder.append("_");
+        }
+        builder.append("\n");
+        builder.append(" | ");
+
 
         return builder.toString();
     }

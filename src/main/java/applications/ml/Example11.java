@@ -26,7 +26,7 @@ public class Example11 {
     public static void main(String[] args){
 
         //some synthetic data
-        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), 6, 2, 0.0);
+        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), 6, 2, 0.0);
         matrix.set(0, 1.0, 2.0);
         matrix.set(1, 1.0, 4.0);
         matrix.set(2, 1.0, 0.0);

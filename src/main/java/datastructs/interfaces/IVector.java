@@ -1,5 +1,6 @@
 package datastructs.interfaces;
 
+import datastructs.utils.RowType;
 import tech.tablesaw.api.Row;
 
 import java.util.List;
@@ -76,5 +77,11 @@ public interface IVector<E> extends IAdt<E>  /*IRowBuilder<IVector<E>>*/ {
      * get the raw data
      */
     List<E> getRawData();
+
+
+    /**
+     * Returns the type of the vector
+     */
+    RowType.Type getType();
 
 }

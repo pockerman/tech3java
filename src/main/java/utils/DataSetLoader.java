@@ -3,8 +3,6 @@ package utils;
 import datastructs.maths.DenseMatrixSet;
 import datastructs.maths.RowBuilder;
 import datastructs.utils.RowType;
-import parallel.partitioners.MatrixRowPartitionPolicy;
-import parallel.partitioners.RangePartitioner;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
@@ -46,7 +44,7 @@ public class DataSetLoader {
         }
 
         Table reducedDataSet = dataSetTable.removeColumns("species").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder());
+        DenseMatrixSet<Double> dataSet = new DenseMatrixSet<Double>(RowType.Type.DOUBLE_VECTOR, new RowBuilder());
         dataSet.initializeFrom(reducedDataSet);
 
         return PairBuilder.makePair(dataSet, labels);
