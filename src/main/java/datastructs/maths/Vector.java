@@ -4,6 +4,7 @@ import base.CommonConstants;
 import datastructs.interfaces.IRowBuilder;
 import datastructs.interfaces.IVector;
 import datastructs.utils.RowType;
+import datastructs.utils.VectorStorage;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -19,11 +20,11 @@ public class Vector implements IVector<Double> {
 
 
     /**
-     * Creates an empty vector
+     * Creates an vector with initial capacity of 10
      */
     public Vector(){
 
-        this.data = new ArrayList<Double>(10);
+        this.data = new VectorStorage<>(10, 0.0);
     }
 
 
@@ -32,7 +33,7 @@ public class Vector implements IVector<Double> {
      */
     public Vector(int size, double val){
 
-        create(size, val);
+        this.data = new VectorStorage<>(size, val);
     }
 
 
@@ -40,11 +41,8 @@ public class Vector implements IVector<Double> {
      * Create a vector from the given double values
      */
     public Vector(Double... data){
-        this.data = new ArrayList<>();
+        this.data = new VectorStorage<>(data);
 
-        for(double val: data){
-            this.data.add(val);
-        }
     }
 
     /**
@@ -74,9 +72,12 @@ public class Vector implements IVector<Double> {
      * Create a vector from the given DoubleColumn
      */
     public Vector(DoubleColumn column){
-        this.create(column.size(), 0.0);
+        this.data = new VectorStorage<>(column.size(), 0.0);
         this.set(column);
     }
+
+    @Override
+    public final RowType.Type getType(){return RowType.Type.DOUBLE_VECTOR; }
 
     /**
      * Returns true if the vector is empty
@@ -112,7 +113,7 @@ public class Vector implements IVector<Double> {
     public final void resize(int size){
 
         if(data == null){
-            create(size, 0.0);
+            this.data.create(size, 0.0);
         }
         else{
 
@@ -121,11 +122,7 @@ public class Vector implements IVector<Double> {
                 return;
             }
 
-            ArrayList<Double> newVec = new ArrayList<Double>(size);
-
-            for(int i=0; i<size; i++){
-                newVec.add(0.0);
-            }
+            VectorStorage<Double> newVec = new VectorStorage<Double>(size, 0.0);
 
             if(size > data.size()){
 
@@ -152,13 +149,7 @@ public class Vector implements IVector<Double> {
     @Override
     public void excahnge(int i, int k){
 
-        if( (i>=this.size() || k>=this.size()) || (i < 0 || k < 0)){
-            throw new IllegalArgumentException("Invalid entry index given");
-        }
-
-        Double tmp = this.data.get(i);
-        this.data.set(i, this.data.get(k));
-        this.data.set(k, tmp);
+        this.data.excahnge(i, k);
     }
 
     /**
@@ -274,16 +265,14 @@ public class Vector implements IVector<Double> {
      * Set the data from a simple array
      */
     public final void set(Double[] data){
-
-        for (int i = 0; i < data.length ; i++) {
-            this.set(i, data[i]);
-        }
+        this.data.set(data);
     }
 
     /**
      * Set the coefficients of the function
      */
     public void set(double[] data){
+
         for (int i = 0; i < data.length ; i++) {
             this.set(i, data[i]);
         }
@@ -340,21 +329,6 @@ public class Vector implements IVector<Double> {
         this.scale(1.0/length);
     }
 
-
-    private final void create(int size, Double val){
-
-        if(size == 0){
-            throw new IllegalArgumentException("Cannot create a vector with zero size");
-        }
-
-        this.data = new ArrayList<Double>(size);
-
-        for(int i=0; i<size; ++i){
-
-            data.add(val);
-        }
-    }
-
     /**
      * Returns true if the given value is contained in the vector
      */
@@ -367,11 +341,11 @@ public class Vector implements IVector<Double> {
      */
     @Override
     public List<Double> getRawData(){
-        return data;
+        return data.getRawData();
     }
 
     /**
      * The vector data
      */
-    private ArrayList<Double> data = null;
+    VectorStorage<Double> data = null;
 }

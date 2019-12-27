@@ -17,7 +17,7 @@ public class DenseMatrixSetTest {
     @Test
     public void testDuplicateColumn(){
 
-        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), 3, 3, 1.0);
+        DenseMatrixSet<Double> matrix = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), 3, 3, 1.0);
         matrix.duplicateColumn(2);
 
         assertEquals("Invalid column size", matrix.n(), 4);

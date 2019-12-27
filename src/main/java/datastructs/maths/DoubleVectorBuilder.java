@@ -3,7 +3,7 @@ package datastructs.maths;
 import datastructs.interfaces.IRowBuilder;
 import datastructs.interfaces.IVector;
 
-public class VectorBuilder implements IRowBuilder<Vector> {
+public class DoubleVectorBuilder implements IRowBuilder<Vector> {
 
 
     @Override

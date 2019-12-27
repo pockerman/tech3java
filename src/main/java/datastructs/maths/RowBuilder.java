@@ -13,7 +13,8 @@ public class RowBuilder {
 
     static
     {
-        elementBuilder.put(RowType.Type.VECTOR, new VectorBuilder());
+        elementBuilder.put(RowType.Type.DOUBLE_VECTOR, new DoubleVectorBuilder());
+        elementBuilder.put(RowType.Type.INTEGER_VECTOR, new IntegerVectorBuilder());
     }
 
     <Row> Row build(RowType.Type type){

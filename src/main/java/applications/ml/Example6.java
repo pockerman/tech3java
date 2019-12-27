@@ -43,7 +43,7 @@ public class Example6 {
         List<Double> coolingCol = ParseUtils.parseAsDouble(reducedDataSet.column(1));
         ListMaths.normalize(coolingCol);
 
-        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 3, 1.0);
+        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 3, 1.0);
         denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
         denseMatrixSet.setColumn(2, coolingCol);
 

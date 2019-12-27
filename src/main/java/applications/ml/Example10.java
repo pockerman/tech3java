@@ -10,7 +10,6 @@ import datastructs.maths.Vector;
 
 import datastructs.utils.RowType;
 import maths.errorfunctions.MSEVectorFunction;
-import maths.functions.IVectorRealFunction;
 import maths.functions.LinearVectorPolynomial;
 
 import maths.functions.regularizers.LassoRegularizer;
@@ -46,7 +45,7 @@ public class Example10 {
         Vector labels = new Vector(y);
 
         Table reducedDataSet = dataSetTable.removeColumns("y").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
+        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
         dataSet.setColumn(1, reducedDataSet.doubleColumn(0));
         return PairBuilder.makePair(dataSet, labels);
     }

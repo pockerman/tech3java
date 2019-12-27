@@ -44,7 +44,7 @@ public class Example1 {
         Vector labels = new Vector(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
 
-        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 2, 1.0);
+        DenseMatrixSet<Double> denseMatrixSet = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), reducedDataSet.rowCount(), 2, 1.0);
         denseMatrixSet.setColumn(1, reducedDataSet.doubleColumn(0));
 
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
